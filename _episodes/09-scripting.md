@@ -1,5 +1,5 @@
 ---
-title: "Introduction"
+title: "Scripting Programming"
 teaching: 30
 exercises: 30
 questions:

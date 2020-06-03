@@ -1,5 +1,5 @@
 ---
-title: "Introduction"
+title: "Compiling Codes"
 teaching: 30
 exercises: 30
 questions:

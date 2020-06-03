@@ -1,5 +1,5 @@
 ---
-title: "Introduction"
+title: "Version Control: git"
 teaching: 30
 exercises: 30
 questions:

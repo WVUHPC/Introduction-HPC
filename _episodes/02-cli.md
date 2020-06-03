@@ -1,5 +1,5 @@
 ---
-title: "Introduction"
+title: "Command Line Interface"
 teaching: 30
 exercises: 30
 questions:

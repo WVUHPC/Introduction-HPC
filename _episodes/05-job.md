@@ -1,5 +1,5 @@
 ---
-title: "Introduction"
+title: "Job Submission and scheduling: Torque/Moab"
 teaching: 30
 exercises: 30
 questions:

@@ -1,5 +1,5 @@
 ---
-title: "Introduction"
+title: "Terminal-based Editors"
 teaching: 30
 exercises: 30
 questions:
