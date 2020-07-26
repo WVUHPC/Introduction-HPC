@@ -12,7 +12,7 @@ keypoints:
 ---
 ## High Performance Computing
 
-High-Performance Computing is about size and speed. A HPC cluster is made of tens, hundreds or even thousands of relatively normal computers specially connected to perform intensive computational operations. In most cases those operations involve large numerical calculations that take too much time to perform and therefore are simply unfeasible to perform on a normal machine.
+High-Performance Computing is about size and speed. A HPC cluster is made of tens, hundreds or even thousands of relatively normal computers specially connected to perform intensive computational operations. In most cases those operations involve large numerical calculations that take too much time to complete and therefore are simply unfeasible to perform on a normal machine.
 
 This is a very pragmatic tutorial: more time on examples and exercises, less time on theoretical stuff. The idea is that after these lessons, you will have learned how to enter into the cluster, compile code, execute using the queue system and transfer data in an out the cluster.
 
@@ -22,7 +22,7 @@ Check your computer, gather information about the CPU, number of Cores, Total RA
 
 The purpose of this exercise is to compare your machine with our clusters
 
-You can see specs for our clusters at <https://docs.hpc.wvu.edu/text/82.Spruce.html> and <https://docs.hpc.wvu.edu/text/83.ThornyFlat.html>
+You can see specs for our clusters [Spruce Knob](https://docs.hpc.wvu.edu/text/82.Spruce.html) and [Thorny Flat](https://docs.hpc.wvu.edu/text/83.ThornyFlat.html)
 
 Try to gather an idea on the Hardware present on your machine and see the hardware we have on Spruce Knob or Thorny Flat
 
@@ -141,17 +141,15 @@ Here are some tricks to get that data from several Operating Systems
 
 ### CPU Brands and Product lines
 
-There are only two manufacturers that matter for PC consumer computing: Intel and AMD. There are several others manufacturers of CPUs but those are mostly for SmartPhones, Photo Cameras, Musical Instruments, or very specialized HPC clusters.
+There are only two manufacturers that hold most of the market for PC consumer computing: Intel and AMD. There are several others manufacturers of CPUs but those are mostly for SmartPhones, Photo Cameras, Musical Instruments, or very specialized HPC clusters.
 
 More than a decade ago, the main featured used for marketing purposes on a CPU was the speed. That has changed now, as CPUs are not getting faster, but include complexity that is hard to market with a single number. That is why CPUs are now marketed with "Product Lines" and the Models are less representative of the actual characteristics of a given machine.
 
-For example, Intel Core i3 processors are marketed to entry level machines more tailored to basic computing tasks like word processing and web browsing. On the other hand, Intel’s Core i7 and i9 processors are for high-end products aimed at the top of the line gaming rigs able to run the most recent titles at ridiculously high FPS and resolutions. Machines for enterprise usage are usually under the Xeon Line.
+For example, Intel Core i3 processors are marketed to entry level machines more tailored to basic computing tasks like word processing and web browsing. On the other hand, Intel’s Core i7 and i9 processors are for high-end products aimed at the top of the line gaming rigs able to run the most recent titles at high FPS and resolutions. Machines for enterprise usage are usually under the Xeon Line.
 
 On AMD’s side, you have the Athlon line aimed at entry-level users, all the way to the Ryzen 7 designed mostly for enthusiasts and gamers. AMD also has product lines for enterprises like EPYC Server Processors.
 
 ### Cores
-
-The next term to understand is core.
 
 Consumer level CPUs up to 2000s only had one core, but Intel and AMD both hit a brick wall with incremental clock speeds improvements. The heat and power consumption scales non-linearly with the CPU speed. That brings us to the current trend and instead of a single core, CPUs now have two, three, four, eight or sixteen cores on a single CPU. That means that each CPU (in marketing terms) is actually several CPUs (in actual component terms).
 
@@ -159,7 +157,7 @@ Consumer level CPUs up to 2000s only had one core, but Intel and AMD both hit a 
 
 Hyperthreading is intrinsically linked to cores and is best understood as a proprietary technology that allows the operating system, to recognize the CPU as having double the amount of cores.
 
-In practical terms, a CPU with four physical cores would be recognized by the operating system as having eight virtual cores, or eight threads. The idea is that by doing that it is expected that the CPU is able to better manage the extra load, by lying to the OS about the actual number of physical cores.
+In practical terms, a CPU with four physical cores would be recognized by the operating system as having eight virtual cores, or capable of dealing with eight threads of execution. The idea is that by doing that it is expected that the CPU is able to better manage the extra load, by reordering execution and pipelining the workflow to the actual number of physical cores.
 
 In the context of HPC there is still debate if activating Hyperthreading is beneficial for intensive numerical operations and the answer is very dependent on the code. In our clusters Hyperthreading is disabled on all compute nodes and enabled on service nodes.
 

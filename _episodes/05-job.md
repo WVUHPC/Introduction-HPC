@@ -1,5 +1,5 @@
 ---
-title: "Job Submission and scheduling: Torque/Moab"
+title: "Resource Managment: Torque/Moab"
 teaching: 30
 exercises: 30
 questions:
@@ -10,52 +10,32 @@ keypoints:
 - "It is a good idea to keep aliases to common torque commands for easy execution."
 ---
 
-When you are using your own computer, you execute your calculations and you are responsible of not overloading the machine with more workload that the machine can actually process efficiently. Also, you probably have only one machine to work, if you have several you login individually on each and execute calculations by directly running calculations.
+When you are using your own computer, when you execute calculations you are responsible of not overloading the machine with more workload that the machine can actually process efficiently. If you have just one computer, you monitor the load of the machine and decide if the computer can execute more jobs.
+In the case of several machines, you need to log in individually on each machine, submit the jobs and monitor those machines from time to time.
 
-On a shared resource like an HPC cluster, things are very different. You and several others, maybe hundreds are competing for getting their calculations done. A Resource Manager take care of receiving job submissions. From the other side a Job Scheduler is in charge of associate jobs with the appropriated resources and trying to maximize and objective function such as total utilization constrained by priorities and the best balance between the resources requested and resources available.
+You can easily realize that working this way is pretty inefficient. What if the job finishes during the night? what if you have multiple cores but your jobs can only use one? How to control several machines efficiently. These and several other conditions are addressed by using a Resource Manager also known as Batch System or Queue System.
+
+On a shared resource like an HPC cluster, things are even more complex. You and several others, maybe hundreds are competing for getting their calculations done. A Resource Manager take care of receiving job submissions. From the other side a Job Scheduler is in charge of associate jobs with the appropriated resources and trying to maximize and objective function such as total utilization constrained by priorities and the best balance between the resources requested and resources available.
 
 # TORQUE Resource and Queue Manager
 
-Terascale Open-source Resource and QUEue Manager (TORQUE) is a distributed resource manager providing control over batch jobs and distributed compute nodes. TORQUE can be integrated both, commercial and non-commercial Schedulers. In the case of Mountaineer and Spruce TORQUE is used with the commercial Moab Scheduler.
+Terascale Open-source Resource and QUEue Manager (TORQUE) is a distributed resource manager providing control over batch jobs and distributed compute nodes. TORQUE can be integrated with both, commercial and non-commercial schedulers. In the case of our clusters TORQUE is used in conjunction to the commercial Moab Scheduler.
 
-This is a list of TORQUE commands:
-
-|Command	  |Description|
-|:----------|:----------|
-|`momctl`	  |Manage/diagnose MOM (node execution) daemon|
-|`pbsdsh`	  |Launch tasks within a parallel job|
-|`pbsnodes`	|View/modify batch status of compute nodes|
-|`qalter`	  |Modify queued batch jobs|
-|`qchkpt`	  |Checkpoint batch jobs|
-|`qdel`	    |Delete/cancel batch jobs|
-|`qgpumode`	|Specifies new mode for GPU|
-|`qgpureset`|Reset the GPU|
-|`qhold`	  |Hold batch jobs|
-|`qmgr`	    |Manage policies and other batch configuration|
-|`qmove`	  |Move batch jobs|
-|`qorder`	  |Exchange order of two batch jobs in any queue|
-|`qrerun`	  |Rerun a batch job|
-|`qrls`	    |Release batch job holds|
-|`qrun`	    |Start a batch job|
-|`qsig`	    |Send a signal to a batch job|
-|`qstat`	  |View queues and jobs|
-|`qsub`	    |Submit jobs|
-|`qterm`	  |Shutdown pbs server daemon|
-|`tracejob`	|Trace job actions and states recorded in Torque logs (see Using "tracejob" to Locate Job Failures)|
-
-From those commands, a basic knowledge about `qsub`, `qstat` and `qdel` is suficient for most purposes on a normal usage of the cluster.
+Torque has large list of [Torque Commands](#list-of-torque-commands)
+From those commands, most users only need to know 3 of them: `qsub`, `qstat` and `qdel`. That is more than enough for most purposes.
 
 TORQUE includes numerous directives, which are used to specify resource
 requirements and other attributes for batch and interactive jobs.
 TORQUE directives can appear as header lines (lines that start with #PBS)
 in a batch job script or as command-line options to the `qsub` command.
 
-## Submission scripts
+## **qsub**: Submit Jobs
 
 A TORQUE job script for a serial job might look like this:
 
 ~~~
 #!/bin/bash
+
 #PBS -k o
 #PBS -l nodes=1:ppn=1,walltime=00:30:00
 #PBS -M username@mix.wvu.edu
@@ -85,6 +65,7 @@ A parallel job using MPI could be like this:
 
 ~~~
 #!/bin/bash
+
 #PBS -k o
 #PBS -l nodes=1:ppn=16,walltime=30:00
 #PBS -M username@mix.wvu.edu
@@ -106,15 +87,16 @@ The directives are very similar to the serial case
 
 > ## Exercise: Creating a Job script and submit it
 >
-> On `1.Intro-HPC/07.jobs` you will find the same 3 ABINIT files that we worked on the Command Line Interface episode. The exercise is to prepare a submission script for computing the calculation. This is all that you need to know:
+> On `Introduction-HPC_Data/05-jobs` you will find the same 3 ABINIT files that we worked on the Command Line Interface episode. The exercise is to prepare a submission script for computing the calculation. This is all that you need to know:
 >
-> 1. You need to load the these modules to use ABINIT
+> 1. You need to load the module for ABINIT.
+>    Before that, it is good idea to purge the modules first to avoid conflicts with the modules that you probably are loading by default.
 >    ~~~
->    module load compilers/gcc/6.3.0 mpi/openmpi/2.1.2_gcc63 libraries/fftw/3.3.6_gcc63 compilers/intel/17.0.1_MKL_only  atomistic/abinit/8.6.3_gcc63
+>    module purge
+>    module load atomistic/abinit/8.10.3_gcc82
 >    ~~~
 >    {: .bash}
 >
->    It is good idea to purge the modules first to avoid conflicts with the modules that you probably are loading by default.
 >
 > 2. ABINIT works in parallel using MPI, for this exercise lets request 4 cores on a single node. The actual command to be executed is:
 >    ~~~
@@ -127,7 +109,7 @@ The directives are very similar to the serial case
 >{: .source}
 {: .challenge}
 
-## Job Arrays
+### Job Arrays
 
 Job array is a way to submit many jobs that can be indexed. The jobs are
 independent between them but you can submit them with a single qsub
@@ -203,9 +185,9 @@ There a few new elements here: `${PBS_ARRAYID}`  is a variable that receives one
 {: .challenge}
 
 
-## Environment variables
+### Environment variables
 
-We are using PBS_O_WORKDIR to change directory to the place where the job was submitted
+We are using **$PBS_O_WORKDIR** to change directory to the place where the job was submitted
 The following environment variables will be available to the batch job.
 
 | Variable | Description |
@@ -221,7 +203,7 @@ The following environment variables will be available to the batch job.
 |PBS_NODEFILE| the name of the file contain the list of nodes assigned to the job (for parallel and cluster systems). |
 |PBS_QUEUE| the name of the queue from which the job is executed. |
 
-## Montioring jobs
+## **qstat**: Monitoring jobs
 
 To monitor the status of a queued or running job, use the qstat command from Torque
 of showq from Moab.
@@ -255,21 +237,23 @@ Moab showq offers:
 | -v	| local and full resource manager job IDs as well as partitions. |
 | -w	| only jobs associated with the specified constraint. Valid constraints include user, group, acct, class, and qos. |
 
-## Deleting jobs
+## **qdel**: Deleting jobs
 
-With Torque you can use `qdel`. Moab uses `mjobctl -c`. For example:
+With Torque you can use `qdel`.  For example:
 
 ~~~
 $ qdel 1045
 ~~~
 {: .bash}
 
+Moab offer the command **mjobctl** to control jobs and to cancel jobs use `mjobctl -c`.
+
 ~~~
 $ mjobctl -c 1045
 ~~~
 {: .bash}
 
-## Prologue and Epilogue
+## Using Prologue and Epilogue scripts
 
 Torque provides administrators the ability to run scripts before and/or after each job executes. With such a script, you can prepare the system, perform node health checks, prepend and append text to output and error log files, cleanup systems, and so forth.
 
@@ -334,7 +318,6 @@ The purpose of the scripts above is to provide information about the job being s
 The prologue is also useful, it can check if the proper environment for the job is present and based on the return of that script indicate Torque if the job should continue for execution, resubmit it or cancel it. The following table describes each exit code for the prologue scripts and the action taken.
 
 
-
 |Error	  |Description |Action|
 |:--------|:-----------|:-----|
 |-4	|The script timed out	              |Job will be requeued|
@@ -344,8 +327,6 @@ The prologue is also useful, it can check if the proper environment for the job 
 |0	|Successful completion	            |Job will run|
 |1	|Abort exit code	                  |Job will be aborted|
 |>1	|other	                            |Job will be requeued|
-
-
 
 
 > ## Exercise: Prologue and Epilogue arrays
@@ -414,5 +395,31 @@ Test a simple plot in R
 
 You should get a new window with a plot and a few points.
 On the episode about Singularity we will see some other packages that use the X11 server like RStudio and Visit.
+
+## List of TORQUE commands
+
+|Command	  |Description|
+|:----------|:----------|
+|`momctl`	  |Manage/diagnose MOM (node execution) daemon|
+|`pbsdsh`	  |Launch tasks within a parallel job|
+|`pbsnodes`	|View/modify batch status of compute nodes|
+|`qalter`	  |Modify queued batch jobs|
+|`qchkpt`	  |Checkpoint batch jobs|
+|`qdel`	    |Delete/cancel batch jobs|
+|`qgpumode`	|Specifies new mode for GPU|
+|`qgpureset`|Reset the GPU|
+|`qhold`	  |Hold batch jobs|
+|`qmgr`	    |Manage policies and other batch configuration|
+|`qmove`	  |Move batch jobs|
+|`qorder`	  |Exchange order of two batch jobs in any queue|
+|`qrerun`	  |Rerun a batch job|
+|`qrls`	    |Release batch job holds|
+|`qrun`	    |Start a batch job|
+|`qsig`	    |Send a signal to a batch job|
+|`qstat`	  |View queues and jobs|
+|`qsub`	    |Submit jobs|
+|`qterm`	  |Shutdown pbs server daemon|
+|`tracejob`	|Trace job actions and states recorded in Torque logs (see Using "tracejob" to Locate Job Failures)|
+
 
 {% include links.md %}
