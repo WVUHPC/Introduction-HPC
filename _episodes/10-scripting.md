@@ -3,9 +3,9 @@ title: "Shell Scripting"
 teaching: 30
 exercises: 30
 questions:
-- "What is Shell Scripting"
-- "Why Shell Scripting is important in HPC"
-- "How to program jobs with more complex workflows"
+- "What is Shell Scripting?"
+- "Why Shell Scripting is important in HPC?"
+- "How to program jobs with more complex workflows?"
 objectives:
 - "Basic shell programming for HPC"
 keypoints:
@@ -376,7 +376,7 @@ mpirun -np 4 ./mpi_pi 100
 
 Once you start creating scripts, the next step is learn how to deal with growing amount of information. There are two commands that are commonly used to extract information from large texts, `grep` and `awk`
 
-Download the data for the lesson. On folder `2019-Data-HandsOn/1.Intro-HPC/13.shell` you will find a file called `output.log`. That is an actual output file from a Molecular Dynamics code.
+Download the data for the lesson. On folder `Introduction-HPC_Data/10-scripting` you will find a file called `output.log`. That is an actual output file from a Molecular Dynamics code.
 
 Lets start for getting an idea about the size number of lines of that file:
 

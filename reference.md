@@ -4,6 +4,6 @@ layout: reference
 
 ## Glossary
 
-FIXME
+  * **HPC**: High Performance Computing
 
 {% include links.md %}

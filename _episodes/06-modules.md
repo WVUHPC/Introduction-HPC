@@ -17,7 +17,7 @@ keypoints:
 The shell, and many other command line programs uses a set of variables to control their behavior. Those variables are called **Environment Variables**.
 Think about them as placeholders for information stored within the system that passes data to programs launched in the shell.
 
-Environment Variables control a big deal of CLI functionality. They declare where to search for executable commands, where to search for libraries, which language display messages to you, how you prompt looks. Beyond the shell itself, Environment Variables are use by many codes to control their own operation.
+**Environment Variables** control CLI functionality. They declare where to search for executable commands, where to search for libraries, which language display messages to you, how you prompt looks. Beyond the shell itself, Environment Variables are use by many codes to control their own operation.
 
 You can see all the variables currently defined by executing:
 
@@ -106,113 +106,6 @@ The following table lists the most common module command options
 | module help	  | Shows help for a module. |
 | module swap	  | Swaps a currently loaded module for an unloaded module. |
 
-## Modules on Spruce
-
-~~~
-$ module avail
-~~~
-{: .language-bash}
-~~~
---------------------------------------------- /usr/share/Modules/modulefiles ---------------------------------------------
-dot     modules null    use.own
-
------------------------------------------------- /usr/share/Modules/tier0 ------------------------------------------------
-benchmarks/hpl/2.3_intel18           libraries/arpack-ng/3.6.2_gcc63      libs/hdf5/1.10.5_gcc82
-compilers/binutils/2.26              libraries/arpack-ng/3.6.2_gcc82      libs/hdf5/1.10.5_gcc82_ompi4
-compilers/cuda/7.5                   libraries/bioconductor/3.2           libs/hdf5/1.10.5_intel19
-compilers/gcc/4.9.0                  libraries/boost/1.57.0               libs/hdf5/1.10.5_intel19_impi19
-compilers/gcc/5.3.0                  libraries/boost/1.66                 libs/libxc/3.0.0_gcc82
-compilers/gcc/6.3.0                  libraries/boost/1.68_gcc63           libs/libxc/4.3.4_gcc82
-compilers/gcc/8.2.0                  libraries/boost/1.68_gcc82           libs/libxc/4.3.4_intel19
-compilers/idl/8.5.1                  libraries/bupc/2.2                   libs/netcdf/4.x_gcc82
-compilers/intel/13.0.1               libraries/DFS/myhadoop               libs/netcdf/4.x_gcc82_ompi4
-compilers/intel/14.0                 libraries/fftw/3.3.6_gcc63           libs/netcdf/4.x_intel19
-compilers/intel/15.0.1               libraries/gtest/1.7.0                libs/netcdf/4.x_intel19_impi19
-compilers/intel/17.0.1               libraries/hdf5/1.10.4_intel19_impi19 libs/openblas/0.2.20_gcc82
-compilers/intel/17.0.1_MKL_only      libraries/hdf5/1.8.13_intel          libs/openblas/0.3.5_gcc82
-compilers/intel/19.0                 libraries/hdf5/1.8.19_gcc63          libs/openblas/0.3.5_gcc82_broadwell
-compilers/intel/python_3.6.5         libraries/jemalloc/3.6.0             libs/openblas/0.3.5_gcc82_haswell
-compilers/java/bazel-0.5.2           libraries/libgd/2.2.4                libs/sparskit/2.0_gcc82
-compilers/java/jdk1.8.0              libraries/log4cpp/1.1.2              mpi/intel/4.1.0.024
-compilers/java/jre1.8.0              libraries/mkl/11.2.1                 mpi/intel/4.1.1.036
-compilers/julia/1.0.0                libraries/mkl/4.1.1.036              mpi/intel/5.0.3.048
-compilers/python/2.7.13              libraries/openfoam/3.0+              mpi/intel/5.1.3
-compilers/ruby/2.2.3                 libraries/petsc/3.9.3_gcc82          mpi/mpich2/1.2.1
-compilers/swig/3.0.7                 libraries/Qt/4.7.3                   mpi/mvapich2/2.0.1
-dev/cmake/3.9.0                      libraries/Qt/5.5.1                   mpi/mvapich2/2.2.0
-dev/oxygen/1.8.15                    libraries/R/Rhipe                    mpi/openmpi/1.6.5
-git/2.8.3                            libraries/scons/3.0.1                mpi/openmpi/1.6.5-intel
-kitware/cmake/3.9.0                  libraries/sparsehash/2.0.2           mpi/openmpi/1.8.4
-lang/gcc/8.2.0                       libraries/suitesparse/5.3_gcc63      mpi/openmpi/2.1.2_gcc63
-lang/intel/2018_u4                   libraries/suitesparse/5.3_gcc82      mpi/openmpi/2.1.2_intel17
-lang/intel/2019                      libraries/superlu/3.0_gcc63          mpi/ucx/1.3.1
-lang/java/jdk1.8.0_201               libraries/superlu/3.0_gcc82          parallel/hwloc/1.11.13_gcc82
-lang/pgi/19.4                        libraries/tbb/2018U5_gcc82           parallel/openmpi/3.1.4_gcc44
-lang/python/2.7.13_pypy_gcc82        libraries/valgrind/3.13_gcc82        parallel/openmpi/3.1.4_gcc82
-lang/python/2.7.15_gcc82             libraries/yices/2.6.0_gcc63          parallel/openmpi/3.1.4_intel18
-lang/python/3.5.3_pypy_gcc82         libraries/yices/2.6.0_gcc82          parallel/pvm/3.4
-lang/python/3.6.8_gcc82              libs/cuda/9.2                        utils/doxygen
-lang/python/3.7.2_gcc82              libs/fftw/3.3.8_gcc82                utils/mc+tmux
-lang/R/3.5.2                         libs/fftw/3.3.8_intel19              utils/mercurial
-libraries/armadillo/9.100.5_gcc63    libs/fftw3/3.3.8_gcc82               xalt/0.6.0
-libraries/armadillo/9.100.5_gcc82    libs/fftw3/3.3.8_intel19
-
------------------------------------------------- /usr/share/Modules/tier1 ------------------------------------------------
-conda             singularity/2.5.1 singularity/2.5.2
-
------------------------------------------------- /usr/share/Modules/tier2 ------------------------------------------------
-ansys/fluids_18.1                    data/cdf/3.5.0.2                     genomics/pindel/0.2.5b1
-ansys/structures_18.1                data/mongodb/4.0                     genomics/pindel/0.2.5b8
-astronomy/casa/5.3.0                 data/sqlite/3.9.2                    genomics/plink
-atomistic/abinit/8.10.2_intel18      engineering/damask/2.0.1             genomics/qiime
-atomistic/abinit/8.4.2_intel17       engineering/damask/2.0.1_petsc364    genomics/repeatexplorer
-atomistic/dftbplus/18.1              genomics/abyss/2.1.0                 genomics/repeatmasker
-atomistic/elk/5.2.14_intel18         genomics/allpaths                    genomics/rsem
-atomistic/espresso/6.4_intel19_seq   genomics/beagle                      genomics/samtools/0.1.19
-atomistic/espresso/6.4_intel19_thd   genomics/bedtools                    genomics/samtools/1.2
-atomistic/gromacs/2016.3             genomics/bioconda                    genomics/sga
-atomistic/gromacs/2016.3_serial      genomics/bioperl                     genomics/shapeit
-atomistic/gromacs/2016.4             genomics/blasr                       genomics/sickle
-atomistic/gromacs/2016.6             genomics/blast/2.2.28                genomics/sratoolkit/2.9.2
-atomistic/gromacs/2019.3             genomics/blast/2.3.0                 genomics/stringtie/1.3.4
-atomistic/lammps/2016.11.17          genomics/bowtie                      genomics/structure
-atomistic/lammps/2017.08.11          genomics/bowtie2/2.3.4               genomics/svseq
-atomistic/lammps/2018.03.16          genomics/breakdancer                 genomics/tabix
-atomistic/lammps/2019.06.05          genomics/canu/1.7                    genomics/tablet
-atomistic/namd/2018-04-26            genomics/celera                      genomics/tophat2
-atomistic/namd/2.12                  genomics/clumpp                      genomics/trf
-atomistic/namd/2.12_iverbs           genomics/cufflinks/2.2.1             genomics/trinity/2.0.6
-atomistic/octopus/9.0_gcc82          genomics/delly                       genomics/trinity/2.2.0
-atomistic/vasp/5.3.3_intel17         genomics/diamond                     genomics/vcflib
-atomistic/vasp/5.4.4_intel17         genomics/distruct                    genomics/vcftools/0.1.14
-atomistic/vasp/5.4.4_intel17_ompi212 genomics/dwgsim                      gnu/coreutils
-cfd/ansys/14.5.7                     genomics/eigensoft                   gnu/parallel
-cfd/ansys/forte/17.2                 genomics/errcorr_tools               mae/cmg/2014.10
-cfd/converge/2.4.12                  genomics/express                     mae/cmg/2015.10
-cfd/converge/2.4.21                  genomics/falcon                      mae/cmg/2017.10
-chemistry/amber/12                   genomics/falcon_171012               mae/elk/2.2.10
-chemistry/amber/14                   genomics/fasta36                     mae/elk/2.3.16
-chemistry/amber/16                   genomics/fastqc/0.11.7               math/dakota/6.10
-chemistry/autodock_vina              genomics/fastx_toolkit               math/dakota/6.10-UI
-chemistry/gamess                     genomics/gatk/4.0                    math/dakota/6.8
-chemistry/gaussian/g03               genomics/genometools                 math/dakota/6.8-UI
-chemistry/gaussian/g09               genomics/genomics-core               math/gams/26.1
-chemistry/gromacs/4.6.5              genomics/hmmer                       statistics/matlab/2018a
-chemistry/gromacs/5.0.5              genomics/htslib                      statistics/rstudio/0.97.551
-chemistry/gromacs/5.0.5-gpu          genomics/igv                         visualization/graphviz/2.40_gcc82
-chemistry/gromacs/5.1.2              genomics/lastz                       visualization/paraview
-chemistry/gromacs/5.1.2-gpu          genomics/ltrfinder                   visualization/visit/2.10
-chemistry/namd/ibverbs/2.10          genomics/mmseqs2                     visualization/visit/2.10.2
-chemistry/namd/ibverbs/2.11          genomics/mrsfast                     visualization/visit/2.12.2
-chemistry/namd/ibverbs/2.9           genomics/pbdagcon                    visualization/visit/2.12.3
-chemistry/namd/mpi                   genomics/phase                       visualization/vtk/7.0.0
-chemistry/orca                       genomics/phrap
-chemistry/schrodinger                genomics/picard-tools
-
------------------------------------------------- /usr/share/Modules/tier3 ------------------------------------------------
-environment/gcc-mpi    environment/gcc-serial environment/intel      null
-~~~
-{: .output}
 
 ## Creating a private repository
 
@@ -249,7 +142,7 @@ the master modulefile directory.
 >    ~~~
 >    {: .source}
 >
-> 6. Go back and purge all the modules from your environment. We will now explore why it is important to use a recent compiler. Try to compile the code at `1.Intro-HPC/05.modules/lambda_c++14.cpp`. Go to the folder and execute:
+> 6. Go back and purge all the modules from your environment. We will now explore why it is important to use a recent compiler. Try to compile the code at `Introduction-HPC_Data/06-modules/lambda_c++14.cpp`. Go to the folder and execute:
 >
 >    ~~~
 >    g++ lambda_c++14.cpp
@@ -285,5 +178,15 @@ the master modulefile directory.
 >
 >{: .source}
 {: .challenge}
+
+## Reference: Modules on the clusters
+
+This is the list of all modules on Thorny Flat on July 2020.
+
+| TIER 0 | TIER 1 | TIER 2 |
+|-|-|-|
+| benchmarks/hpl/2.3_gcc48<br>benchmarks/hpl/2.3_gcc82<br>dev/cmake/3.15.2<br>dev/cmake/3.15.4<br>dev/doxygen/1.8.15<br>lang/gcc/7.5.0<br>lang/gcc/8.2.0<br>lang/gcc/8.4.0<br>lang/gcc/9.3.0<br>lang/go/1.12.7<br>lang/intel/2018<br>lang/intel/2018_u4<br>lang/intel/2019<br>lang/intel/2019_u5<br>lang/java/jdk1.8.0_201<br>lang/julia/1.1.1<br>lang/julia/1.2.0<br>lang/pgi/19.10<br>lang/pgi/19.4<br>lang/python/cpython_3.6.9_gcc82<br>lang/python/cpython_3.7.2_gcc82<br>lang/python/cpython_3.7.4_gcc82<br>lang/python/intelpython_2.7.14<br>lang/python/intelpython_2.7.16<br>lang/python/intelpython_3.6.3<br>lang/python/intelpython_3.6.9<br>lang/python/pypy2.7-7.1.1-portable<br>lang/python/pypy3.6-7.1.1-portable<br>lang/python/pypy3.6-v7.1.1-thorny<br>lang/r/3.5.2<br>lang/r/3.6.2<br>libs/atompaw/4.1.0.5_gcc48<br>libs/atompaw/4.1.0.5_intel18<br>libs/boost/1.70_gcc48_ompi216<br>libs/boost/1.70_gcc82_ompi216<br>libs/boost/1.70_intel18<br>libs/boost/1.73<br>libs/cfitsio/3.47_gcc82<br>libs/eigen/3.3.7<br>libs/fftw/3.3.8_gcc48<br>libs/fftw/3.3.8_gcc75<br>libs/fftw/3.3.8_gcc75_ompi3.1.6<br>libs/fftw/3.3.8_gcc82<br>libs/fftw/3.3.8_gcc82b<br>libs/fftw/3.3.8_gcc82_ompi4<br>libs/fftw/3.3.8_gcc84<br>libs/fftw/3.3.8_gcc84_ompi3.1.6<br>libs/fftw/3.3.8_gcc93<br>libs/fftw/3.3.8_gcc93_ompi3.1.6<br>libs/fftw/3.3.8_intel18<br>libs/gmp/6.2.0<br>libs/hdf5/1.10.5_gcc48<br>libs/hdf5/1.10.5_gcc48_ompi31<br>libs/hdf5/1.10.5_gcc82<br>libs/hdf5/1.10.5_gcc82_ompi31<br>libs/hdf5/1.10.5_intel18<br>libs/hdf5/1.10.5_intel18_impi18<br>libs/hdf5/1.10.5_intel19<br>libs/hdf5/1.10.5_intel19_impi19<br>libs/hdf5/1.10.6_gcc82_ompi31<br>libs/hdf5/1.12.0_gcc75<br>libs/hdf5/1.12.0_gcc75_ompi31<br>libs/hdf5/1.12.0_gcc84<br>libs/hdf5/1.12.0_gcc84_ompi31<br>libs/hdf5/1.12.0_gcc93<br>libs/hdf5/1.12.0_gcc93_ompi31<br>libs/libpsml/1.1.7_gcc82<br>libs/libxc/3.0.1_gcc48<br>libs/libxc/3.0.1_gcc82<br>libs/libxc/3.0.1_intel18<br>libs/libxc/4.2.3_intel18<br>libs/libxc/4.3.4_gcc82<br>libs/libxc/4.3.4_intel18<br>libs/magma/2.5.1_gcc48<br>libs/netcdf/4.1.1_gcc48<br>libs/netcdf/4.7.1_gcc82<br>libs/netcdf/4.7.1_intel18<br>libs/netcdf/4.7.1_intel19<br>libs/netcdf/4.x_gcc48<br>libs/netcdf/4.x_gcc48_ompi2<br>libs/netcdf/4.x_gcc82<br>libs/netcdf/4.x_gcc82_ompi4<br>libs/netcdf/4.x_intel18<br>libs/netcdf/4.x_intel18_impi18<br>libs/netcdf/fortran-4.5.2_intel18<br>libs/netlib/3.8.0_gcc82<br>libs/netlib/3.8.0_intel18<br>libs/openblas/0.3.5_gcc48<br>libs/openblas/0.3.5_gcc82<br>libs/openblas/0.3.7_gcc82<br>libs/openblas/0.3.9_gcc75<br>libs/openblas/0.3.9_gcc84<br>libs/openblas/0.3.9_gcc93<br>libs/refblas/3.8_gcc82<br>libs/suitesparse/5.4.0_gcc82<br>libs/swig/4.0.1_gcc82<br>libs/xmlf90/1.5.4_gcc48<br>libs/xmlf90/1.5.4_gcc82<br>libs/yaml/0.2.2_gcc82<br>libs/zeromq/4.3.1_gcc82<br>parallel/cuda/10.0.130<br>parallel/hwloc/1.10.1_gcc48<br>parallel/hwloc/1.10.1_gcc82<br>parallel/hwloc/1.10.1_intel18<br>parallel/hwloc/1.11.13_gcc82<br>parallel/hwloc/2.0.3_gcc82<br>parallel/hwloc/2.0.3_intel18<br>parallel/impi/2017<br>parallel/mpich/3.3_gcc82<br>parallel/mvapich2/2.3.1_gcc82<br>parallel/openmpi/2.1.2_gcc48<br>parallel/openmpi/2.1.6_gcc48<br>parallel/openmpi/2.1.6_gcc82<br>parallel/openmpi/2.1.6_intel18<br>parallel/openmpi/3.1.4_gcc48<br>parallel/openmpi/3.1.4_gcc82<br>parallel/openmpi/3.1.4_intel18<br>parallel/openmpi/3.1.6_gcc75<br>parallel/openmpi/3.1.6_gcc84<br>parallel/openmpi/3.1.6_gcc93<br>parallel/ucx/1.5.0_gcc82<br>utils/tmux/3.0a | conda<br>matlab/2018b<br>singularity/2.5.2 | ansys/fluids_19.2<br>astronomy/casa/5.3.0<br>astronomy/casa/5.4.1<br>astronomy/casa/5.6.0<br>atomistic/abinit/8.10.2_intel18<br>atomistic/abinit/8.10.3_gcc82<br>atomistic/abinit/8.10.3_gcc82_mpiio<br>atomistic/abinit/8.10.3_intel18<br>atomistic/abinit/9.0.4_gcc82<br>atomistic/amber/18_cuda<br>atomistic/amber/18_mpi<br>atomistic/amber/18_openmp<br>atomistic/elk/5.2.14_intel18<br>atomistic/espresso/6.4_intel18_seq<br>atomistic/espresso/6.4_intel18_thd<br>atomistic/gaussian/g16<br>atomistic/gaussian/g16_rev1<br>atomistic/gromacs/2016.6<br>atomistic/gromacs/2016.6_cuda<br>atomistic/gromacs/2016.6_gcc48_cuda<br>atomistic/gromacs/2016.6_gcc82<br>atomistic/gromacs/2016.6_plumed_gcc82<br>atomistic/gromacs/2018.8_gcc82<br>atomistic/gromacs/2018.8_plumed_gcc82<br>atomistic/gromacs/2019.3<br>atomistic/gromacs/2019.3_gcc48_cuda<br>atomistic/gromacs/2019.4<br>atomistic/gromacs/2019.4_double<br>atomistic/gromacs/2019.4_gcc82<br>atomistic/gromacs/2019.4_plumed_gcc82<br>atomistic/gromacs/5.1.5_cuda<br>atomistic/lammps/2018-12-12_gcc82<br>atomistic/lammps/2018-12-12_gcc82_ompi2<br>atomistic/lammps/2019.06.05<br>atomistic/lammps/2019.08.07_gcc82_ompi31<br>atomistic/lammps/2019.08.07_intel19_impi19<br>atomistic/namd/2.13_CPU<br>atomistic/namd/2.13_CUDA<br>atomistic/namd/NAMD_Git-2020-01-02-mpi<br>atomistic/namd/NAMD_Git-2020-01-02-mpi-smp<br>atomistic/namd/NAMD_Git-2020-01-02-ofi<br>atomistic/namd/NAMD_Git-2020-01-02-ofi-smp<br>atomistic/octopus/9.1_gcc82<br>atomistic/octopus/9.1_gcc82_ompi31<br>atomistic/orca/4.2.1_ompi216<br>atomistic/orca/4.2.1_ompi314<br>atomistic/plumed/2.5.3_gcc82<br>atomistic/siesta/4.0.2_intel18<br>atomistic/siesta/4.0.2_intel19<br>atomistic/vasp/5.4.4_intel18_seq<br>atomistic/vasp/5.4.4_intel18_thd<br>atomistic/vasp/5.4.4_intel19_seq<br>atomistic/vasp/5.4.4_intel19_thd<br>bioinformatics/emboss/6.6.0<br>bioinformatics/gatk/4.1.0<br>data/hdfview/3.1.0<br>math/dakota/6.10<br>math/dakota/6.10-UI<br>math/dakota/6.8<br>math/dakota/6.8-UI<br>math/gams/26.1<br>visual/graphviz/2.40.1_gcc82<br>visual/paraview/5.6.0<br>/shared/modulefiles/tier3:<br>general_gcc82<br>general_intel18<br>jupyter_kernels<br>r/3.5.2<br>r/3.6.2 |
+|  |  |  |
+
 
 {% include links.md %}

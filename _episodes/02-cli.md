@@ -9,23 +9,25 @@ objectives:
 - "Navigating the filesystem"
 - "Creating, moving, and removing files/directories"
 keypoints:
-- "One command at a time; press `enter` in between"
+- "The basic commands you must know are `echo`, `cat`, `date`, `pwd`, `cd`, `mkdir`, `touch`, `cp`, `mv`, `rm`. You will use these commands very often."
 ---
 
 ## Command Line Interface
 
-At a high level, a HPC cluster is a big computer to be used by several users at the same time. The users expect to run a variety of scientific codes, store the data needed as input or generated as output. In HPC, computers usually communicate with each other for tasks that are too big for a single computer while allowing us to make decisions and see errors.
+At a high level, a HPC cluster is a big computer to be used by several users at the same time. The users expect to run a variety of scientific codes, store the data needed as input or generated as output. In HPC, compute nodes can communicate with each other efficiently for tasks that are too big for a single computer.
 
-Our interactions with computers happen in many different ways, including through a keyboard and mouse, touch screen interfaces, or using speech recognition systems. However in HPC we need an efficient and still very light way of communicating with the computer that acts as the brain of the cluster, the **head node**. For this, we make use of the **shell** instead of a **graphical user interface** (GUI).
+Our interactions with normal computers happen in many different ways, including through a keyboard and mouse, touch screen interfaces, or using speech recognition systems. However in HPC we need an efficient and still very light way of communicating with the computer that acts as the front door of the cluster, the **head node**. For this, we make use of the **shell** instead of a **graphical user interface** (GUI).
 
-The GUI is the most widely used way to interact with personal computers. We give instructions (to run a program, to copy a file, to create a new folder/directory) with the convenience of a few mouse clicks. This way of interacting with a computer is intuitive and very easy to learn but scales very poorly for large streams of instructions even if they are similar or identical.
+The GUI is widely used to interact with personal computers. In the GUI, we give instructions using a keyboard, mouse or touchscreen. This way of interacting with a computer is intuitive and very easy to learn but scales very poorly for large streams of instructions even if they are similar or identical.
 
 For example, you need to copy the third line of each of a thousand text files stored in thousand different folders and paste it into a single file line by line. Using the traditional GUI approach of clicks will take several hours to do this.
 
-This is where we take advantage of the shell - a **command-line interface** to make such repetitive tasks automatic and fast. It can take a single instruction and repeat it as is or with some modification as many times as we want. The task in the example above can be accomplished in a single line of a few instructions.
+This is where we take advantage of the shell - a **command-line interface** to make such repetitive tasks with less effort. It can take a single instruction and repeat it as is or with some modification as many times as we want. The task in the example above can be accomplished in a single line of a few instructions.
 
 The heart of a command-line interface is a **read-evaluate-print loop** (REPL) so called because when you type a command and press <kbd>Return</kbd> (also known as <kbd>Enter</kbd>) the shell
-reads your command, evaluates (or "executes") it, prints the output of your command, loops back and waits for you to enter another command.
+reads your command, evaluates (or "executes") it, prints the output of your command, loops back and waits for you to enter another command. The REPL is essential on how we interact with HPC clusters.
+
+Even if you are using a GUI frontend such as Jupyter or RStudio, REPL is there for us to give instructions to computers on what to do next.
 
 ### The Shell
 
@@ -50,7 +52,16 @@ $
 
 The shell typically uses `$ ` as the prompt, but may use a different symbol like `$>`.
 
-Most importantly: when typing commands, either from these lessons or from other sources, *do not type the prompt*, only the commands that follow it.
+> ## The prompt
+>
+> When typing commands, either from these lessons or from other sources, *do not type the prompt*, only the commands that follow it.
+>
+> ~~~
+> $> ls -al
+> ~~~
+> {: .source}
+{: .callout}
+
 
 ## Getting/opening a shell
 <div id="shell">
@@ -168,7 +179,7 @@ The default terminal for MacOS starting with Catalina is zsh. To start a bash sh
 
 ## Connecting to the cluster
 
-Now it is time to get into the cluster.
+Now it is time to get into the cluster. You can find this instructions also in the [Setup Episode](/setup.html).
 
 Open a terminal shell and type:
 
@@ -267,9 +278,9 @@ Once all jobs are terminated, the exit command will close the connection to the 
 
 ## Exercise 1
 
-Get into Spruce with your training account and execute the commands `ls`, `date` and `cal`
+Get into Spruce or Thorny with your training account and execute the commands `ls`, `date` and `cal`
 
-Exit from Spruce with `exit`
+Exit from the cluster with `exit`
 
 
 So let's try our first command, which will list the contents of the current directory:
@@ -309,9 +320,9 @@ drwx------   2 training001 training   512 Jun 27 13:24 .ssh
 
 ### Why use the Command Line Interface?
 
-Before the **Command Line Interface** (CLI), computer interaction happened with perforated cards or even switching cables on a big console. Despite all the years of new technology and innovation, the CLI remains one of the most powerful and flexible tools for interacting with computers.
+Before the usage of **Command Line Interface** (CLI), computer interaction took place with perforated cards or even switching cables on a big console. Despite all the years of new technology and innovation, the CLI remains one of the most powerful and flexible tools for interacting with computers.
 
-Because it is radically different from a GUI, the CLI can take some effort and time to learn. A GUI presents you with choices for you to click on. With a CLI, the choices are combinations of commands and parameters, more akin to words in a language than buttons on a screen. Because the options not presented to you, some vocabulary is necessary in this new "language". But a small number of commands gets you a long way, and we'll cover those essential few today.
+Because it is radically different from a GUI, the CLI can take some effort and time to learn. A GUI presents you with choices for you to click on. With a CLI, the choices are combinations of commands and parameters, more akin to words in a language than buttons on a screen. Because the options not presented to you, some vocabulary is necessary in this new "language". But a small number of commands gets you a long way, and we'll cover those essential commands below.
 
 ### Flexibility and automation
 
@@ -330,48 +341,48 @@ to tackle a wide range of scientific questions and computational challenges.
 
 ## Exercise 2
 
-Commands in Unix/Linux are very stable with some existing for decades now--don't expect a new update to ruin years of command line training. This exercise begins to give you a feeling of the different parts of a command.
+Commands in Unix/Linux are very stable with some existing for decades now. This exercise begins to give you a feeling of the different parts of a command.
 
-Execute the command `cal`, we executed that in our previous exercise. Execute it again like this `cal -y`. You should get an output like this:
+Execute the command `cal`, we executed the command before  but this time execute it again like this `cal -y`. You should get an output like this:
 
 ~~~
 [training001@srih0001 ~]$ cal -y
 ~~~
 {: .language-bash}
 ~~~
-                               2019                               
+                        2020                               
 
-       January               February                 March       
+January               February                 March       
 Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa
-       1  2  3  4  5                   1  2                   1  2
- 6  7  8  9 10 11 12    3  4  5  6  7  8  9    3  4  5  6  7  8  9
-13 14 15 16 17 18 19   10 11 12 13 14 15 16   10 11 12 13 14 15 16
-20 21 22 23 24 25 26   17 18 19 20 21 22 23   17 18 19 20 21 22 23
-27 28 29 30 31         24 25 26 27 28         24 25 26 27 28 29 30
-                                              31
-        April                   May                   June        
-Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa
-    1  2  3  4  5  6             1  2  3  4                      1
- 7  8  9 10 11 12 13    5  6  7  8  9 10 11    2  3  4  5  6  7  8
-14 15 16 17 18 19 20   12 13 14 15 16 17 18    9 10 11 12 13 14 15
-21 22 23 24 25 26 27   19 20 21 22 23 24 25   16 17 18 19 20 21 22
-28 29 30               26 27 28 29 30 31      23 24 25 26 27 28 29
-                                              30
-        July                  August                September     
-Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa
-    1  2  3  4  5  6                1  2  3    1  2  3  4  5  6  7
- 7  8  9 10 11 12 13    4  5  6  7  8  9 10    8  9 10 11 12 13 14
-14 15 16 17 18 19 20   11 12 13 14 15 16 17   15 16 17 18 19 20 21
-21 22 23 24 25 26 27   18 19 20 21 22 23 24   22 23 24 25 26 27 28
-28 29 30 31            25 26 27 28 29 30 31   29 30
+1  2  3  4                      1    1  2  3  4  5  6  7
+5  6  7  8  9 10 11    2  3  4  5  6  7  8    8  9 10 11 12 13 14
+12 13 14 15 16 17 18    9 10 11 12 13 14 15   15 16 17 18 19 20 21
+19 20 21 22 23 24 25   16 17 18 19 20 21 22   22 23 24 25 26 27 28
+26 27 28 29 30 31      23 24 25 26 27 28 29   29 30 31
 
-       October               November               December      
+April                   May                   June        
 Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa
-       1  2  3  4  5                   1  2    1  2  3  4  5  6  7
- 6  7  8  9 10 11 12    3  4  5  6  7  8  9    8  9 10 11 12 13 14
-13 14 15 16 17 18 19   10 11 12 13 14 15 16   15 16 17 18 19 20 21
-20 21 22 23 24 25 26   17 18 19 20 21 22 23   22 23 24 25 26 27 28
-27 28 29 30 31         24 25 26 27 28 29 30   29 30 31
+1  2  3  4                   1  2       1  2  3  4  5  6
+5  6  7  8  9 10 11    3  4  5  6  7  8  9    7  8  9 10 11 12 13
+12 13 14 15 16 17 18   10 11 12 13 14 15 16   14 15 16 17 18 19 20
+19 20 21 22 23 24 25   17 18 19 20 21 22 23   21 22 23 24 25 26 27
+26 27 28 29 30         24 25 26 27 28 29 30   28 29 30
+31
+July                  August                September     
+Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa
+1  2  3  4                      1          1  2  3  4  5
+5  6  7  8  9 10 11    2  3  4  5  6  7  8    6  7  8  9 10 11 12
+12 13 14 15 16 17 18    9 10 11 12 13 14 15   13 14 15 16 17 18 19
+19 20 21 22 23 24 25   16 17 18 19 20 21 22   20 21 22 23 24 25 26
+26 27 28 29 30 31      23 24 25 26 27 28 29   27 28 29 30           "trcis001.hpc.wvu.edu" 10:19 26-Jul-20
+30 31
+October               November               December      
+Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa
+1  2  3    1  2  3  4  5  6  7          1  2  3  4  5
+4  5  6  7  8  9 10    8  9 10 11 12 13 14    6  7  8  9 10 11 12
+11 12 13 14 15 16 17   15 16 17 18 19 20 21   13 14 15 16 17 18 19
+18 19 20 21 22 23 24   22 23 24 25 26 27 28   20 21 22 23 24 25 26
+25 26 27 28 29 30 31   29 30                  27 28 29 30 31
 ~~~
 {: .output}
 
@@ -383,7 +394,7 @@ $ date
 ~~~
 {: .language-bash}
 ~~~
-Mon Nov  5 12:05:58 EST 2018
+Sun Jul 26 15:41:03 EDT 2020
 ~~~
 {: .output}
 
@@ -774,8 +785,7 @@ f01  f02  f03  f04  f05  f06  f07  f08  f09  f10  f11
 ~~~
 {: .output}
 
-The *wildcard* is able to replace zero or more arbitrary characters, see
-for example:
+The *wildcard* is able to replace zero or more arbitrary characters, for example:
 
 ~~~
 $ ls f*1
@@ -866,41 +876,6 @@ $ rm -r even
 ~~~
 {: .language-bash}
 
-Summary of Basic Commands
--------------------------
-
-The purpose of this brief tutorial is to familiarize you with the most
-common commands used in UNIX environments. We have shown 10 commands
-that you will be using, very often on your interaction. This 10 basic
-commands and one editor from the next section is all that you need to be
-ready for submitting jobs on the cluster.
-
-The next table summarizes those commands.
-
-
-| Command | Description       | Examples                     |
-|---------|:------------------|:-----------------------------|
-| `echo`  | Display a given message on the screen | `$ echo "This is a message"` |
-|---------|-------------------|------------------------------|
-| `cat`   | Display the contents of a file on screen <br> Concatenate files | `$ cat my_file` |
-|---------|-------------------|------------------------------|
-| `date`  | Shows the current date on screen | `$ date` <br> Wed Nov 7 10:40:05 EST 2018 |
-|---------|-------------------|------------------------------|
-| `pwd`   | Return the path to the current working directory | `$ pwd` <br> /users/username                  |
-|---------|-------------------|------------------------------|
-| `cd`    | Change directory  | `$ cd sub_folder`           |
-|---------|-------------------|------------------------------|
-| `mkdir` | Create directory  | `$ mkdir new_folder`        |
-|---------|-------------------|------------------------------|
-| `touch` | Change the access and modification time of a file <br> Create empty files     | `$ touch new_file` |
-|---------|-------------------|------------------------------|
-| `cp`    | Copy a file in another location <br> Copy several files into a destination directory  | `$ cp old_file new_file`  |
-|---------|-------------------|------------------------------|
-| `mv`    | Move a file in another location <br> Move several files into a destination folder | `$ mv old_name new_name`  |
-|---------|-------------------|------------------------------|
-| `rm`    | Remove one or more files from the file system tree | `$ rm trash_file` <br> `$ rm -r full_folder`         |
-|---------|-------------------|------------------------------|
-
 ## Exercise 3
 
 Create two folders called `one` and `two`.
@@ -918,6 +893,39 @@ Now, create the folders `empty_files` and `dates` and move the corresponding fil
 
 The folders `one` and `two` should be empty now; delete them with `rmdir`
 Do the same with folders `empty_files` and `dates` with `rm -r`.
+
+Summary of Basic Commands
+-------------------------
+
+The purpose of this brief tutorial is to familiarize you with the most common commands used in UNIX environments. We have shown 10 commands
+that you will be using, very often on your interaction. This 10 basic commands and one editor from the next section is all that you need to be
+ready for submitting jobs on the cluster.
+
+The next table summarizes those commands.
+
+
+| Command | Description       | Examples                     |
+|---------|:------------------|:-----------------------------|
+| `echo`  | Display a given message on the screen | `$ echo "This is a message"` |
+|---------|-------------------|------------------------------|
+| `cat`   | Display the contents of a file on screen <br> Concatenate files | `$ cat my_file` |
+|---------|-------------------|------------------------------|
+| `date`  | Shows the current date on screen | `$ date` <br> Sun Jul 26 15:41:03 EDT 2020 |
+|---------|-------------------|------------------------------|
+| `pwd`   | Return the path to the current working directory | `$ pwd` <br> /users/username                  |
+|---------|-------------------|------------------------------|
+| `cd`    | Change directory  | `$ cd sub_folder`           |
+|---------|-------------------|------------------------------|
+| `mkdir` | Create directory  | `$ mkdir new_folder`        |
+|---------|-------------------|------------------------------|
+| `touch` | Change the access and modification time of a file <br> Create empty files     | `$ touch new_file` |
+|---------|-------------------|------------------------------|
+| `cp`    | Copy a file in another location <br> Copy several files into a destination directory  | `$ cp old_file new_file`  |
+|---------|-------------------|------------------------------|
+| `mv`    | Move a file in another location <br> Move several files into a destination folder | `$ mv old_name new_name`  |
+|---------|-------------------|------------------------------|
+| `rm`    | Remove one or more files from the file system tree | `$ rm trash_file` <br> `$ rm -r full_folder`         |
+|---------|-------------------|------------------------------|
 
 
 {% include links.md %}

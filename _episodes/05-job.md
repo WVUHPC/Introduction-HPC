@@ -366,10 +366,10 @@ $ xeyes
 ~~~
 {: .bash}
 
-Lets suppose that the plot will be created with R, load the module for R 3.4.1 (the latest version by the time this was written)
+Lets suppose that the plot will be created with R, load the module for R 3.5.2:
 
 ~~~
-$ module load compilers/R/3.4.1
+$ module load lang/r/3.5.2
 ~~~
 {: .bash}
 

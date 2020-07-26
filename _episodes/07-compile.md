@@ -3,7 +3,7 @@ title: "Compiling Codes"
 teaching: 30
 exercises: 30
 questions:
-- "How to compile code on the cluster"
+- "How to compile code on the cluster?"
 objectives:
 - "Compile code in several languages and using OpenMP and MPI"
 keypoints:
@@ -436,7 +436,7 @@ That will generate 2 figures that you can transfer to your computer to see.
 
 >## Exercise: Compiling codes.
 >
-> On the repository for `2019-Data-HandsOn` there is a folder with the examples presented on this episode `1.Intro-HPC/06.compile`.
+> On the repository for `Introduction-HPC` there is a folder with the examples presented on this episode `Introduction-HPC_Data/07-compile`.
 >
 > There you will find a couple of source codes: `example_gsl.c` and `matmult.c` that have not being compiled yet.
 >

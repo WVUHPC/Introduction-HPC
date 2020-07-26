@@ -5,9 +5,10 @@ title: Setup
 ## Accessing the clusters using Secure shell (SSH)
 
 The most common way of accessing a HPC computer cluster is via a remote shell.
-A remote shell allow you to execute commands on another machine same as you do sitting on front of it. A remote shell is good because it also allow other people to do the same, so you get a shared resource being utilized by several users at the same time.
+A remote shell allow you to execute commands on another machine same as you do sitting on front of it. A remote shell is convenient because it also allow other people to do the same, so you get access to a resource being utilized by several users at the same time.
 
-All that you need on your computer is a SSH client, a program on your computer that allow you to connect to the SSH server from another computer. In the old times, people used to create a remote shell using Telnet. SSH provides a secure channel over an unsecured network such as internet. SSH offers similar capabilities to telnet but adding encryption, so all data sent and received between your computer and the remote host is encrypted in such a way that only your computer and the remote computer can see the data. If you want to know more about Secure Shell see at [Wikipedia](https://en.wikipedia.org/wiki/Secure_Shell)
+All that you need on your computer is terminal emulator and a SSH client.
+A terminal emulator is a program that mimics the behavior of old dumb terminals from a few decades ago. An SSH client is a program on your computer that allow you to connect to the SSH server from another computer. In the old times (80s), people used to create a remote shell using Telnet. SSH provides a secure channel over an unsecured network such as internet. SSH offers similar capabilities to telnet but adding encryption, so all data sent and received between your computer and the remote host is encrypted in such a way that only your computer and the remote computer can see the data. If you want to know more about Secure Shell see at [Wikipedia](https://en.wikipedia.org/wiki/Secure_Shell)
 
 Currently (2020) WVU has two clusters for HPC, Spruce Knob and Thorny Flat. You can access them using SSH.
 Both Linux and macOS include an SSH client by default. In this case all that you have to do is open a terminal. On MacOS the terminal is located at the *Utilities* folder inside your *Applications*. On Linux the terminal is so central that most linux distributions create an icon directly from the desktop.
@@ -42,7 +43,7 @@ ssh <username>@thorny.hpc.wvu.edu
 {: .language-bash}
 
 
-Once you enter on the system, you can start typing commands. You can open several connections simultaneously. Each connection is independent of each other.
+Once you enter on the system, you can start typing commands. You can open several connections simultaneously. Each connection is independent of each other and you have to authenticate on each new terminal.
 
 > ## Login on Spruce
 >

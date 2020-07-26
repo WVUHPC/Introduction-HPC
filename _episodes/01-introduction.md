@@ -3,7 +3,10 @@ title: "Introduction"
 teaching: 30
 exercises: 30
 questions:
-- "What is the difference between a High-Performance Computer and my laptop?"
+- "What is High-Performance Computing?"
+- "What is a HPC cluster or Supercomputer?"
+- "How my computer compares with a HPC cluster?"
+- ""
 objectives:
 - "Learn the components of the HPC"
 - "Learn the basic terminology in HPC"
@@ -16,7 +19,7 @@ High-Performance Computing is about size and speed. A HPC cluster is made of ten
 
 This is a very pragmatic tutorial: more time on examples and exercises, less time on theoretical stuff. The idea is that after these lessons, you will have learned how to enter into the cluster, compile code, execute using the queue system and transfer data in an out the cluster.
 
-## Exercise 1
+### What are the specifications of my own computer?
 
 Check your computer, gather information about the CPU, number of Cores, Total RAM memory and Hard Drive.
 
@@ -141,13 +144,14 @@ Here are some tricks to get that data from several Operating Systems
 
 ### CPU Brands and Product lines
 
-There are only two manufacturers that hold most of the market for PC consumer computing: Intel and AMD. There are several others manufacturers of CPUs but those are mostly for SmartPhones, Photo Cameras, Musical Instruments, or very specialized HPC clusters.
+There are only two manufacturers that hold most of the market for PC consumer computing: Intel and AMD. There are several others manufacturers of CPUs but those are mostly for Smart Phones, Photo Cameras, Musical Instruments, or very specialized HPC clusters and equipment.
 
-More than a decade ago, the main featured used for marketing purposes on a CPU was the speed. That has changed now, as CPUs are not getting faster, but include complexity that is hard to market with a single number. That is why CPUs are now marketed with "Product Lines" and the Models are less representative of the actual characteristics of a given machine.
+More than a decade ago, the main feature used for marketing purposes on a CPU was the speed. That has changed now as CPUs are not getting much faster
+due to faster clock speed. It is hard to market the performance of a new processor with a single number. That is why CPUs are now marketed with "Product Lines" and the "Model numbers" those number bear no direct relation with the actual characteristics of a given processor.
 
-For example, Intel Core i3 processors are marketed to entry level machines more tailored to basic computing tasks like word processing and web browsing. On the other hand, Intel’s Core i7 and i9 processors are for high-end products aimed at the top of the line gaming rigs able to run the most recent titles at high FPS and resolutions. Machines for enterprise usage are usually under the Xeon Line.
+For example, Intel Core i3 processors are marketed for entry level machines more tailored to basic computing tasks like word processing and web browsing. On the other hand, Intel’s Core i7 and i9 processors are for high-end products aimed at the top of the line gaming machines able to run the most recent titles at high FPS and resolutions. Machines for enterprise usage are usually under the Xeon Line.
 
-On AMD’s side, you have the Athlon line aimed at entry-level users, all the way to the Ryzen 7 designed mostly for enthusiasts and gamers. AMD also has product lines for enterprises like EPYC Server Processors.
+On AMD’s side, you have the Athlon line aimed at entry-level users, From Ryzen(TM) 3 for basic applications, all the way to the Ryzen(TM) 9 designed mostly for enthusiasts and gamers. AMD also has product lines for enterprises like EPYC Server Processors.
 
 ### Cores
 
@@ -189,9 +193,9 @@ L2 is bigger than L1, and consequently slower due to the processor having to tra
 From the HPC perspective for intensive numerical operations, the cache size is an important feature. Many CPU cycles are lost if you need to bring data all the time from the RAM or even worst from the Hard Drive. So having large amounts of cache improves the efficiency of HPC codes.
 
 
-## Exercise 2
+## Learn to read computer specifications
 
-One of the central differences between one computer and another are the CPU, the chip or set of chips that control most of the numerical operations.
+One of the central differences between one computer and another are the CPU, the chip or set of chips that control most of the numerical operations. When reading the specifications of a computer you need to pay attention to the amount of memory, if the drive is SSD or not, the presence of a dedicated GPU card and a number of factors that could or could not be relevant for the purpose of your computer. Have a look at the specifications of the CPU on your machine.
 
 ### Intel
 

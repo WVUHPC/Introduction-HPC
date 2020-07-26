@@ -5,9 +5,13 @@ exercises: 30
 questions:
 - "How do I edit files with the terminal?"
 objectives:
-- "First learning objective. (FIXME)"
+- "Learn about three major editor in Linux/Unix: vim, emacs and nano"
+- "Learn the basic key combinations and operation of those editors"
 keypoints:
-- "First key point. Brief Answer to questions. (FIXME)"
+- "For editing files from the terminal there are several editor available"
+- "`nano` is an easy to use editor with commands that are shown on the bottom, good for beginners."
+- "`emacs` is a full featured editor that relies on multiple key combinations to control its operation."
+- "`vi/vim` is installed by default on every Linux system, it works by changing between 'modes'"
 ---
 
 ## Terminal-based Text Editors
@@ -25,8 +29,7 @@ informed choice.
 
 ### Nano
 
-Nano is a small, free and friendly editor with commands that are generally
-accessed by using Control (CTRL) combined with some other key.
+Nano is a small, free and friendly editor with commands that are generally accessed by using Control (<kbd>Ctrl</kbd>) combined with some other key.
 
 You can start editing a file using a command line like this:
 
@@ -36,10 +39,8 @@ $ nano myfile.f90
 {: .language-bash}
 
 You will notice that you cannot move around the text file with your mouse but instead must use the keyboard.
-There are several commands available, and the list below comes from the help
-text. When you see the symbol \"\^\", it means to press the Control
-(CTRL) key; the symbol \"M-\" is called Meta, but in most keyboards is
-identified with the (Alt) key.
+There are several commands available, and the list below comes from the help text.
+When you see the symbol \"\^\", it means to press the Control <kbd>Ctrl</kbd> key; the symbol \"M-\" is called Meta, but in most keyboards is identified with the <kbd>Alt</kbd> key. On MacOS Terminal on Edit menu, there is an option to map the `Option` key into `Meta`.
 
     ^G  (F1)            Display this help text
     ^X  (F2)            Close the current file buffer / Exit from nano
@@ -118,9 +119,7 @@ identified with the (Alt) key.
     M-Z                     Suspension enable/disable
 -->
 
-The most basic usage is to edit a file, and exit from the editor with
-CTRL-X. Nano ask you if you want to save the file, you answer \"Y\" and
-offers you a name. Simply press ENTER and your file is saved.
+The most basic usage is to edit a file moving with the arrow keys to the place where you want to introduce changes and exit from the editor with <kbd>Ctrl</kbd>+<kbd>X</kbd>. Nano ask you if you want to save the file, you answer \"Y\" and offers you a name. Simply press <kbd>Return</kbd> and your file is saved.
 
 ### Emacs
 
@@ -141,7 +140,6 @@ commands for editing, moving and searching text.
 The best way of learning is keeping at hand a sheet of paper with the commands
 For example [GNU Emacs Reference Card](https://www.gnu.org/software/emacs/refcards/pdf/refcard.pdf) can show you most commands that you need.
 
-<!---
 Below you can see the same 2 page Reference Card as individual images.
 
 <a href="{{ page.root }}/fig/refcard-0.png">
@@ -151,14 +149,13 @@ Below you can see the same 2 page Reference Card as individual images.
 <a href="{{ page.root }}/fig/refcard-1.png">
   <img src="{{ page.root }}/fig/refcard-1.png" alt="Emacs Ref Card" />
 </a>
---->
+
 
 ### Vi/Vim
 
 The third editor widely supported on Linux systems is \"vi\". Over the
-years since its creation, vi became the \*de-facto\* standard Unix
-editor. The Single UNIX Specification specifies vi, so every conforming
-system must have it.
+years since its creation, vi became the **de-facto** standard Unix
+editor. The *Single UNIX Specification* and *POSIX* describe **vi**, so every conforming system must have it.
 
 ~~~
 $ vi code.py
@@ -174,11 +171,11 @@ From insert mode, pressing ESC switches the editor back to normal mode.
 
 A very beautiful Reference Card for vim can be found here: [Vim CheatSheet](http://vimcheatsheet.com/)
 
-<!--
+
 <a href="https://external-preview.redd.it/iigrixvxp5aYN9ox7Gr1dfI_rhLRotWlLsCafjJqjEQ.png?auto=webp&s=1594ddc17408cb9186a73c2a6d1a1bf1e00769dd">
   <img src="https://external-preview.redd.it/iigrixvxp5aYN9ox7Gr1dfI_rhLRotWlLsCafjJqjEQ.png?auto=webp&s=1594ddc17408cb9186a73c2a6d1a1bf1e00769dd" alt="Vim Ref Card" />
 </a>
--->
+
 
 ## Exercise
 

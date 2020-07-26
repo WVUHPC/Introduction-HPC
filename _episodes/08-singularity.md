@@ -3,7 +3,7 @@ title: "Software Containers: Singularity"
 teaching: 30
 exercises: 30
 questions:
-- "What are software containers and how to use them"
+- "What are software containers and how to use them?"
 objectives:
 - "Learn about singularity containers, both using and creating images."
 keypoints:
@@ -126,11 +126,11 @@ qsub runjob.pbs
 >
 > However, the file is also present in the repository for hands-ons
 >~~~
->$ git clone git@github.com:WVUHPC/2019-Data-HandsOn.git
+>$ git clone git@github.com:WVUHPC/Introduction-HPC_Data.git
 >~~~
 >{: .language-bash}
 >
->The folder is `1.Intro-HPC/08.singularity`. If you are not familiar with R programming, the script is there too. Notice that you cannot write your script to download the CSV file directly from the Census Bureau as the compute  nodes have no Internet access.
+>The folder is `Introduction-HPC_Data/08-singularity`. If you are not familiar with R programming, the script is there too. Notice that you cannot write your script to download the CSV file directly from the Census Bureau as the compute  nodes have no Internet access.
 > Write a submission script and submit.
 >
 {: .challenge}
