@@ -10,6 +10,10 @@ keypoints:
 - "It is a good idea to keep aliases to common torque commands for easy execution."
 ---
 
+## Resource Managment
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/xGklPgnEGEw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 When you are using your own computer, when you execute calculations you are responsible of not overloading the machine with more workload that the machine can actually process efficiently. If you have just one computer, you monitor the load of the machine and decide if the computer can execute more jobs.
 In the case of several machines, you need to log in individually on each machine, submit the jobs and monitor those machines from time to time.
 
@@ -17,7 +21,7 @@ You can easily realize that working this way is pretty inefficient. What if the 
 
 On a shared resource like an HPC cluster, things are even more complex. You and several others, maybe hundreds are competing for getting their calculations done. A Resource Manager take care of receiving job submissions. From the other side a Job Scheduler is in charge of associate jobs with the appropriated resources and trying to maximize and objective function such as total utilization constrained by priorities and the best balance between the resources requested and resources available.
 
-# TORQUE Resource and Queue Manager
+## TORQUE Resource and Queue Manager
 
 Terascale Open-source Resource and QUEue Manager (TORQUE) is a distributed resource manager providing control over batch jobs and distributed compute nodes. TORQUE can be integrated with both, commercial and non-commercial schedulers. In the case of our clusters TORQUE is used in conjunction to the commercial Moab Scheduler.
 
@@ -29,7 +33,7 @@ requirements and other attributes for batch and interactive jobs.
 TORQUE directives can appear as header lines (lines that start with #PBS)
 in a batch job script or as command-line options to the `qsub` command.
 
-## **qsub**: Submit Jobs
+### **qsub**: Submit Jobs
 
 A TORQUE job script for a serial job might look like this:
 
@@ -203,7 +207,7 @@ The following environment variables will be available to the batch job.
 |PBS_NODEFILE| the name of the file contain the list of nodes assigned to the job (for parallel and cluster systems). |
 |PBS_QUEUE| the name of the queue from which the job is executed. |
 
-## **qstat**: Monitoring jobs
+### **qstat**: Monitoring jobs
 
 To monitor the status of a queued or running job, use the qstat command from Torque
 of showq from Moab.

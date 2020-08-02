@@ -13,6 +13,8 @@ keypoints:
 
 ## Terminal Emulation
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/f4TosumXhms" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 During your interaction with a HPC cluster you spend most of your time in front o a terminal. We have been working on a terminal during the previous two episodes. Lets understand a bit better what a terminal is before digging into terminal multiplexing and *tmux* in particular.
 
 What you have on your computer is called a terminal emulator. In the old days of mainframes (70s and 80s) people using computers work on what were called dumb terminals, basically a monitor with a keyboard but not processing power, all the processing was happening on a remote machine, the mainframe.

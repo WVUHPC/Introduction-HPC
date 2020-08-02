@@ -63,7 +63,7 @@ $ icc -qopenmp example_omp.c
 ~~~
 {: .language-bash}
 
-When you execute programs with OpenMP pay attention to control the number of threads that the code is using. Just executing the code will by default create as many threads as cores are enabled on the system something that in some cases could end up in lower performance.
+When you execute programs with OpenMP pay attention to control the number of threads that the code is using. Just executing the code will create as many threads as cores are enabled on the system something that in some cases could end up in lower performance.
 
 To control the number of threads for example to just use 4 regardless of the number of cores use:
 
@@ -75,7 +75,7 @@ $ OMP_NUM_THREADS=4 ./a.out
 
 ## MPI
 
-MPI is a library for distrubuted parallel computing. Today it is the library of choice for solving large numerical problems on HPC clusters.
+MPI is a library for distributed parallel computing. Today it is the library of choice for solving large numerical problems on HPC clusters.
 
 This is a very minimal example of a code written using MPI
 
@@ -114,7 +114,7 @@ To compile this code you need to load the libraries from a MPI implementation.
 For example load the module for OpenMPI
 
 ~~~
-$ module load lang/gcc/8.2.0 parallel/openmpi/3.1.4_gcc82
+$ module load lang/gcc/9.3.0 parallel/openmpi/3.1.6_gcc93
 ~~~
 {: .language-bash}
 
@@ -441,6 +441,9 @@ That will generate 2 figures that you can transfer to your computer to see.
 > There you will find a couple of source codes: `example_gsl.c` and `matmult.c` that have not being compiled yet.
 >
 > The challenge is to compile those codes.
+>~~~
+> gcc ...
+>~~~
 >{: .source}
 {: .challenge}
 

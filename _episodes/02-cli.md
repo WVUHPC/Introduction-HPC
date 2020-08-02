@@ -14,6 +14,8 @@ keypoints:
 
 ## Command Line Interface
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/uYRNqWfhFpY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 At a high level, a HPC cluster is a big computer to be used by several users at the same time. The users expect to run a variety of scientific codes, store the data needed as input or generated as output. In HPC, compute nodes can communicate with each other efficiently for tasks that are too big for a single computer.
 
 Our interactions with normal computers happen in many different ways, including through a keyboard and mouse, touch screen interfaces, or using speech recognition systems. However in HPC we need an efficient and still very light way of communicating with the computer that acts as the front door of the cluster, the **head node**. For this, we make use of the **shell** instead of a **graphical user interface** (GUI).

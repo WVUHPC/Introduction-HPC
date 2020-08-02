@@ -10,7 +10,7 @@ objectives:
 - "Basic shell programming for HPC"
 keypoints:
 - "Shell scripting brings the ability to control the workflow of commands that you use on the terminal"
-- "Shell scripting is important when you need more complex runs or for postprocessing"
+- "Shell scripting is important when you need more complex runs or for post-processing"
 ---
 
 ## Why learn shell programming
