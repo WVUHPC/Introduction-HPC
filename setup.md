@@ -15,6 +15,14 @@ Both Linux and macOS include an SSH client by default. In this case all that you
 
  On Windows machines you need to install an external application. One option in Windows is a free application called [PuTTY](https://www.putty.org). PuTTY offers a simple SSH client that is enough for this lesson. Another option is [MobaXTerm](https://mobaxterm.mobatek.net) that offers a full featured SSH client plus the ability to open X11 windows from the remote machine.
 
+ <a href="{{ page.root }}/fig/PuTTY.png">
+   <img src="{{ page.root }}/fig/PuTTY.png" alt="PuTTY" />
+ </a>
+
+ <a href="{{ page.root }}/fig/MobaXTerm.png">
+   <img src="{{ page.root }}/fig/MobaXTerm.png" alt="MobaXTerm" />
+ </a>
+
 ### Connecting to Spruce Knob
 
 On your terminal execute:
@@ -23,6 +31,14 @@ On your terminal execute:
 ssh <username>@spruce.hpc.wvu.edu
 ~~~
 {: .language-bash}
+
+If you received one of the training accounts, this is the machine where you will connect. For example if you username is `training999`, connect to Spruce using:
+
+~~~
+ssh training999@spruce.hpc.wvu.edu
+~~~
+{: .language-bash}
+
 
 After entering your credentials with DUO, you get a prompt on Spruce
 
