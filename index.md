@@ -8,6 +8,7 @@ You will learn the basic command line interface, editors, job submission and a f
 
 This lesson pretends to go straight to the point. You will learn the most useful tools, commands and techniques to start using the cluster for your research. As such, no completeness should be assumed. For each episode there is a lot more to explore on the interest of more advanced users. Some references are left at the end of each section.
 
+
 <!-- this is an html comment -->
 
 {% comment %} This is a comment in Liquid {% endcomment %}

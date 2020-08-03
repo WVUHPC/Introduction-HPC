@@ -19,8 +19,8 @@ Both Linux and macOS include an SSH client by default. In this case all that you
    <img src="{{ page.root }}/fig/PuTTY.png" alt="PuTTY" />
  </a>
 
- <a href="{{ page.root }}/fig/MobaXTerm.png">
-   <img src="{{ page.root }}/fig/MobaXTerm.png" alt="MobaXTerm" />
+ <a href="{{ page.root }}/fig/MobaXterm.png">
+   <img src="{{ page.root }}/fig/MobaXterm.png" alt="MobaXterm" />
  </a>
 
 ### Connecting to Spruce Knob
