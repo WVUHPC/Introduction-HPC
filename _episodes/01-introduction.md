@@ -1,7 +1,8 @@
 ---
 title: "Introduction"
-teaching: 30
-exercises: 30
+start: 660
+teaching: 50
+exercises: 10
 questions:
 - "What is High-Performance Computing?"
 - "What is a HPC cluster or Supercomputer?"

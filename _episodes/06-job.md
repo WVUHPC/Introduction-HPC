@@ -1,7 +1,7 @@
 ---
 title: "Resource Managment: Torque/Moab"
 teaching: 30
-exercises: 30
+exercises: 10
 questions:
 - "How to submit jobs on the HPC cluster?"
 objectives:

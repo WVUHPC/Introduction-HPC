@@ -1,7 +1,7 @@
 ---
 title: "Command Line Interface"
-teaching: 30
-exercises: 30
+teaching: 50
+exercises: 10
 questions:
 - "How do I use the Linux terminal?"
 objectives:

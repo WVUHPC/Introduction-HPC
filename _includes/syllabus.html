@@ -12,7 +12,7 @@
 
   {% assign lesson_number = 0 %}
   {% assign day = 0 %}
-  {% assign multiday = false %}
+  {% assign multiday = true %}
   {% for lesson_episode in lesson_episodes %}
     {% if site.episode_order %}
       {% assign episode = site.episodes | where: "slug", lesson_episode | first %}
@@ -28,7 +28,7 @@
     {% if multiday %}<td class="col-md-1"></td>{% endif %}
     <td class="{% if multiday %}col-md-1{% else %}col-md-2{% endif %}"></td>
     <td class="col-md-3"><a href="{{ relative_root_path }}{% link setup.md %}">Setup</a></td>
-    <td class="col-md-7">Download files required for the lesson</td>
+    <td class="col-md-7">Connect to cluster and download files required for the lesson</td>
   </tr>
   {% for lesson_episode in lesson_episodes %}
     {% if site.episode_order %}
