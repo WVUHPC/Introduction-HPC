@@ -14,15 +14,18 @@ keypoints:
 
 ## Interactive Computing from a web interface: Open On-Demand
 
-For taking advantage of WVU’s High Performance Computing cluster for interactive scientific computing another alternative is from a web browser. On this lesson you will not have to learn Linux commands, you just need to execute one for the purpose of downloading all the materials for the tutorials but beyond that your interaction will take place on a friendly web interface. You do not have to manually submitting jobs or editing submission scripts, these are tasks very important for HPC but they will delegated for other lesson.
 
-We will be using a tool, a web-based client portal, that hides all that complexity and allow you to start using powerful computers for your research from a web interface, with minimal effort and fast learning curve.
+Open on-demand is a web-based client portal, that hides all the complexity with web data pipelines and job submission and allow you to start using powerful computers for your research from a web interface, with minimal effort and fast learning curve.
+On this episode you will not have to use Linux commands, you just need to execute one for the purpose of downloading all the materials for the tutorials but beyond that, your interaction will take place on a friendly web interface.
+The job submission and web pipelines happen transparently to you.
+You just need to declare the resources that you need and a new tab open with Jupyter or RStudio running remotely on one of the compute nodes.
 
 Several technologies are involved here and it is important to understand how those different pieces are interconnected.
 
-Open OnDemand is a web-based client, based on the Ohio Supercomputer Center’s proven “OSC On Demand” platform, that enables HPC centers to install and deploy advanced web and graphical interfaces for their users. HPC resources are accessible from a web browser without the user having to install any special software or plugin.
+Open OnDemand is a web-based client, based on the Ohio Supercomputer Center’s proven “OSC On Demand” platform, that enables HPC centers to install and deploy advanced web and graphical interfaces for their users.
+HPC resources are accessible from a web browser without the user having to install any special software or plugin.
 
-The path for this tutorial is as follows. First we will demonstrate how to access the open on demand portal. Next we will create Jupyter and RStudio sessions and opening a terminal and a file manager.
+The path for this tutorial is as follows. First we will demonstrate how to access the open on demand portal. Next we will create *Jupyter* and *RStudio* sessions and opening a terminal and a file manager.
 
 ### Accessing the Dashboard
 
@@ -45,7 +48,7 @@ From this dashboard you can launch interactive jobs, open terminals and access a
 
 ### Interactive applications
 
-From the dashboard go to `Interactive Apps`. There are several options there, we will show 2 apps that are currently ready for being used. Jupyter Notebooks and RStudio.
+From the dashboard go to `Interactive Apps`. There are several options there, we will show 2 apps that are currently ready for being used. *Jupyter Notebooks* and *RStudio Server*.
 
 #### Jupyter
 

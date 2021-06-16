@@ -14,12 +14,20 @@ keypoints:
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/xGklPgnEGEw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-When you are using your own computer, when you execute calculations you are responsible of not overloading the machine with more workload that the machine can actually process efficiently. If you have just one computer, you monitor the load of the machine and decide if the computer can execute more jobs.
+When you are using your own computer and you execute calculations, you are responsible of not overloading the machine with more workload that the machine can actually process efficiently.
+If you have just one computer, you monitor the load of the machine and decide if the computer can execute more jobs.
 In the case of several machines, you need to log in individually on each machine, submit the jobs and monitor those machines from time to time.
 
-You can easily realize that working this way is pretty inefficient. What if the job finishes during the night? what if you have multiple cores but your jobs can only use one? How to control several machines efficiently. These and several other conditions are addressed by using a Resource Manager also known as Batch System or Queue System.
+You can easily realize that working this way is pretty inefficient.
+What if the job finishes during the night?
+What if you have multiple cores but your jobs can only use one?
+How to control several machines efficiently?.
+These and several other conditions are addressed by using a Resource Manager also known as Batch System or Queue System.
 
-On a shared resource like an HPC cluster, things are even more complex. You and several others, maybe hundreds are competing for getting their calculations done. A Resource Manager take care of receiving job submissions. From the other side a Job Scheduler is in charge of associate jobs with the appropriated resources and trying to maximize and objective function such as total utilization constrained by priorities and the best balance between the resources requested and resources available.
+On a shared resource like an HPC cluster, things are even more complex.
+You and several others, maybe hundreds, are competing for getting their calculations done.
+A Resource Manager take care of receiving job submissions and execute those jobs when resources are available providing the most efficient conditions for the jobs.
+From the other side a Job Scheduler is in charge of associate jobs with the appropriated resources and trying to maximize and objective function such as total utilization constrained by priorities and the best balance between the resources requested and resources available.
 
 ## TORQUE Resource and Queue Manager
 

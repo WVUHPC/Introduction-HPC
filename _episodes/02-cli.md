@@ -16,20 +16,30 @@ keypoints:
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/uYRNqWfhFpY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-At a high level, a HPC cluster is a big computer to be used by several users at the same time. The users expect to run a variety of scientific codes, store the data needed as input or generated as output. In HPC, compute nodes can communicate with each other efficiently for tasks that are too big for a single computer.
+At a high level, a HPC cluster is a big computer to be used by several users at the same time.
+The users expect to run a variety of scientific codes, store the data needed as input or generated as output.
+In HPC, compute nodes can communicate with each other efficiently for tasks that are too big for a single computer.
 
-Our interactions with normal computers happen in many different ways, including through a keyboard and mouse, touch screen interfaces, or using speech recognition systems. However in HPC we need an efficient and still very light way of communicating with the computer that acts as the front door of the cluster, the **head node**. For this, we make use of the **shell** instead of a **graphical user interface** (GUI).
+Our interactions with normal computers happen in many different ways, including through a keyboard and mouse, touch screen interfaces, or using speech recognition systems. However in HPC we need an efficient and still very light way of communicating with the computer that acts as the front door of the cluster, the **head node**.
+For this, we make use of the **shell** instead of a **graphical user interface** (GUI).
 
-The GUI is widely used to interact with personal computers. In the GUI, we give instructions using a keyboard, mouse or touchscreen. This way of interacting with a computer is intuitive and very easy to learn but scales very poorly for large streams of instructions even if they are similar or identical.
+The GUI is widely used to interact with personal computers.
+In the GUI, we give instructions using a keyboard, mouse or touchscreen.
+This way of interacting with a computer is intuitive and very easy to learn but scales very poorly for large streams of instructions even if they are similar or identical.
+We recognized that GUIs are useful under some circumstances.
+Later on in this lesson we will show how to use Open On-demand, a web service that allow you to run interactive executions on the cluster using a web interface and your own browser.
+For most of this lesson we will use the Command Line Interface and it is important for you to familiarize with it.
 
-For example, you need to copy the third line of each of a thousand text files stored in thousand different folders and paste it into a single file line by line. Using the traditional GUI approach of clicks will take several hours to do this.
+For example, you need to copy the third line of each of a thousand text files stored in thousand different folders and paste it into a single file line by line. Using the traditional GUI approach of mouse clicks will take several hours to do this.
 
-This is where we take advantage of the shell - a **command-line interface** to make such repetitive tasks with less effort. It can take a single instruction and repeat it as is or with some modification as many times as we want. The task in the example above can be accomplished in a single line of a few instructions.
+This is where we take advantage of the shell - a **command-line interface** (CLI) to make such repetitive tasks with less effort.
+It can take a single instruction and repeat it as is or with some modification as many times as we want.
+The task in the example above can be accomplished in a single line of a few instructions.
 
 The heart of a command-line interface is a **read-evaluate-print loop** (REPL) so called because when you type a command and press <kbd>Return</kbd> (also known as <kbd>Enter</kbd>) the shell
 reads your command, evaluates (or "executes") it, prints the output of your command, loops back and waits for you to enter another command. The REPL is essential on how we interact with HPC clusters.
 
-Even if you are using a GUI frontend such as Jupyter or RStudio, REPL is there for us to give instructions to computers on what to do next.
+Even if you are using a GUI frontend such as *Jupyter* or *RStudio*, REPL is there for us to give instructions to computers on what to do next.
 
 ### The Shell
 
@@ -66,6 +76,7 @@ The shell typically uses `$ ` as the prompt, but may use a different symbol like
 
 
 ## Getting/opening a shell
+
 <div id="shell">
 <div>
   <ul class="nav nav-tabs nav-justified" role="tablist">

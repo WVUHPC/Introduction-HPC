@@ -173,7 +173,7 @@ zlib-1.2.11                |       h7b6447c_3         103 KB
 ------------------------------------------------------------
                                        Total:       192.2 MB
 ~~~
-{: .language-bash}
+{: .}
 
 Conda asks if you want to proceed with the plan::
 
