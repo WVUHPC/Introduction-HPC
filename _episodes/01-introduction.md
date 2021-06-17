@@ -202,6 +202,10 @@ The heat and power consumption scales non-linearly with the CPU speed.
 That brings us to the current trend and instead of a single core, CPUs now have two, three, four, eight or sixteen cores on a single CPU.
 That means that each CPU (in marketing terms) is actually several CPUs (in actual component terms).
 
+There is a good methaphor, I cannot claim it as mine, about CPUs, Cores and Threads.
+The computer is like a Cooking Room, the cooking room could have one stove (CPUs), or several stoves (Dual Socket for example).
+Each stove has multiple burners (Cores) and on them you have multiple cookware like pans, casseroles, pots, etc (Threads). And you (OS) has to manage to cook all that in time, so you move the pan out of the burner to cook something else if needed and put it back to keep it warm.
+
 ### Hyperthreading
 
 Hyper-threading is intrinsically linked to cores and is best understood as a proprietary technology that allows the operating system, to recognize the CPU as having double the amount of cores.
