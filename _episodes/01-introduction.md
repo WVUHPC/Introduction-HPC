@@ -1,6 +1,6 @@
 ---
 title: "Introduction"
-start: 660
+start: 540
 teaching: 50
 exercises: 10
 questions:

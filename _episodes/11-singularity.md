@@ -1,6 +1,6 @@
 ---
 title: "Software Containers: Singularity"
-teaching: 35
+teaching: 50
 exercises: 10
 questions:
 - "What are software containers and how to use them?"
@@ -126,11 +126,11 @@ qsub runjob.pbs
 >
 > However, the file is also present in the repository for hands-ons
 >~~~
->$ git clone git@github.com:WVUHPC/Introduction-HPC_Data.git
+>$ git clone https://github.com/WVUHPC/workshops_hands-on.git
 >~~~
 >{: .language-bash}
 >
->The folder is `Introduction-HPC_Data/08-singularity`. If you are not familiar with R programming, the script is there too. Notice that you cannot write your script to download the CSV file directly from the Census Bureau as the compute  nodes have no Internet access.
+>The folder is `workshops_hands-on/Introduction_HPC/11._Software_Containers_Singularity`. If you are not familiar with R programming, the script is there too. Notice that you cannot write your script to download the CSV file directly from the Census Bureau as the compute  nodes have no Internet access.
 > Write a submission script and submit.
 >
 {: .challenge}

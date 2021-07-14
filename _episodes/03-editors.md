@@ -1,6 +1,6 @@
 ---
 title: "Terminal-based Editors"
-teaching: 30
+teaching: 50
 exercises: 10
 questions:
 - "How do I edit files with the terminal?"
@@ -316,7 +316,7 @@ The original code comes from [rosettacode.org](http://www.rosettacode.org/wiki/S
 
 ## Exercise
 
-On the folder `Introduction-HPC_Data/03-editors` you will find a Java code on file `JuliaSet.java`.
+On the folder `workshops_hands-on/Introduction_HPC/4._Terminal-based_Editors` you will find a Java code on file `JuliaSet.java`.
 
 For this exercise you need to connect to the cluster with X11 support.
 On Spruce that will be:
@@ -333,7 +333,7 @@ $ module load lang/java/jdk1.8.0_201
 ~~~
 {: .language-bash}
 
-Once you have loaded the module go to the folder `Introduction-HPC_Data/03-editors` and compile the Java code with this command
+Once you have loaded the module go to the folder `workshops_hands-on/Introduction_HPC/4._Terminal-based_Editors` and compile the Java code with this command
 
 ~~~
 $ javac JuliaSet.java

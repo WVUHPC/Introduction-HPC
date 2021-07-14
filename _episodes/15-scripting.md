@@ -15,15 +15,15 @@ keypoints:
 
 ## Why learn shell programming
 
-A working knowledge of shell scripting is essential to anyone at Linux system administration, specially the old-school of sysadmins who actually dig into the internal machinery of startup and configuration scripts. However, HPC users also see benefits of having a minimal understanding of Shell Scripting.
+Working knowledge of shell scripting is essential to anyone at Linux system administration, especially the old-school of sysadmins who dig into the internal machinery of startup and configuration scripts. However, HPC users also see the benefits of having a minimal understanding of Shell Scripting.
 
-A Torque submission script has two roles in a single file. From one side all the lines starting with `#PBS` are interpreted by Torque/Moab but the rest of the file is a shell script. In most cases just a sequence of commands loading modules and and command lines, but with some basic knowledge those scripts can perform far more elaborated executions.
+A Torque submission script has two roles in a single file. From one side all the lines starting with `#PBS` are interpreted by Torque/Moab but the rest of the file is a shell script. In most cases just a sequence of commands loading modules and command lines, but with some basic knowledge, those scripts can perform far more elaborated executions.
 
 A shell script is a quick way of prototyping a complex execution. Even if you are knowledgeable in Python, another programming language suitable for scripts. There are situations where Shell Scripting is simpler.
 
 ## Which Shell
 
-We will be using Bash, an acronym for "Bourne-Again shell" and a pun on Stephen Bourne's now classic Bourne shell. Bash has become a de facto standard for shell scripting on most flavors of Linux/UNIX. Most of the principles this book covers apply equally well to scripting with other shells, such as the Korn Shell, from which Bash derives some of its features, and the C Shell and its variants. There are some instructions that are specific for Bash and will not work on the POSIX-standard so you decide if you want all the niceties of Bash or stick to a most standard syntax for POSIX-compliant shell.
+We will be using Bash, an acronym for "Bourne-Again shell" and a pun on Stephen Bourne's now classic Bourne shell. Bash has become a de facto standard for shell scripting on most flavors of Linux/UNIX. Most of the principles this book covers apply equally well to scripting with other shells, such as the Korn Shell, from which Bash derives some of its features, and the C Shell and its variants. Some instructions are specific for Bash and will not work on the POSIX-standard so you decide if you want all the niceties of Bash or stick to the most standard syntax for POSIX-compliant shell.
 
 If you are curious about syntax on bash that extends the POSIX standard see <https://www.gnu.org/software/bash/manual/html_node/Major-Differences-From-The-Bourne-Shell.html>
 
@@ -32,7 +32,7 @@ If you are curious about syntax on bash that extends the POSIX standard see <htt
 
 There two components that make a script usable as such, the first line with a shabang and the execution mode enabled to the script file.
 
-Lets consider this example of a minimal script that will tell you your username, the hostname and the date (`example1`):
+Let us consider this example of a minimal script that will tell you your username, the hostname, and the date (`example1`):
 
 ~~~
 echo Hello your username is $USER
@@ -41,15 +41,15 @@ echo The current date is `date`
 ~~~
 {: .source}
 
-This set of commands is actually a script, however it has two main problems.
-First, there is no indication on which scripting language was written. The shell does not know in advance if that was intended to be executed by `sh`, the default shell on the system, that could be or not `bash`. For example on Debian-like systems (Like Ubuntu and Linux Mint) sh is actually `dash` which is different from `bash`. The second problem is that the file is not executable. If you want to execute this you have to execute it like this:
+This set of commands is actually a script, however, it has two main problems.
+First, there is no indication of which scripting language was written. The shell does not know in advance if that was intended to be executed by `sh`, the default shell on the system, that could be or not `bash`. For example on Debian-like systems (Like Ubuntu and Linux Mint) sh is actually `dash` which is different from `bash`. The second problem is that the file is not executable. If you want to execute this you have to execute it like this:
 
 ~~~
 sh example1
 ~~~
 {: .source}
 
-We can remediate this two problems by adding one line at the very beginning of the script to indicate which scripting languages the file was written and changing the execution permissions to the file. The file will be like (example2.sh)
+We can remediate these two problems by adding one line at the very beginning of the script to indicate which scripting languages the file was written and changing the execution permissions to the file. The file will be like (example2.sh)
 
 ~~~
 #!/bin/sh
@@ -67,7 +67,7 @@ chmod +x example2.sh
 ~~~
 {: .source}
 
-The sha-bang (`#!`) at the head of a script tells your system that this file is a set of commands to be fed to the command interpreter indicated. The `#!` is actually a two-byte magic number, a special marker that designates a file type, or in this case an executable shell script.  This is the path to the program that interprets the commands in the script, whether it be a shell, a programming language, or a utility. This command interpreter then executes the commands in the script, starting at the top. For example these are a few other shabangs for some other interpreters:
+The sha-bang (`#!`) at the head of a script tells your system that this file is a set of commands to be fed to the command interpreter indicated. The `#!` is a two-byte magic number, a special marker that designates a file type, or in this case an executable shell script.  This is the path to the program that interprets the commands in the script, whether it be a shell, a programming language, or a utility. This command interpreter then executes the commands in the script, starting at the top. For example, these are a few other shabangs for some other interpreters:
 
 ~~~
 #!/bin/sh
@@ -96,7 +96,7 @@ On the command line, you can also use `;` for that effect.
 
 ### Escape `\`
 
-Some characters receive new meaning when preceeded by the backslash character.
+Some characters receive new meaning when preceded by the backslash character.
 This is a list of some of them
 
 | Command | Description  |
@@ -158,7 +158,7 @@ exit 0
 
 ### Partial quoting `"` and full quoting `'`
 
-Both are ways preserve a string from interpretation. The full quoting being a stronger form of quoting.  An argument enclosed in double quotes presents itself as a single word, even if it contains whitespace separators.
+Both are ways to preserve a string from interpretation. The full quoting being a stronger form of quoting.  An argument enclosed in double-quotes presents itself as a single word, even if it contains whitespace separators.
 Single quotes `'` operate similarly to double quotes, but do not permit referencing variables, since the special meaning of $ is turned off.
 Consider this example (example3.sh)
 
@@ -172,7 +172,7 @@ echo 'This variable is not interpreted $USER'
 
 ### Wild cards `*` and `?`
 
-Those two characters are interpreted in filename expansions. The character `*` replace one or more characters in names and `?` only a single character.
+Those two characters are interpreted in filename expansions. The character `*` replaces one or more characters in names and `?` only a single character.
 
 ### Variable substitution
 
@@ -194,13 +194,13 @@ $ a=3; b=5; c=$(( a + b)); echo $c
 
 `command >filename` redirects the output of `command` to file `filename`. Overwrite filename if it already exists.
 
-`command &>filename` redirects both the `stdout` and the `stderr` of command to filename.
+`command &>filename` redirects both the `stdout` and the `stderr` of command to a filename.
 
 `command >&2` redirects stdout of command to stderr.
 
-`command >>filename` appends the output of `command` to file `filename`. If filename does not already exist, it is created.
+`command >>filename` appends the output of `command` to file `filename`. If a filename does not already exist, it is created.
 
-`command <filename` takes the entry from filename as stdin for `command` instead of reading from keyboard
+`command <filename` takes the entry from filename as stdin for `command` instead of reading from the keyboard
 
 ### Logical Operators `&& and ||`
 
@@ -208,11 +208,11 @@ Those operators are used to chain operations.
 In the case of `&&` where the second is not used if the first one returns 0.
 In the case of `||` the second one is executed if the first one returns a value different from 0.
 
-This is just a brief recollection of the most common special characters that will help us write simple bash scripts. With these and a few conditionals and loops we are ready to write useful scripts.
+This is just a brief recollection of the most common special characters that will help us write simple bash scripts. With these and a few conditionals and loops, we are ready to write useful scripts.
 
 ## Tests and Conditionals
 
-Executing commands based on the result of a test is fundamental to most programming languages. In bash the structure looks like:
+Executing commands based on the result of a test is fundamental to most programming languages. In bash the structure looks like this:
 
 ~~~
 if test-expression
@@ -222,7 +222,7 @@ fi
 ~~~
 {: .language-bash}
 
-Or adding a clause includes statements when the test fail:
+Or adding a clause that includes statements when the test fails:
 
 ~~~
 if expression
@@ -234,7 +234,7 @@ fi
 ~~~
 {: .language-bash}
 
-A one simple example shows its usage:
+One simple example shows its usage:
 
 ~~~
 #!/bin/bash
@@ -244,7 +244,7 @@ T2=$2
 
 if [ $T1 -lt $T2 ]
 then
-    echo The first number $T1 is less than to the second one $T2
+    echo The first number $T1 is less than the second one $T2
 else
     echo The second number $T2 is less than or equal to the first one $T1
 fi
@@ -262,9 +262,9 @@ This is particularly useful when executing conditionals directly on the terminal
 
 ## Loops
 
-In bash there are 3 ways of creating loops in bash. `for`, `while` and `until`.
+In bash, there are 3 ways of creating loops in bash. `for`, `while`, and `until`.
 
-A few examples shows how those loops
+A few examples show how those loops
 
 ~~~
 #!/bin/bash
@@ -278,7 +278,7 @@ done
 echo; echo
 
 for planet in "Mercury Venus Earth Mars Jupiter Saturn Uranus Neptune Pluto"
-    # All planets on same line.
+    # All planets on the same line.
     # Entire 'list' enclosed in quotes creates a single variable.
     # Why? Whitespace incorporated into the variable.
 do
@@ -291,7 +291,7 @@ exit 0
 ~~~
 {: .language-bash}
 
-This behavior is very similar to the way **for loops** work on Python where loops iterate or a list or more generally over an iterable variable and it is different on how the same loops work on languages like C or C++. Looping from  an initial value and increasing or decreasing its value can be achieved with the other two forms, `while` and `until`.
+This behavior is very similar to the way **for loops** work on Python where loops iterate or a list or more generally over an iterable variable and it is different on how the same loops work on languages like C or C++. Looping from an initial value and increasing or decreasing its value can be achieved with the other two forms, `while` and `until`.
 
 ~~~
 #!/bin/bash
@@ -374,11 +374,11 @@ mpirun -np 4 ./mpi_pi 100
 
 # Extracting data with `grep` and `awk`
 
-Once you start creating scripts, the next step is learn how to deal with growing amount of information. There are two commands that are commonly used to extract information from large texts, `grep` and `awk`
+Once you start creating scripts, the next step is to learn how to deal with a growing amount of information. Two commands are commonly used to extract information from large texts, `grep` and `awk`
 
-Download the data for the lesson. On folder `Introduction-HPC_Data/10-scripting` you will find a file called `output.log`. That is an actual output file from a Molecular Dynamics code.
+Download the data for the lesson. On folder `workshops_hands-on/Introduction_HPC/15._Shell_Scripting` you will find a file called `output.log`. That is an actual output file from a Molecular Dynamics code.
 
-Lets start for getting an idea about the size number of lines of that file:
+Let us start by getting an idea about the size number of lines of that file:
 
 ~~~
 $ ls -al output.log
@@ -389,7 +389,7 @@ $ ls -al output.log
 ~~~
 {: .output}
 
-The file is 4.1MB. That is a big file for a human to read. Lets see how many lines we can count on it
+The file is 4.1MB. That is a big file for a human to read. Let's see how many lines we can count on it
 
 ~~~
 $ wc -l output.log
@@ -409,7 +409,7 @@ $ less output.log
 ~~~
 {: .language-bash}
 
-We are interested on information about the "Time step", in "less" we can find a text content using the "/" command. Inside less enter "/" and the text "Time step" without the  quotes. To search for the next occurrence enter `n`
+We are interested in information about the "Time step", in "less" we can find a text content using the "/" command. Inside less enter "/" and the text "Time step" without the quotes. To search for the next occurrence enter `n`
 
 Leave `less` with the command `q`.
 
@@ -469,8 +469,8 @@ $ grep "Time step" output.log
 ~~~
 {: .output}
 
-Notice that grep is capturing all places where the words "Time step" is found.
-Lets imagine that we are interested only in capturing the lines that start with "Time step". The following command instruct grep to do that:
+Notice that grep is capturing all places where the words "Time step" are found.
+Lets imagine that we are interested only in capturing the lines that start with "Time step". The following command instructs grep to do that:
 
 
 ~~~
@@ -523,7 +523,7 @@ $ grep "^[ ]*Time step" -A 13 -B 1 output.log
 ~~~
 {: .output}
 
-From those blocks we extract `ETOT`
+From those blocks, we extract `ETOT`
 
 ~~~
 grep "^[ ]*Time step" -A 13 -B 1 output.log | grep ETOT
@@ -554,7 +554,7 @@ tar -zxvf goldnano3cu.tgz
 
 The folders and files are from actual simulations of gold nanoclusters. You can see a sample from the first 10 simulations. The actual simulation was done with actually several hundred files like those.
 
-First, have a look to one of those files. For example `goldnano3cu/0/output.log`. Use `less` or your favorite text editor to get an idea about how the file actually looks. With less you can search for words typing `/` and the pattern. Search for etot on that file.
+First, have a look to one of those files. For example `goldnano3cu/0/output.log`. Use `less` or your favorite text editor to get an idea about how the file actually looks. With less, you can search for words typing `/` and the pattern. Search for etot on that file.
 
 The first challenge is to know the value of the total energy per atom. You can see that such information is contained on lines such as
 
@@ -608,7 +608,7 @@ grep "Time" goldnano3cu/0/output.log
 ~~~
 {: .source}
 
-But, now we realize that we do not want those lines that start with EBS, so we can indicate grep that the pattern matches only the word "Time" at the beggining of the line with some arbitrary number of spaces.
+But, now we realize that we do not want those lines that start with EBS, so we can indicate grep that the pattern matches only the word "Time" at the beginning of the line with some arbitrary number of spaces.
 
 ~~~
 grep "^ *Time" goldnano3cu/0/output.log
@@ -629,8 +629,7 @@ The following list shows the basic elements for regular expressions.
           within the square brackets.
 [^agd]  - the character is not one of those included
           within the square brackets.
-[c-f]   - the dash within the square brackets operates
-          as a range. In this case it means either the
+[c-f]   - the dash within the square brackets operates as a range. In this case it means either the
           letters c, d, e or f.
 ()      - allows us to group several characters to behave
           as one.

@@ -1,6 +1,6 @@
 ---
 title: "Resource Managment: Torque/Moab"
-teaching: 30
+teaching: 50
 exercises: 10
 questions:
 - "How to submit jobs on the HPC cluster?"
@@ -10,7 +10,7 @@ keypoints:
 - "It is a good idea to keep aliases to common torque commands for easy execution."
 ---
 
-## Resource Managment
+## Resource Management
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/xGklPgnEGEw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
@@ -99,7 +99,7 @@ The directives are very similar to the serial case
 
 > ## Exercise: Creating a Job script and submit it
 >
-> On `Introduction-HPC_Data/05-jobs` you will find the same 3 ABINIT files that we worked on the Command Line Interface episode. The exercise is to prepare a submission script for computing the calculation. This is all that you need to know:
+> On `workshops_hands-on/Introduction_HPC/6._Resource_Managment_Torque_Moab` you will find the same 3 ABINIT files that we worked on the Command Line Interface episode. The exercise is to prepare a submission script for computing the calculation. This is all that you need to know:
 >
 > 1. You need to load the module for ABINIT.
 >    Before that, it is good idea to purge the modules first to avoid conflicts with the modules that you probably are loading by default.

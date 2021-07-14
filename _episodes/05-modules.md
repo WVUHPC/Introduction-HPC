@@ -1,6 +1,7 @@
 ---
 title: "Environment Modules"
-teaching: 30
+start: 540
+teaching: 50
 exercises: 10
 questions:
 - "How to load modules to access software that I want to use for my research?"
@@ -142,7 +143,7 @@ the master modulefile directory.
 >    ~~~
 >    {: .source}
 >
-> 6. Go back and purge all the modules from your environment. We will now explore why it is important to use a recent compiler. Try to compile the code at `Introduction-HPC_Data/06-modules/lambda_c++14.cpp`. Go to the folder and execute:
+> 6. Go back and purge all the modules from your environment. We will now explore why it is important to use a recent compiler. Try to compile the code at `workshops_hands-on/Introduction_HPC/5._Environment_Modules/lambda_c++14.cpp`. Go to the folder and execute:
 >
 >    ~~~
 >    g++ lambda_c++14.cpp

@@ -1,5 +1,6 @@
 ---
 title: "Version Control: git"
+start: 540
 teaching: 50
 exercises: 10
 questions:
@@ -155,14 +156,14 @@ $ git commit -m "My first commit"
 
 When we run `git commit`, Git takes everything we have told it to save by using git add (right now empty files) and stores a copy permanently inside the special .git directory. This permanent copy is called a commit (or revision) and its short identifier is 5b5a7ed. Each identifier is different so you will see a different code.
 
-Now we are ready to populate the repository with some files. On the Hands-On repository <https://github.com/WVUHPC/Introduction-HPC_Data> there are a few files to populate the repository. If you have not done before clone the repository with:
+Now we are ready to populate the repository with some files. On the Hands-On repository <https://github.com/WVUHPC/workshops_hands-on> there are a few files to populate the repository. If you have not done before clone the repository with:
 
 ~~~
-$ git clone git@github.com:WVUHPC/Introduction-HPC_Data.git
+$ git clone https://github.com/WVUHPC/workshops_hands-on.git
 ~~~
 {: .language-bash}
 
-Go to the folder `Introduction-HPC_Data/09-git` there is a tree structure that mimics the structure suggested above. Copy the files into your own repository, in particular copy the `paper.tex` and `Makefile` into folder `paper` and `Data Generator.py` into scripts. There is also a file `Data Generator.ipynb` that is a IPython Notebook or Jupyter notebook.
+Go to the folder `workshops_hands-on/Introduction_HPC/13._Version_Control_git` there is a tree structure that mimics the structure suggested above. Copy the files into your own repository, in particular copy the `paper.tex` and `Makefile` into folder `paper` and `Data Generator.py` into scripts. There is also a file `Data Generator.ipynb` that is a IPython Notebook or Jupyter notebook.
 Running the python script should produce both the data `wave.dat` and the figure `wave.pdf` in their respective folders. However, for the purpose of this lesson, the files are pre-generated so you can copy them and skip running the script.
 
 ~~~

@@ -1,6 +1,6 @@
 ---
 title: "Environment management: Conda"
-teaching: 35
+teaching: 50
 exercises: 10
 questions:
 - "What are software containers and how to use them?"

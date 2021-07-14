@@ -10,11 +10,11 @@
 carpentry: "wvu"
 
 # Overall title for pages.
-title: "Introduction to High Performance Computing (Summer 2021)"
+title: "Introduction to High-Performance Computing"
 
 # Life cycle stage of the lesson
 # possible values: "pre-alpha", "alpha", "beta", "stable"
-life_cycle: "stable"
+life_cycle: "pre-alpha"
 
 #------------------------------------------------------------
 # Generic settings (should not need to change).
@@ -49,6 +49,7 @@ workshop_repo: "https://github.com/carpentries/workshop-template"
 workshop_site: "https://carpentries.github.io/workshop-template"
 cc_by_human: "https://creativecommons.org/licenses/by/4.0/"
 wvu_site: "https://docs.hpc.wvu.edu/"
+wvu_site: "https://docs.hpc.wvu.edu/"
 
 # Surveys.
 pre_survey: "https://carpentries.typeform.com/to/wi32rS?slug="
@@ -58,7 +59,7 @@ instructor_post_survey: "https://www.surveymonkey.com/r/instructor_training_post
 
 
 # Start time in minutes (0 to be clock-independent, 540 to show a start at 09:00 am).
-start_time: 660
+start_time: 540
 
 # Specify that things in the episodes collection should be output.
 collections:

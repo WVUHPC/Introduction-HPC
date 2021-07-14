@@ -41,7 +41,7 @@ int main(int argc, char *argv[]) {
                 printf("Number of threads = %d\n", nthreads);
         }
 
-        }  /* All threads join master thread and terminate */
+        }  /* All threads join the master thread and terminate */
 
         return 0;
 }
@@ -110,8 +110,8 @@ int main(int argc, char** argv) {
 ~~~
 {: .source}
 
-To compile this code you need to load the libraries from a MPI implementation.
-For example load the module for OpenMPI
+To compile this code you need to load the libraries from an MPI implementation.
+For example, load the module for OpenMPI
 
 ~~~
 $ module load lang/gcc/9.3.0 parallel/openmpi/3.1.6_gcc93
@@ -132,12 +132,12 @@ $ mpirun -np 4 example_mpi
 ~~~
 {: .language-bash}
 
-In this case you are running using 4 cores.
+In this case, you are running using 4 cores.
 
 
 When compiling code with MPI be aware that two elements are involved, the compiler and the MPI implementation. And the combination is important when you execute the code. Always use the mpirun from the same implementation used to compile the code.
 
-In the case of OpenMPI the wrappers are called `mpicc`, `mpicxx` and `mpif90`.
+In the case of OpenMPI the wrappers are called `mpicc`, `mpicxx`, and `mpif90`.
 
 In the case of Intel there are two sets of wrappers
 
@@ -205,7 +205,7 @@ end program randomsys2
 ~~~
 {: .source }
 
-The code uses an auxiliary subroutine `init_random_seed` to generate a different set of pseudo random numbers on each run.
+The code uses an auxiliary subroutine `init_random_seed` to generate a different set of pseudo-random numbers on each run.
 
 Depending on the fortran compiler you want to use (gfortran or ifort) you execute:
 
@@ -240,11 +240,11 @@ The compilation using the MKL can be complex, so it is better to refer to the MK
 
 ## HDF5
 
-HDF5 is a data model, library, and file format for storing and managing data. It supports an unlimited variety of datatypes, and is designed for flexible and efficient I/O and for high volume and complex data. HDF5 is portable and is extensible, allowing applications to evolve in their use of HDF5. The HDF5 Technology suite includes tools and applications for managing, manipulating, viewing, and analyzing data in the HDF5 format.
+HDF5 is a data model, library, and file format for storing and managing data. It supports an unlimited variety of datatypes and is designed for flexible and efficient I/O and high volume and complex data. HDF5 is portable and is extensible, allowing applications to evolve in their use of HDF5. The HDF5 Technology suite includes tools and applications for managing, manipulating, viewing, and analyzing data in the HDF5 format.
 
 Learning how to code using HDF5 is beyond the scope, but we will use some examples to show how you can compile code that uses the library.
 
-Lets start with the basic example that shows how to create a dataset.
+Let us start with the basic example that shows how to create a dataset.
 
 ~~~
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -298,7 +298,7 @@ int main() {
 ~~~
 {: .language-c}
 
-There are basically two ways to compile a code like this. For both we need to load the HDF5 library. Execute:
+There are two ways to compile a code like this. For both, we need to load the HDF5 library. Execute:
 
 ~~~
 $ module load lang/gcc/8.2.0 libs/hdf5/1.10.5_gcc82
@@ -335,14 +335,14 @@ $ gcc HDF5_create.c -o HDF5_create -lhdf5
 ~~~
 {: .language-bash}
 
-HDF5 is a relatively complex library, so for complex cases it is better to use the wrapper that compiles code for HDF5
+HDF5 is a relatively complex library, so for complex cases, it is better to use the wrapper that compiles code for HDF5
 
 ~~~
 $ h5cc HDF5_create.c -o HDF5_create
 ~~~
 {: .language-bash}
 
-This command is adding all the needed libraries and paths to the compilation line. At the end you get the binary `a.out`
+This command is adding all the needed libraries and paths to the compilation line. At the end, you get the binary `a.out`
 
 ## FFTW3
 
@@ -418,7 +418,7 @@ $ module load lang/gcc/8.2.0 libs/fftw/3.3.8_gcc82 lang/python/3.7.2_gcc82
 {: .language-bash}
 
 The libraries for fftw are now available both for compilation and execution.
-We added a Python module that will help us produce the plots for the input and and output arrays.
+We added a Python module that will help us produce the plots for the input and output arrays.
 
 ~~~
 g++ 2Dfftw.c -o 2Dfftw -lfftw3
@@ -436,9 +436,9 @@ That will generate 2 figures that you can transfer to your computer to see.
 
 >## Exercise: Compiling codes.
 >
-> On the repository for `Introduction-HPC` there is a folder with the examples presented on this episode `Introduction-HPC_Data/07-compile`.
+> On the repository for `Introduction-HPC` there is a folder with the examples presented on this episode `workshops_hands-on/Introduction_HPC/14._Compiling_Codes`.
 >
-> There you will find a couple of source codes: `example_gsl.c` and `matmult.c` that have not being compiled yet.
+> There you will find a couple of source codes: `example_gsl.c` and `matmult.c` that have not been compiled yet.
 >
 > The challenge is to compile those codes.
 >~~~

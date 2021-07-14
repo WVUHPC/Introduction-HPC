@@ -91,19 +91,20 @@ Once you enter the system, you can start typing commands. You can open several c
 The materials of examples and exercises can be downloaded by executing this command on the terminal.
 
 ~~~
-git clone https://github.com/WVUHPC/Introduction-HPC_Data.git
+git clone https://github.com/WVUHPC/workshops_hands-on.git
 ~~~
 {: .language-bash}
 
-This command will download all the files into a folder called
-`Introduction-HPC_Data`. You can move into the directory using the command.
+This command will download all the files used in our workshops into a folder called
+`workshops_hands-on`. You can move into the particular folder for this workshop using the command.
 
 ~~~
-cd Introduction-HPC_Data
+cd workshops_hands-on/Introduction_HPC
 ~~~
 {: .language-bash}
 
-If are not familiar with these commands, do not worry, you are actually in the right class. These and many other commands will be the topic of the material that follows.
+If are not familiar with these commands, do not worry, you are actually in the right class.
+These and many other commands will be the topic of the material that follows.
 
 
 {% include links.md %}
