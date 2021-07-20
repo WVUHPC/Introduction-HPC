@@ -1,5 +1,5 @@
 ---
-title: "Resource Managment: Torque/Moab"
+title: "Resource Management Torque/Moab"
 teaching: 50
 exercises: 10
 questions:

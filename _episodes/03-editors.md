@@ -1,5 +1,5 @@
 ---
-title: "Terminal-based Editors"
+title: "Terminal-based Text Editors"
 teaching: 50
 exercises: 10
 questions:
