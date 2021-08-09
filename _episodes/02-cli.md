@@ -840,7 +840,7 @@ The next table summarizes those commands.
 >Execute the command below and see the answer.
 >
 > ~~~
-> [training001@srih0001 ~]$ n=1; while test $n -lt 10000; do > echo $n; n=`expr 2 \* $n`; done
+> [training001@srih0001 ~]$ n=1; while test $n -lt 10000; do  echo $n; n=`expr 2 \* $n`; done
 > ~~~
 > {: .language-bash}
 > ~~~
