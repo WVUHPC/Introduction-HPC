@@ -313,7 +313,6 @@ Examples of network technologies in HPC are Infiniband and OmniPath.
 > {: .language-bash}
 >
 >
-
 {: .challenge}
 
 {% include links.md %}
