@@ -1,8 +1,8 @@
 ---
 title: "Introduction"
 start: 540
-teaching: 50
-exercises: 10
+teaching: 55
+exercises: 5
 questions:
 - "What is High-Performance Computing?"
 - "What is a HPC cluster or Supercomputer?"
@@ -293,5 +293,27 @@ Latency relates to the obstruction that data faces before the first bit reaches 
 Both elements are important in HPC data communication and minimized with very expensive network devices.
 Examples of network technologies in HPC are Infiniband and OmniPath.
 
+> ## Exercise 1
+>
+> Follow the instructions for connecting to the cluster.
+> Once there execute
+>
+> ~~~
+> $> lscpu
+> ~~~
+> {: .language-bash}
+>
+> On your browser go to <https://ark.intel.com> and enter the model of CPU found on the head node of the cluster.
+>
+> Execute this command to know the amount of RAM memory on the machine.
+>
+> ~~~
+> $> lsmem
+> ~~~
+> {: .language-bash}
+>
+>
+
+{: .challenge}
 
 {% include links.md %}

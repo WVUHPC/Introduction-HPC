@@ -75,6 +75,8 @@ The shell typically uses `$ ` as the prompt, but may use a different symbol like
 {: .callout}
 
 
+<!--
+
 ## Getting/opening a shell
 
 <div id="shell">
@@ -136,7 +138,7 @@ The shell typically uses `$ ` as the prompt, but may use a different symbol like
   </div>
 </div>
 </div>
-<!--
+
 <details>
 <summary>Terminal on Windows 10</summary>
 <blockquote><p style = "font-family:georgia,garamond,serif;">
@@ -188,7 +190,10 @@ The default terminal for MacOS starting with Catalina is zsh. To start a bash sh
 </p>
 </blockquote>
 </details>
+
 -->
+
+<!--
 
 ## Connecting to the cluster
 
@@ -289,47 +294,7 @@ $ kill -s 9 3325
 
 Once all jobs are terminated, the exit command will close the connection to the host.
 
-## Exercise 1
-
-Get into Spruce or Thorny with your training account and execute the commands `ls`, `date` and `cal`
-
-Exit from the cluster with `exit`
-
-
-So let's try our first command, which will list the contents of the current directory:
-
-~~~
-[training001@srih0001 ~]$ ls -al
-~~~
-{: .language-bash}
-~~~
-total 64
-drwx------   4 training001 training   512 Jun 27 13:24 .
-drwxr-xr-x 151 root        root     32768 Jun 27 13:18 ..
--rw-r--r--   1 training001 training    18 Feb 15  2017 .bash_logout
--rw-r--r--   1 training001 training   176 Feb 15  2017 .bash_profile
--rw-r--r--   1 training001 training   124 Feb 15  2017 .bashrc
--rw-r--r--   1 training001 training   171 Jan 22  2018 .kshrc
-drwxr-xr-x   4 training001 training   512 Apr 15  2014 .mozilla
-drwx------   2 training001 training   512 Jun 27 13:24 .ssh
-~~~
-{: .output}
-
-> ## Command not found
-> If the shell can't find a program whose name is the command you typed, it
-> will print an error message such as:
->
-> ~~~
-> $ ks
-> ~~~
-> {: .language-bash}
-> ~~~
-> ks: command not found
-> ~~~
-> {: .output}
->
-> Usually this means that you have mis-typed the command.
-{: .callout}
+-->
 
 ### Why use the Command Line Interface?
 
@@ -351,94 +316,6 @@ As clusters and cloud computing systems become more popular for scientific data 
 being able to interact with the shell is becoming a necessary skill.
 We can build on the command-line skills covered here
 to tackle a wide range of scientific questions and computational challenges.
-
-## Exercise 2
-
-Commands in Unix/Linux are very stable with some existing for decades now. This exercise begins to give you a feeling of the different parts of a command.
-
-Execute the command `cal`, we executed the command before  but this time execute it again like this `cal -y`. You should get an output like this:
-
-~~~
-[training001@srih0001 ~]$ cal -y
-~~~
-{: .language-bash}
-~~~
-                        2020                               
-
-January               February                 March       
-Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa
-1  2  3  4                      1    1  2  3  4  5  6  7
-5  6  7  8  9 10 11    2  3  4  5  6  7  8    8  9 10 11 12 13 14
-12 13 14 15 16 17 18    9 10 11 12 13 14 15   15 16 17 18 19 20 21
-19 20 21 22 23 24 25   16 17 18 19 20 21 22   22 23 24 25 26 27 28
-26 27 28 29 30 31      23 24 25 26 27 28 29   29 30 31
-
-April                   May                   June        
-Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa
-1  2  3  4                   1  2       1  2  3  4  5  6
-5  6  7  8  9 10 11    3  4  5  6  7  8  9    7  8  9 10 11 12 13
-12 13 14 15 16 17 18   10 11 12 13 14 15 16   14 15 16 17 18 19 20
-19 20 21 22 23 24 25   17 18 19 20 21 22 23   21 22 23 24 25 26 27
-26 27 28 29 30         24 25 26 27 28 29 30   28 29 30
-31
-July                  August                September     
-Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa
-1  2  3  4                      1          1  2  3  4  5
-5  6  7  8  9 10 11    2  3  4  5  6  7  8    6  7  8  9 10 11 12
-12 13 14 15 16 17 18    9 10 11 12 13 14 15   13 14 15 16 17 18 19
-19 20 21 22 23 24 25   16 17 18 19 20 21 22   20 21 22 23 24 25 26
-26 27 28 29 30 31      23 24 25 26 27 28 29   27 28 29 30           "trcis001.hpc.wvu.edu" 10:19 26-Jul-20
-30 31
-October               November               December      
-Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa
-1  2  3    1  2  3  4  5  6  7          1  2  3  4  5
-4  5  6  7  8  9 10    8  9 10 11 12 13 14    6  7  8  9 10 11 12
-11 12 13 14 15 16 17   15 16 17 18 19 20 21   13 14 15 16 17 18 19
-18 19 20 21 22 23 24   22 23 24 25 26 27 28   20 21 22 23 24 25 26
-25 26 27 28 29 30 31   29 30                  27 28 29 30 31
-~~~
-{: .output}
-
-Another very simple command that is very useful in HPC is `date`.
-Without any arguments, it prints the current date to the screen.
-
-~~~
-$ date
-~~~
-{: .language-bash}
-~~~
-Sun Jul 26 15:41:03 EDT 2020
-~~~
-{: .output}
-
-<!--**This seems like it might be more confusing than it is worth for beginners**
-The command line is powerful enough to allow you to even do programming.
-Execute the command below and see the answer.
-
-~~~
-[training001@srih0001 ~]$ n=1; while test $n -lt 10000; do echo $n; n=`expr 2 \* $n`; done
-~~~
-{: .language-bash}
-~~~
-1
-2
-4
-8
-16
-32
-64
-128
-256
-512
-1024
-2048
-4096
-8192
-~~~
-{: .output}
-
-If you are not getting this output check the command line very carefully. Even small changes could be interpreted by the shell as entirely different commands so you need to be extra careful and gather insight when commands are not doing what you want.
--->
 
 The `echo` and `cat` commands
 -----------------------------
@@ -889,24 +766,6 @@ $ rm -r even
 ~~~
 {: .language-bash}
 
-## Exercise 3
-
-Create two folders called `one` and `two`.
-In `one` create the empty file `none1` and in `two` create the empty file `none2`.
-
-Create also in those two folders, files `date1` and `date2` by redirecting the output from the command `date` using `>`.
-~~~
-$ date > date1
-~~~
-{: .language-bash}
-
-Check with `cat` that those files contain dates.
-
-Now, create the folders `empty_files` and `dates` and move the corresponding files `none1` and `none2` to `empty_files` and do the same for `date1` and `date2`.
-
-The folders `one` and `two` should be empty now; delete them with `rmdir`
-Do the same with folders `empty_files` and `dates` with `rm -r`.
-
 Summary of Basic Commands
 -------------------------
 
@@ -939,6 +798,170 @@ The next table summarizes those commands.
 |---------|-------------------|------------------------------|
 | `rm`    | Remove one or more files from the file system tree | `$ rm trash_file` <br> `$ rm -r full_folder`         |
 |---------|-------------------|------------------------------|
+
+> ## Exercise 1
+>
+> Get into Spruce or Thorny with your training account and execute the commands `ls`, `date` and `cal`
+>
+> Exit from the cluster with `exit`
+>
+>
+> So let's try our first command, which will list the contents of the current directory:
+>
+> ~~~
+> [training001@srih0001 ~]$ ls -al
+> ~~~
+> {: .language-bash}
+> ~~~
+> total 64
+> drwx------   4 training001 training   512 Jun 27 13:24 .
+> drwxr-xr-x 151 root        root     32768 Jun 27 13:18 ..
+> -rw-r--r--   1 training001 training    18 Feb 15  2017 .bash_logout
+> -rw-r--r--   1 training001 training   176 Feb 15  2017 .bash_profile
+> -rw-r--r--   1 training001 training   124 Feb 15  2017 .bashrc
+> -rw-r--r--   1 training001 training   171 Jan 22  2018 .kshrc
+> drwxr-xr-x   4 training001 training   512 Apr 15  2014 .mozilla
+> drwx------   2 training001 training   512 Jun 27 13:24 .ssh
+> ~~~
+> {: .output}
+>
+> > ## Command not found
+> > If the shell can't find a program whose name is the command you typed, it
+> > will print an error message such as:
+> >
+> > ~~~
+> > $ ks
+> > ~~~
+> > {: .language-bash}
+> > ~~~
+> > ks: command not found
+> > ~~~
+> > {: .output}
+> >
+> > Usually this means that you have mis-typed the command.
+> {: .callout}
+>
+{: .challenge}
+
+> ## Exercise 2
+>
+> Commands in Unix/Linux are very stable with some existing for decades now. This exercise begins to give you a feeling of the different parts of a command.
+>
+> Execute the command `cal`, we executed the command before  but this time execute it again like this `cal -y`. You should get an output like this:
+>
+> ~~~
+> [training001@srih0001 ~]$ cal -y
+> ~~~
+> {: .language-bash}
+> ~~~
+>                          2021                               
+>
+> January               February                 March       
+> Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa
+> 1  2       1  2  3  4  5  6       1  2  3  4  5  6
+> 3  4  5  6  7  8  9    7  8  9 10 11 12 13    7  8  9 10 11 12 13
+> 10 11 12 13 14 15 16   14 15 16 17 18 19 20   14 15 16 17 18 19 20
+> 17 18 19 20 21 22 23   21 22 23 24 25 26 27   21 22 23 24 25 26 27
+> 24 25 26 27 28 29 30   28                     28 29 30 31
+> 31
+> April                   May                   June        
+> Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa
+> 1  2  3                      1          1  2  3  4  5
+> 4  5  6  7  8  9 10    2  3  4  5  6  7  8    6  7  8  9 10 11 12
+> 11 12 13 14 15 16 17    9 10 11 12 13 14 15   13 14 15 16 17 18 19
+> 18 19 20 21 22 23 24   16 17 18 19 20 21 22   20 21 22 23 24 25 26
+> 25 26 27 28 29 30      23 24 25 26 27 28 29   27 28 29 30
+> 30 31
+> July                  August                September     
+> Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa
+> 1  2  3    1  2  3  4  5  6  7             1  2  3  4
+> 4  5  6  7  8  9 10    8  9 10 11 12 13 14    5  6  7  8  9 10 11
+> 11 12 13 14 15 16 17   15 16 17 18 19 20 21   12 13 14 15 16 17 18
+> 18 19 20 21 22 23 24   22 23 24 25 26 27 28   19 20 21 22 23 24 25
+> 25 26 27 28 29 30 31   29 30 31               26 27 28 29 30
+>
+> October               November               December      
+> Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa
+> 1  2       1  2  3  4  5  6             1  2  3  4
+> 3  4  5  6  7  8  9    7  8  9 10 11 12 13    5  6  7  8  9 10 11
+> 10 11 12 13 14 15 16   14 15 16 17 18 19 20   12 13 14 15 16 17 18
+> 17 18 19 20 21 22 23   21 22 23 24 25 26 27   19 20 21 22 23 24 25
+> 24 25 26 27 28 29 30   28 29 30               26 27 28 29 30 31
+> 31
+> ~~~
+> {: .output}
+>
+> Another very simple command that is very useful in HPC is `date`.
+> Without any arguments, it prints the current date to the screen.
+>
+> ~~~
+> $ date
+> ~~~
+> {: .language-bash}
+> ~~~
+> Sun Jul 26 15:41:03 EDT 2020
+> ~~~
+> {: .output}
+{: .challenge}
+
+> ## Exercise 3
+>
+> Create two folders called `one` and `two`.
+> In `one` create the empty file `none1` and in `two` create > the empty file `none2`.
+>
+> Create also in those two folders, files `date1` and > `date2` by redirecting the output from the command `date` > using `>`.
+> ~~~
+> $ date > date1
+> ~~~
+> {: .language-bash}
+>
+> Check with `cat` that those files contain dates.
+>
+> Now, create the folders `empty_files` and `dates` and move > the corresponding files `none1` and `none2` to > `empty_files` and do the same for `date1` and `date2`.
+>
+> The folders `one` and `two` should be empty now; delete > them with `rmdir`
+> Do the same with folders `empty_files` and `dates` with `rm -r`.
+>
+{: .challenge}
+
+> ## Exercise 4
+>
+> The command line is powerful enough to allow you to even do programming.
+>Execute the command below and see the answer.
+>
+> ~~~
+> [training001@srih0001 ~]$ n=1; while test $n -lt 10000; do > echo $n; n=`expr 2 \* $n`; done
+> ~~~
+> {: .language-bash}
+> ~~~
+> 1
+> 2
+> 4
+> 8
+> 16
+> 32
+> 64
+> 128
+> 256
+> 512
+> 1024
+> 2048
+> 4096
+> 8192
+> ~~~
+> {: .output}
+>
+>If you are not getting this output check the command line very carefully. Even small changes could be interpreted by the shell as entirely different commands so you need to be extra careful and gather insight when commands are not doing what you want.
+>
+> Now the challenge consists on tweaking the command line above to show the calendar for August for the next 10 years.
+>
+> > ## Hint
+> >
+> > Use the command ``cal -h`` to get a summary of the arguments to show just one month for one specific year
+> > You can use ``expr`` to increase ``n`` by one on each cycle, but you can also use ``n=$(n+1)``
+> >
+{: .challenge}
+
 
 
 {% include links.md %}

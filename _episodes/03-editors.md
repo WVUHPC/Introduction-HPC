@@ -268,90 +268,109 @@ A very beautiful Reference Card for vim can be found here: [Vim CheatSheet](http
 </a>
 
 
-## Exercise
+> ## Exercise 1
+>
+> Select an editor. The challenge is write this code in a file called `Sierpinski.c`
+>
+> ~~~
+> #include <stdio.h>
+>
+> #define SIZE (1 << 5)
+> int main()
+> {
+>     int x, y, i;
+>     for (y = SIZE - 1; y >= 0; y--, putchar('\n')) {
+>         for (i = 0; i < y; i++) putchar(' ');
+>         for (x = 0; x + y < SIZE; x++)
+>             printf((x & y) ? "  " : "* ");
+>     }
+>     return 0;
+> }
+>
+> ~~~
+> {: .source}
+>
+> For those using **vi**, here is the challenge. **You cannot use the arrow keys**. Not a single time!
+> It is pretty hard if you are not used to it, but it is a good exercise to learn the commands.
+>
+> Another interesting challenge is to write the line `for (y = SIZE - 1; y >= 0; y--, putchar('\n'))` and copy and paste it to > form the other 2 *for loops* in the code, and editing only after being copied.
+>
+> Once you have successfully written the source code, you can see your hard work in action.
+>
+> On the terminal screen, execute this:
+>
+> ~~~
+> $ gcc Sierpinski.c -o Sierpinski
+> ~~~
+> {: .language-bash}
+>
+> This will compile your source code `Sierpinski.c` in C into a binary executable called `Sierpinski`. Execute the code with:
+>
+> ~~~
+> $ ./Sierpinski
+> ~~~
+> {: .language-bash}
+>
+> The resulting output is kind of a surprise so I will not post it here.
+> The original code comes from [rosettacode.org](http://www.rosettacode.org/wiki/Sierpinski_triangle#C)
+>
+{: .challenge}
 
-Select an editor. The challenge is write this code in a file called `Sierpinski.c`
+> ## Exercise 2 (Needs X11)
+>
+> On the folder `workshops_hands-on/Introduction_HPC/4._Terminal-based_Editors` you will find a Java code on file `JuliaSet.java`.
+>
+> For this exercise you need to connect to the cluster with X11 support.
+> On Spruce that will be:
+>
+> ~~~
+> $ ssh -X <username>@spruce.hpc.wvu.edu
+> ~~~
+> {: .language-bash}
+>
+> Once you are there execute this command to load the Java compiler
+>
+> ~~~
+> $ module load lang/java/jdk1.8.0_201
+> ~~~
+> {: .language-bash}
+>
+> Once you have loaded the module go to the folder `workshops_hands-on/Introduction_HPC/4._Terminal-based_Editors` and compile > the Java code with this command
+>
+> ~~~
+> $ javac JuliaSet.java
+> ~~~
+> {: .language-bash}
+>
+> and execute the code with:
+>
+> ~~~
+> $ java JuliaSet
+> ~~~
+> {: .language-bash}
+>
+> A window should pop up on your screen.
+> Now, use one of the editors presented on this episode and do the changes mentioned on the source code to made the code > multithreaded.
+> Repeat the same steps for compiling and executing the code.
+>
+> Change a bit the parameters on the code, the size of the window for example or the constants CX and CY.
+>
+{: .challenge}
 
-~~~
-#include <stdio.h>
-
-#define SIZE (1 << 5)
-int main()
-{
-    int x, y, i;
-    for (y = SIZE - 1; y >= 0; y--, putchar('\n')) {
-        for (i = 0; i < y; i++) putchar(' ');
-        for (x = 0; x + y < SIZE; x++)
-            printf((x & y) ? "  " : "* ");
-    }
-    return 0;
-}
-
-~~~
-{: .source}
-
-For those using **vi**, here is the challenge. **You cannot use the arrow keys**. Not a single time!
-It is pretty hard if you are not used to it, but it is a good exercise to learn the commands.
-
-Another interesting challenge is to write the line `for (y = SIZE - 1; y >= 0; y--, putchar('\n'))` and copy and paste it to form the other 2 *for loops* in the code, and editing only after being copied.
-
-Once you have successfully written the source code, you can see your hard work in action.
-
-On the terminal screen, execute this:
-
-~~~
-$ gcc Sierpinski.c -o Sierpinski
-~~~
-{: .language-bash}
-
-This will compile your source code `Sierpinski.c` in C into a binary executable called `Sierpinski`. Execute the code with:
-
-~~~
-$ ./Sierpinski
-~~~
-{: .language-bash}
-
-The resulting output is kind of a surprise so I will not post it here.
-The original code comes from [rosettacode.org](http://www.rosettacode.org/wiki/Sierpinski_triangle#C)
-
-## Exercise
-
-On the folder `workshops_hands-on/Introduction_HPC/4._Terminal-based_Editors` you will find a Java code on file `JuliaSet.java`.
-
-For this exercise you need to connect to the cluster with X11 support.
-On Spruce that will be:
-
-~~~
-$ ssh -X <username>@spruce.hpc.wvu.edu
-~~~
-{: .language-bash}
-
-Once you are there execute this command to load the Java compiler
-
-~~~
-$ module load lang/java/jdk1.8.0_201
-~~~
-{: .language-bash}
-
-Once you have loaded the module go to the folder `workshops_hands-on/Introduction_HPC/4._Terminal-based_Editors` and compile the Java code with this command
-
-~~~
-$ javac JuliaSet.java
-~~~
-{: .language-bash}
-
-and execute the code with:
-
-~~~
-$ java JuliaSet
-~~~
-{: .language-bash}
-
-A window should pop up on your screen.
-Now, use one of the editors presented on this episode and do the changes mentioned on the source code to made the code multithreaded.
-Repeat the same steps for compiling and executing the code.
-
-Change a bit the parameters on the code, the size of the window for example or the constants CX and CY.
+> Exercise 3
+>
+> Download the data about Covid 19
+>
+> ~~~
+> $> sh download-covid19.sh
+> ~~~
+> {: .language-bash}
+>
+> Open the file ``owid-covid-data.csv`` with your favorite editor and search for the line with ``United States,2021-06-30``
+>
+> Go to to the first and last line on that file. The file is extense so do not try to scroll line by line.
+>
+{: .challenge}
 
 > ## Why vi was programmed to not use the arrow keys?
 >
