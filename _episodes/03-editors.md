@@ -357,18 +357,22 @@ A very beautiful Reference Card for vim can be found here: [Vim CheatSheet](http
 >
 {: .challenge}
 
-> Exercise 3
+> ## Exercise 3
 >
-> Download the data about Covid 19
+> On the folder `workshops_hands-on/Introduction_HPC/4._Terminal-based_Editors` there is a script ``download-covid19.sh``.
+> The script will download an updated compilation of Official Covid-19 cases around the world.
+> Download the data about Covid 19 ``owid-covid-data.csv`` using the command:
 >
 > ~~~
 > $> sh download-covid19.sh
 > ~~~
 > {: .language-bash}
 >
-> Open the file ``owid-covid-data.csv`` with your favorite editor and search for the line with ``United States,2021-06-30``
+> Open the file ``owid-covid-data.csv`` with your favorite editor.
+> Go to to the first and last line on that file. The file has too many lines to be scrolled line by line.
 >
-> Go to to the first and last line on that file. The file is extense so do not try to scroll line by line.
+> Search for the line with the string ``United States,2021-06-30``
+>
 >
 {: .challenge}
 
