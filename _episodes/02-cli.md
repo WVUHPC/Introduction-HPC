@@ -77,67 +77,6 @@ The shell typically uses `$ ` as the prompt, but may use a different symbol like
 
 <!--
 
-## Getting/opening a shell
-
-<div id="shell">
-<div>
-  <ul class="nav nav-tabs nav-justified" role="tablist">
-    <li role="presentation" class="active"><a data-os="windows" href="#shell-windows" aria-controls="Windows" role="tab" data-toggle="tab">Windows</a></li>
-    <li role="presentation"><a data-os="macos" href="#shell-macos" aria-controls="MacOS" role="tab" data-toggle="tab">MacOS</a></li>
-    <li role="presentation"><a data-os="linux" href="#shell-linux" aria-controls="Linux" role="tab" data-toggle="tab">Linux</a></li>
-  </ul>
-
-  <div class="tab-content">
-    <article role="tabpanel" class="tab-pane active" id="shell-windows">
-    <blockquote><p style = "font-family:georgia,garamond,serif;">
-    <h5>There is no bash terminal default on Windows. Below are the steps to acquire one.</h5>
-
-    <h4>Enable WSL</h4>
-    <ol>
-    <li>Press the Windows key and type "Windows Powershell".</li>
-    <li>Right-click and "Run as administrator".</li>
-    <li>Paste the following into the shell and press <code>enter</code>.</li>
-    <code>
-    dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
-    </code>
-    <li>Close the Powershell and restart the computer.</li>
-    </ol>
-    <h4>Download the Ubuntu Subspace</h4>
-    <ol>
-    <li>Press the Windows key.</li>
-    <li>Type "Microsoft Store" and press enter.</li>
-    <li>Search for "Ubuntu" (the search bar is in the top right of the store) and click the top-most result.</li>
-    <li>Install Ubuntu.</li>
-    </ol>
-    This installation gives your Windows a little bit of Linux inside of it. Launching the Ubuntu app will give you a terminal and environment quite similar to those of a Linux machine like our HPCs. Your normal "C drive", "D drive", and so on are found under <code>/mnt</code> in the subspace. More on accessing those later.
-    </p>
-    </blockquote>
-    </article>
-    <article role="tabpanel" class="tab-pane active" id="shell-macos">
-    <blockquote><p style = "font-family:georgia,garamond,serif;">
-
-    <h5>To open a terminal:</h5>
-    <ol>
-    <li>Click the Launchpad icon in the Dock.</li>
-    <li>Type Terminal in the search field.</li>
-    <li>Click Terminal.</li>
-    </ol>
-    The default terminal for MacOS starting with Catalina is zsh. To start a bash shell, type <code>bash</code> into the terminal and press <code>enter</code>.
-    </p>
-    </blockquote>
-
-    </article>
-    <article role="tabpanel" class="tab-pane active" id="shell-linux">
-    <blockquote><p style = "font-family:georgia,garamond,serif;">
-
-    <h5>If you have Linux but don't already know how to open a terminal, Google your distribution and "terminal" to find some instructions.</h5>
-
-    </p>
-    </blockquote>
-    </article>
-  </div>
-</div>
-</div>
 
 <details>
 <summary>Terminal on Windows 10</summary>
@@ -264,35 +203,6 @@ At this point, you will get a terminal prompt such as:
 {: .language-bash}
 
 All the commands executed from now on are happening on a remote machine, the Spruce Knob *head node*, this is the place were most of your direct interaction with the cluster happens.
-
-### Logging Out
-
-Logging out of a cluster can be done with the exit command:
-
-~~~
-$ exit
-~~~
-{: .language-bash}
-
-The exit command will attempt to terminate any process running on the head.
-In some cases, you will get an error that jobs are either currently running or currently stopped.  You can view stopped jobs using the `jobs` command:
-
-~~~
-$ jobs -l
-[1]+ 3325 Stopped            vim script56.py
-~~~
-{: .language-bash}
-
-The output of jobs -l will give you the job PID number (in this case 3325) and
-the command (vim script56.py).  To kill jobs preventing successful log out,
-use the kill command:
-
-~~~
-$ kill -s 9 3325
-~~~
-{: .language-bash}
-
-Once all jobs are terminated, the exit command will close the connection to the host.
 
 -->
 
