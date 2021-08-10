@@ -97,30 +97,6 @@ The directives are very similar to the serial case
 |:------------------|:------------|
 |#PBS -l nodes=1:ppn=16,walltime=00:30:00	| Indicates the job requires one node, using 16 processors per node, and 30 minutes of runtime. |
 
-> ## Exercise: Creating a Job script and submit it
->
-> On `workshops_hands-on/Introduction_HPC/6._Resource_Managment_Torque_Moab` you will find the same 3 ABINIT files that we worked on the Command Line Interface episode. The exercise is to prepare a submission script for computing the calculation. This is all that you need to know:
->
-> 1. You need to load the module for ABINIT.
->    Before that, it is good idea to purge the modules first to avoid conflicts with the modules that you probably are loading by default.
->    ~~~
->    module purge
->    module load atomistic/abinit/8.10.3_gcc82
->    ~~~
->    {: .bash}
->
->
-> 2. ABINIT works in parallel using MPI, for this exercise lets request 4 cores on a single node. The actual command to be executed is:
->    ~~~
->    mpirun -np 4 abinit < t17.files
->    ~~~
->    {: .bash}
->
->    Assuming that you have moved into the folder that has the 3 files.
->
->{: .source}
-{: .challenge}
-
 ### Job Arrays
 
 Job array is a way to submit many jobs that can be indexed. The jobs are
@@ -146,55 +122,6 @@ mpirun -np <PPN number> ./a.out
 There a few new elements here: `${PBS_ARRAYID}`  is a variable that receives one different value for each job in the range described from the `-t` variable.
 `#PBS -j oe` is an option often used for job arrays, it merges the standard output and error files in a single file, avoiding the overload of files for large job arrays.
 
-> ## Exercise: Job arrays
->
-> Using the same 3 files from our previous exercise, prepare a set of 5 folders called `1`, `2`, `3`, `4` and `5`. The file `14si.pspnc` is better as a symbolic link as that file will never change.
->
->> ## Solution
->>
->>  ~~~
->>  $ mkdir 1 2 3 4 5
->>  $ cp t17.* 1
->>  $ cp t17.* 2
->>  $ cp t17.* 3
->>  $ cp t17.* 4
->>  $ cp t17.* 5
->>  $ ln -s ../14si.pspnc 1/14si.pspnc
->>  $ ln -s ../14si.pspnc 2/14si.pspnc
->>  $ ln -s ../14si.pspnc 3/14si.pspnc
->>  $ ln -s ../14si.pspnc 4/14si.pspnc
->>  $ ln -s ../14si.pspnc 5/14si.pspnc
->>  ~~~
->>  {: .bash}
-> {: .solution}
->
-> Modify the submission script from the previous exercise to create a job array.
-> When executed, each job in the array receives a different value inside `${PBS_ARRAYID}`, we use the value to go into the corresponding folder and execute ABINIT there.
->
->> ## solution
->>
->> ~~~
->> #!/bin/bash
->>
->> #PBS -N ABINIT_${PBS_ARRAYID}
->> #PBS -l nodes=1:ppn=4
->> #PBS -q debug
->> #PBS -t 1-5
->> #PBS -j oe
->>
->> module purge
->> module load compilers/gcc/6.3.0 mpi/openmpi/2.1.2_gcc63 libraries/fftw/3.3.6_gcc63 compilers/intel/17.0.1_MKL_only  atomistic/abinit/8.6.3_gcc63
->>
->> cd $PBS_O_WORKDIR
->> cd ${PBS_ARRAYID}
->>
->> mpirun -np 4 abinit < t17.files
->> ~~~
->> {: .bash}
-> {: .solution}
->
->{: .source}
-{: .challenge}
 
 
 ### Environment variables
@@ -341,13 +268,6 @@ The prologue is also useful, it can check if the proper environment for the job 
 |>1	|other	                            |Job will be requeued|
 
 
-> ## Exercise: Prologue and Epilogue arrays
->
-> Add prologue and epilogue to the job array from the previous exercise
->
-{: .challenge}
-
-
 ## Interactive jobs with X11 Forwarding
 
 Sometimes you need to do some interactive job to create some plots and we would like to see the figures on the fly rather than, bring all the data back to the desktop, this example shows how to achieve that.
@@ -432,6 +352,86 @@ On the episode about Singularity we will see some other packages that use the X1
 |`qsub`	    |Submit jobs|
 |`qterm`	  |Shutdown pbs server daemon|
 |`tracejob`	|Trace job actions and states recorded in Torque logs (see Using "tracejob" to Locate Job Failures)|
+
+> ## Exercise 1: Creating a Job script and submit it
+>
+> On `workshops_hands-on/Introduction_HPC/6._Resource_Managment_Torque_Moab` you will find the same 3 ABINIT files that we worked on the Command Line Interface episode. The exercise is to prepare a submission script for computing the calculation. This is all that you need to know:
+>
+> 1. You need to load the module for ABINIT.
+>    Before that, it is good idea to purge the modules first to avoid conflicts with the modules that you probably are loading by default.
+>    ~~~
+>    module purge
+>    module load atomistic/abinit/8.10.3_gcc82
+>    ~~~
+>    {: .bash}
+>
+>
+> 2. ABINIT works in parallel using MPI, for this exercise lets request 4 cores on a single node. The actual command to be executed is:
+>    ~~~
+>    mpirun -np 4 abinit < t17.files
+>    ~~~
+>    {: .bash}
+>
+>    Assuming that you have moved into the folder that has the 3 files.
+>
+>{: .source}
+{: .challenge}
+
+> ## Exercise 2: Job arrays
+>
+> Using the same 3 files from our previous exercise, prepare a set of 5 folders called `1`, `2`, `3`, `4` and `5`. The file `14si.pspnc` is better as a symbolic link as that file will never change.
+>
+>> ## Solution
+>>
+>>  ~~~
+>>  $ mkdir 1 2 3 4 5
+>>  $ cp t17.* 1
+>>  $ cp t17.* 2
+>>  $ cp t17.* 3
+>>  $ cp t17.* 4
+>>  $ cp t17.* 5
+>>  $ ln -s ../14si.pspnc 1/14si.pspnc
+>>  $ ln -s ../14si.pspnc 2/14si.pspnc
+>>  $ ln -s ../14si.pspnc 3/14si.pspnc
+>>  $ ln -s ../14si.pspnc 4/14si.pspnc
+>>  $ ln -s ../14si.pspnc 5/14si.pspnc
+>>  ~~~
+>>  {: .bash}
+> {: .solution}
+>
+> Modify the submission script from the previous exercise to create a job array.
+> When executed, each job in the array receives a different value inside `${PBS_ARRAYID}`, we use the value to go into the corresponding folder and execute ABINIT there.
+>
+>> ## solution
+>>
+>> ~~~
+>> #!/bin/bash
+>>
+>> #PBS -N ABINIT_${PBS_ARRAYID}
+>> #PBS -l nodes=1:ppn=4
+>> #PBS -q debug
+>> #PBS -t 1-5
+>> #PBS -j oe
+>>
+>> module purge
+>> module load compilers/gcc/6.3.0 mpi/openmpi/2.1.2_gcc63 libraries/fftw/3.3.6_gcc63 compilers/intel/17.0.1_MKL_only  atomistic/abinit/8.6.3_gcc63
+>>
+>> cd $PBS_O_WORKDIR
+>> cd ${PBS_ARRAYID}
+>>
+>> mpirun -np 4 abinit < t17.files
+>> ~~~
+>> {: .bash}
+> {: .solution}
+>
+>{: .source}
+{: .challenge}
+
+> ## Exercise 3: Prologue and Epilogue arrays
+>
+> Add prologue and epilogue to the job array from the previous exercise
+>
+{: .challenge}
 
 
 {% include links.md %}
