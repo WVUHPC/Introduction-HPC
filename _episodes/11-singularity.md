@@ -1,7 +1,7 @@
 ---
 title: "Software Containers: Singularity"
-teaching: 50
-exercises: 10
+teaching: 35
+exercises: 5
 questions:
 - "What are software containers and how to use them?"
 objectives:
@@ -29,13 +29,17 @@ There are basically two scenarios, interactive execution and job submission.
 ### Interactive Job
 
 If you are using Visit or RStudio, programs that uses the X11 forwarding, ensure to connect first to the cluster with X11 forwarding, before asking for an interactive job.
-In order to connect into Spruce with X11 forwarding use:
+In order to connect into Thorny with X11 forwarding use:
 
 ~~~
-ssh -X <username>@spruce.hpc.wvu.edu
+ssh -X <username>@ssh.wvu.edu
 ~~~
 {: .source}
 
+~~~
+ssh -X <username>@tf.hpc.wvu.edu
+~~~
+{: .source}
 
 Once you have login into the cluster, create an interactive job with the following command line, in this case we are using standby as queue but any other queue is valid.
 
@@ -63,10 +67,12 @@ singularity shell /shared/software/containers/<Image Name>
 
 ### Job Submission
 
-In this case you do not need to export X11, just login into Spruce
+In this case you do not need to export X11, just login into Thorny Flat
 
 ~~~
-ssh <username>@spruce.hpc.wvu.edu
+ssh <username>@ssh.wvu.edu
+
+ssh <username>@tf.hpc.wvu.edu
 ~~~
 {: .source}
 

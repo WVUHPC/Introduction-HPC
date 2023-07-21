@@ -1,7 +1,7 @@
 ---
 title: "Shell Scripting"
-teaching: 50
-exercises: 10
+teaching: 35
+exercises: 5
 questions:
 - "What is Shell Scripting?"
 - "Why Shell Scripting is important in HPC?"
@@ -623,7 +623,7 @@ The following list shows the basic elements for regular expressions.
 *       - the preceding character matches 0 or more times.
 +       - the preceding character matches 1 or more times.
 {n}     - the preceding character matches exactly n times.
-{n,m}   - the preceding character matches at least n times        
+{n,m}   - the preceding character matches at least n times
           and not more than m times.
 [agd]   - the character is one of those included
           within the square brackets.

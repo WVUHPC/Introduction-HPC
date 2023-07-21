@@ -1,7 +1,7 @@
 ---
 title: "Compiling Codes"
-teaching: 50
-exercises: 10
+teaching: 35
+exercises: 5
 questions:
 - "How to compile code on the cluster?"
 objectives:
@@ -169,7 +169,7 @@ program randomsys2
     ! initialize random number generator seed
     ! if you remove this, the same numbers will be generated each
     ! time you run this code.
-    call init_random_seed()  
+    call init_random_seed()
 
     print *, "Input n ... "
     read *, n

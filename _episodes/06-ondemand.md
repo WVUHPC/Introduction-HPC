@@ -1,7 +1,7 @@
 ---
 title: "Open On-Demand"
-teaching: 50
-exercises: 10
+teaching: 35
+exercises: 5
 questions:
 - "How to access Thorny for interactive executions from the web browser?"
 objectives:

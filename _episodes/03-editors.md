@@ -1,7 +1,7 @@
 ---
 title: "Terminal-based Text Editors"
-teaching: 50
-exercises: 10
+teaching: 35
+exercises: 5
 questions:
 - "How do I edit files with the terminal?"
 objectives:
@@ -25,7 +25,7 @@ For modifying text files we need a different application, a text editor. Notice 
 Text editors work just with the characters, spaces and new lines. When a file only contain those elements without any information about formatting, the file is said is in "Plain Text". There is one important difference on how Windows and Linux/Linux marks new lines, making Windows "Text Files" as having some extra "spurious" characters at the end of each line and text files created on Linux as having no new lines at all when read with Windows applications like "Notepad".
 To solve this situation, there are a couple of applications on Linux that convert from one "flavor" of text file into the other. They are "dos2unix" and "unix2dos".
 
-There are several terminal-based text editors available on Linux/Unix.  
+There are several terminal-based text editors available on Linux/Unix.
 From those we have selected three to present on this episode for you.
 They are  **nano**, **emacs**, and **vim**.
 Your choice of an editor depends mostly on how much functionality do you want from your editor,
@@ -64,7 +64,7 @@ $ nano myfile.f90
 ~~~
 {: .language-bash}
 
-To leave the editor type <kbd>Ctrl</kbd>+<kbd>X</kbd>, you will be asked if you want to save your file to disk.  
+To leave the editor type <kbd>Ctrl</kbd>+<kbd>X</kbd>, you will be asked if you want to save your file to disk.
 Another option is to save the file with <kbd>Ctrl</kbd>+<kbd>O</kbd> but remaing on the editor.
 
 #### Moving around the file
@@ -75,11 +75,11 @@ To move to a specific line and column number use <kbd>Ctrl</kbd>+<kbd>_</kbd>, s
 
 #### Copy, cut and paste
 
-The use the internal capabilities of the text editor to copy and paste starts by selecting the area of text that you want to copy or cut. Use <kbd>Meta</kbd>+<kbd>A</kbd> to start selecting the area to copy use <kbd>Meta</kbd>+<kbd>6</kbd> to delete use  <kbd>Meta</kbd>+<kbd>Delete</kbd>, to cut but save the contents  <kbd>Ctrl</kbd>+<kbd>K</kbd> to paste the contents of the region <kbd>Ctrl</kbd>+<kbd>U</kbd>     
+The use the internal capabilities of the text editor to copy and paste starts by selecting the area of text that you want to copy or cut. Use <kbd>Meta</kbd>+<kbd>A</kbd> to start selecting the area to copy use <kbd>Meta</kbd>+<kbd>6</kbd> to delete use  <kbd>Meta</kbd>+<kbd>Delete</kbd>, to cut but save the contents  <kbd>Ctrl</kbd>+<kbd>K</kbd> to paste the contents of the region <kbd>Ctrl</kbd>+<kbd>U</kbd>
 
 #### Search for text and search and Replace
 
-To search use  <kbd>Ctrl</kbd>+<kbd>W</kbd>, you can repeat the command to searching for more matches, to search and replace use <kbd>Ctrl</kbd>+<kbd>\</kbd> enter the text to search and the text to replace in place.  
+To search use  <kbd>Ctrl</kbd>+<kbd>W</kbd>, you can repeat the command to searching for more matches, to search and replace use <kbd>Ctrl</kbd>+<kbd>\</kbd> enter the text to search and the text to replace in place.
 
 #### Reference
 
@@ -187,11 +187,11 @@ To go to the beginning of the file use <kbd>Meta</kbd>+<kbd><</kbd> to the end o
 
 #### Copy, cut and paste
 
-To copy or cut regions of text starts by selecting the area of text that you want to copy or cut. Use <kbd>Ctrl</kbd>+<kbd>Space</kbd> to start selecting the area. To copy use <kbd>Meta</kbd>+<kbd>W</kbd> to delete use  <kbd>Ctrl</kbd>+<kbd>K</kbd>, to cut but save the contents <kbd>Ctrl</kbd>+<kbd>W</kbd>. Finally, to paste the contents of the region <kbd>Ctrl</kbd>+<kbd>Y</kbd>     
+To copy or cut regions of text starts by selecting the area of text that you want to copy or cut. Use <kbd>Ctrl</kbd>+<kbd>Space</kbd> to start selecting the area. To copy use <kbd>Meta</kbd>+<kbd>W</kbd> to delete use  <kbd>Ctrl</kbd>+<kbd>K</kbd>, to cut but save the contents <kbd>Ctrl</kbd>+<kbd>W</kbd>. Finally, to paste the contents of the region <kbd>Ctrl</kbd>+<kbd>Y</kbd>
 
 #### Search for text and search and Replace
 
-To search use  <kbd>Ctrl</kbd>+<kbd>S</kbd>, you can repeat the command to searching for more matchs, to search and replace use <kbd>Meta</kbd>+<kbd>%</kbd> enter the text to search and the text to replace in place.  
+To search use  <kbd>Ctrl</kbd>+<kbd>S</kbd>, you can repeat the command to searching for more matchs, to search and replace use <kbd>Meta</kbd>+<kbd>%</kbd> enter the text to search and the text to replace in place.
 
 ### Reference
 
@@ -321,10 +321,11 @@ A very beautiful Reference Card for vim can be found here: [Vim CheatSheet](http
 > On the folder `workshops_hands-on/Introduction_HPC/4._Terminal-based_Editors` you will find a Java code on file `JuliaSet.java`.
 >
 > For this exercise you need to connect to the cluster with X11 support.
-> On Spruce that will be:
+> On Thorny Flat that will be:
 >
 > ~~~
-> $ ssh -X <username>@spruce.hpc.wvu.edu
+> $ ssh -X <username>@ssh.wvu.edu
+> $ ssh -X <username>@tf.hpc.wvu.edu
 > ~~~
 > {: .language-bash}
 >

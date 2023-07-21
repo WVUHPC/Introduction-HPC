@@ -1,7 +1,7 @@
 ---
 title: "Environment management: Conda"
-teaching: 50
-exercises: 10
+teaching: 35
+exercises: 5
 questions:
 - "What are software containers and how to use them?"
 objectives:
@@ -33,14 +33,7 @@ From the other side Miniconda is free minimal installer for conda.
 Miniconda is a small, bootstrap version of Anaconda that includes only conda, Python, the packages they depend on and a small number of other useful packages, including pip, zlib and a few others.
 Miniconda is more suited for HPC environments where a minimal installation is all that is needed and users can create their own environments as needed.
 
-## Activating Conda on Spruce and Thorny Flat
-
-On Spruce you can activate conda with:
-
-~~~
-source /shared/software/miniconda3/etc/profile.d/conda.sh
-~~~
-{: .language-bash}
+## Activating Conda on Thorny Flat
 
 On Thorny Flat the command to activate conda is:
 
@@ -64,7 +57,7 @@ That reduces the chances of incompatibility between them
 
 ### Knowing which environments are available
 
-By the time of writing this tutorial Spruce offers three environments
+By the time of writing this tutorial Thorny Flat offers three environments
 centrally installed::
 
 ~~~
@@ -72,17 +65,35 @@ $> conda info --envs
 
 # conda environments:
 #
-                         /scratch/gufranco/conda-intel
-base                     /shared/software/miniconda3
-genomics-core            /shared/software/miniconda3/envs/genomics-core
-jupyter                  /shared/software/miniconda3/envs/jupyter
-python27                 /shared/software/miniconda3/envs/python27
-python35                 /shared/software/miniconda3/envs/python35
-python36                 /shared/software/miniconda3/envs/python36
-python37                 /shared/software/miniconda3/envs/python37
-qiime2-2018.8            /shared/software/miniconda3/envs/qiime2-2018.8
-snowflakes               /shared/software/miniconda3/envs/snowflakes
-tpd0001                  /shared/software/miniconda3/envs/tpd0001
+base                  *  /shared/software/conda
+MD_2022                  /shared/software/conda/envs/MD_2022
+abienv_py36              /shared/software/conda/envs/abienv_py36
+abienv_py37              /shared/software/conda/envs/abienv_py37
+genomics-core-2020b      /shared/software/conda/envs/genomics-core-2020b
+genomics-core-2021a      /shared/software/conda/envs/genomics-core-2021a
+m3gnet                   /shared/software/conda/envs/m3gnet
+materials_discovery      /shared/software/conda/envs/materials_discovery
+moose                    /shared/software/conda/envs/moose
+neural_gpu               /shared/software/conda/envs/neural_gpu
+picrust                  /shared/software/conda/envs/picrust
+picrust2                 /shared/software/conda/envs/picrust2
+pymatgen                 /shared/software/conda/envs/pymatgen
+python27                 /shared/software/conda/envs/python27
+python35                 /shared/software/conda/envs/python35
+python36                 /shared/software/conda/envs/python36
+python37                 /shared/software/conda/envs/python37
+qiime2-2020.2            /shared/software/conda/envs/qiime2-2020.2
+qiime2-2021.2            /shared/software/conda/envs/qiime2-2021.2
+qiime2-2021.4            /shared/software/conda/envs/qiime2-2021.4
+qiime2-2022.2            /shared/software/conda/envs/qiime2-2022.2
+qiime2-2022.8            /shared/software/conda/envs/qiime2-2022.8
+qiime2-2023.2            /shared/software/conda/envs/qiime2-2023.2
+r_4.1                    /shared/software/conda/envs/r_4.1
+scipoptsuite             /shared/software/conda/envs/scipoptsuite
+sourcetracker2           /shared/software/conda/envs/sourcetracker2
+st2_py36                 /shared/software/conda/envs/st2_py36
+st2_py37                 /shared/software/conda/envs/st2_py37
+tensorflow18-py36        /shared/software/conda/envs/tensorflow18-py36
 ~~~
 {: .language-bash}
 
@@ -226,7 +237,7 @@ conda info --envs
 
 ### Conda and Python
 
-When you create a new environment, conda installs the same Python version used to install conda on Spruce and Thorny (3.7).
+When you create a new environment, conda installs the same Python version used to install conda on Thorny Flat (3.7).
 If you want to use a different version of Python, for example Python 2.7, simply create a new environment and specify the version of Python that you want::
 
 ~~~
@@ -369,7 +380,7 @@ environment. The YML file will look like this, for a simple case when
 you want one env for bowtie2 (bowtie2.yml)
 
 ~~~
-    name: spruce-bowtie2
+    name: thorny-bowtie2
     channels:
       - bioconda
       - conda-forge

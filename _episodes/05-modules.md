@@ -1,8 +1,8 @@
 ---
 title: "Environment Modules"
-start: 540
-teaching: 50
-exercises: 10
+start: 700
+teaching: 35
+exercises: 5
 questions:
 - "How to load modules to access software that I want to use for my research?"
 objectives:
@@ -113,8 +113,8 @@ The following table lists the most common module command options
 The basic procedure is to locate modules on a folder accessible by relevant users and add the variable `MODULEPATH` to your `.bashrc`
 
 `MODULEPATH` controls the path that the module command searches when looking for
-modulefiles.  
-Typically, it is set  to a  default  value by the bootstrap procedure.  
+modulefiles.
+Typically, it is set  to a  default  value by the bootstrap procedure.
 `MODULEPATH` can be set using ’module use’ or by the module initialization
 script to search group or personal modulefile directories before  or  after
 the master modulefile directory.
@@ -151,7 +151,7 @@ the master modulefile directory.
 >    {: .source}
 >
 >
->    At this point you should have received a list of errors, that is because even if the code is C++ it uses elements of the language that were not present at that time on C++ Specification. The code actually uses C++14 and only recent versions of GCC allows for these declarations. Lets check how many GCC compilers we have available on Spruce.
+>    At this point you should have received a list of errors, that is because even if the code is C++ it uses elements of the language that were not present at that time on C++ Specification. The code actually uses C++14 and only recent versions of GCC allows for these declarations. Lets check how many GCC compilers we have available on Thorny Flat.
 >
 >    ~~~
 >    module avail lang/gcc

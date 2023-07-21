@@ -1,8 +1,8 @@
 ---
 title: "Terminal Multiplexing: tmux"
-teaching: 50
-exercises: 10
-start: 540
+teaching: 35
+exercises: 5
+start: 600
 questions:
 - "What is a Terminal Multiplexer?"
 - "How I can use tmux?"
@@ -97,7 +97,7 @@ You have one window with one pane inside that fills the entire space.
 You can create new *tmux* windows with **C-b c**. Start creating a few of them.
 Each new window will appears in the bottom *tmux* bar. The first 10 are identified with a number from a digit number from 0 to 9.
 
-Moving between windows is done using the number associated on the bottom bar of *tmux*, to move to the first window (with number 0) use **C-b 0**, similarly for all the first 10 windows. You can create more windows beyond the first 10 but only for those you can jump into them using the **C-b <WIN no>** combination. Another way of moving between the previous and next window. Use  
+Moving between windows is done using the number associated on the bottom bar of *tmux*, to move to the first window (with number 0) use **C-b 0**, similarly for all the first 10 windows. You can create more windows beyond the first 10 but only for those you can jump into them using the **C-b <WIN no>** combination. Another way of moving between the previous and next window. Use
 **C-b p** and **C-b n** for the previous and next respectively. You can change the number of a window using **C-b .**
 
 Notice that windows receive names shown on the bottom bar in *tmux*. You can change the name of the window using **C-b ,**. This is useful to generate windows with consistent names for the task or project related to the window.
@@ -220,7 +220,7 @@ There is a lot of things that can be changed to everyones taste. There are sever
 >
 > Using the tables above follow this simple challenge with tmux
 >
-> 1. Log in to Spruce and create a tmux session
+> 1. Log in to Thorny Flat and create a tmux session
 >
 > 2. Inside the session create a new window
 >
@@ -229,7 +229,7 @@ There is a lot of things that can be changed to everyones taste. There are sever
 > 4. Create a big clock pane
 >
 > 5. Detach from your current session, close your terminal and reconnect.
-> Log in again on Spruce and reattach your session.
+> Log in again on Thorny Flat and reattach your session.
 >
 > 6. Now that you are again in you original session, create a new session.
 > You will be automatically redirected there. Leave your session, check the list of sessions.

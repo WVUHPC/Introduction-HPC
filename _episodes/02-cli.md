@@ -1,7 +1,7 @@
 ---
 title: "Command Line Interface"
-teaching: 50
-exercises: 10
+teaching: 35
+exercises: 5
 questions:
 - "How do I use the Linux terminal?"
 objectives:
@@ -156,20 +156,6 @@ Where ``<username>`` is your *WVU Login account* username and ``<hostname>`` is 
 The -X option is used to forward X windows applications running on the server to be forwarded to your local machine.
 Remember that the ``$`` symbols above are there to indicate a command on the terminal, you should not enter those initial characters.
 
-We currently have two clusters **Thorny Flat** and **Spruce Knob**
-
-### Spruce Knob
-
-To connect to Spruce Knob use the following command:
-
-~~~
-  $ ssh <username>@spruce.hpc.wvu.edu
-~~~
-{: .language-bash}
-
-**Note:** Two-factor authentication is required to connect to Spruce Knob when not on WVU's Main Campus Network.  More about WVU's Two-Factor Authentication system can be found [here](https://wvu.teamdynamix.com/TDClient/KB/Default?CategoryID=3626)
-
-
 ### Thorny Flat
 
 To connect to Thorny Flat, you will first have to connect to WVU's SSH gateway server.  This gateway server will allow you to connect the Thorny Flat, which is hosted at the Pittsburgh Supercomputing Center.
@@ -202,7 +188,7 @@ At this point, you will get a terminal prompt such as:
 ~~~
 {: .language-bash}
 
-All the commands executed from now on are happening on a remote machine, the Spruce Knob *head node*, this is the place were most of your direct interaction with the cluster happens.
+All the commands executed from now on are happening on a remote machine, the Thorny Flat *head node*, this is the place were most of your direct interaction with the cluster happens.
 
 -->
 
@@ -711,7 +697,7 @@ The next table summarizes those commands.
 
 > ## Exercise 1
 >
-> Get into Spruce or Thorny with your training account and execute the commands `ls`, `date` and `cal`
+> Get into Thorny Flat with your training account and execute the commands `ls`, `date` and `cal`
 >
 > Exit from the cluster with `exit`
 >
@@ -764,9 +750,9 @@ The next table summarizes those commands.
 > ~~~
 > {: .language-bash}
 > ~~~
->                          2021                               
+>                          2021
 >
-> January               February                 March       
+> January               February                 March
 > Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa
 > 1  2       1  2  3  4  5  6       1  2  3  4  5  6
 > 3  4  5  6  7  8  9    7  8  9 10 11 12 13    7  8  9 10 11 12 13
@@ -774,7 +760,7 @@ The next table summarizes those commands.
 > 17 18 19 20 21 22 23   21 22 23 24 25 26 27   21 22 23 24 25 26 27
 > 24 25 26 27 28 29 30   28                     28 29 30 31
 > 31
-> April                   May                   June        
+> April                   May                   June
 > Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa
 > 1  2  3                      1          1  2  3  4  5
 > 4  5  6  7  8  9 10    2  3  4  5  6  7  8    6  7  8  9 10 11 12
@@ -782,7 +768,7 @@ The next table summarizes those commands.
 > 18 19 20 21 22 23 24   16 17 18 19 20 21 22   20 21 22 23 24 25 26
 > 25 26 27 28 29 30      23 24 25 26 27 28 29   27 28 29 30
 > 30 31
-> July                  August                September     
+> July                  August                September
 > Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa
 > 1  2  3    1  2  3  4  5  6  7             1  2  3  4
 > 4  5  6  7  8  9 10    8  9 10 11 12 13 14    5  6  7  8  9 10 11
@@ -790,7 +776,7 @@ The next table summarizes those commands.
 > 18 19 20 21 22 23 24   22 23 24 25 26 27 28   19 20 21 22 23 24 25
 > 25 26 27 28 29 30 31   29 30 31               26 27 28 29 30
 >
-> October               November               December      
+> October               November               December
 > Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa   Su Mo Tu We Th Fr Sa
 > 1  2       1  2  3  4  5  6             1  2  3  4
 > 3  4  5  6  7  8  9    7  8  9 10 11 12 13    5  6  7  8  9 10 11
@@ -872,6 +858,55 @@ The next table summarizes those commands.
 > >
 {: .challenge}
 
+
+## Grabbing files from the internet
+
+To download files from the internet,
+the absolute best tool is `wget`.
+The syntax is relatively straightforwards: `wget https://some/link/to/a/file.tar.gz`
+
+> ## Downloading the Drosophila genome
+> The *Drosophila melanogaster* reference genome is located at the following website:
+> [http://metazoa.ensembl.org/Drosophila_melanogaster/Info/Index](http://metazoa.ensembl.org/Drosophila_melanogaster/Info/Index).
+> Download it to the cluster with `wget`.
+>
+> * `cd` to your genome directory
+> * Copy this url and paste it onto the command line:
+>
+>
+>       $> wget ftp://ftp.ensemblgenomes.org:21/pub/metazoa/release-51/fasta/drosophila_melanogaster/dna/Drosophila_melanogaster.BDGP6.32.dna_rm.toplevel.fa.gz
+>
+{: .challenge}
+
+> ## Working with compressed files, using unzip and gunzip
+>
+> The file we just downloaded is gzipped (has the `.gz`
+> extension).
+>You can uncompress it with `gunzip filename.gz`.
+>
+>File decompression reference:
+>
+>* **.tar.gz** - `tar -xzvf archive-name.tar.gz`
+>* **.tar.bz2** - `tar -xjvf archive-name.tar.bz2`
+>* **.zip** - `unzip archive-name.zip`
+>* **.rar** - `unrar archive-name.rar`
+>* **.7z** - `7z x archive-name.7z`
+>
+>However, sometimes we will want to compress files
+>ourselves to make file transfers easier.
+>The larger the file, the longer it will take to
+>transfer.
+>Moreover, we can compress a whole bunch of little
+>files into one big file to make it easier
+>on us (no one likes transferring 70000) little files!
+>
+>The two compression commands we'll probably want to
+>remember are the following:
+>
+>* Compress a single file with Gzip - `gzip filename`
+>* Compress a lot of files/folders with Gzip - `tar -czvf archive-name.tar.gz folder1 file2 folder3 etc`
+>
+{: .callout}
 
 
 {% include links.md %}

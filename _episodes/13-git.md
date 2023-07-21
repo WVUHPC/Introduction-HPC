@@ -1,8 +1,8 @@
 ---
 title: "Version Control: git"
-start: 540
-teaching: 50
-exercises: 10
+start: 600
+teaching: 35
+exercises: 5
 questions:
 - "How to keep track of changes in text files?"
 objectives:
@@ -248,7 +248,7 @@ Transcript written on paper.log.
 ~~~
 {: .output}
 
-Teaching LaTeX is out of scope here, at least on Spruce, the command for generating the paper should work, in your own computer, you need a LateX distribution see [https://www.latex-project.org](LaTeX Project) for LaTeX distros for your OS.
+Teaching LaTeX is out of scope here, at least on Thorny, the command for generating the paper should work, in your own computer, you need a LateX distribution see [https://www.latex-project.org](LaTeX Project) for LaTeX distros for your OS.
 
 ~~~
 $ cd ..
