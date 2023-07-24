@@ -1,6 +1,6 @@
 ---
 title: "Introduction"
-start: 660
+start: 600
 teaching: 35
 exercises: 5
 questions:
@@ -29,6 +29,7 @@ One important class of Supercomputers is called **HPC clusters**..
 An HPC cluster is made of tens, hundreds, or even thousands of relatively normal computers especially connected to perform intensive computational operations.
 Those *normal computers* are called **nodes** and could work independently of each other, or together on a single job.
 In most cases the kind of operations that Supercomputers do involve large numerical calculations that take too much time to complete and therefore are simply unfeasible to perform on a normal desktop computer or even powerful workstations.
+
 
 ## What are the specifications of my own computer?
 
@@ -326,6 +327,24 @@ Latency relates to the obstruction that data faces before the first bit reaches 
 Both elements are important in HPC data communication and are minimized with very expensive network devices.
 Examples of network technologies in HPC are Infiniband and OmniPath.
 
+## WVU High-Performance Computer Clusters
+
+West Virginia University has 2 main clusters: Thorny Flat and Dolly Sods, our newest cluster that will be available later in August 2023.
+
+<a href="{{ page.root }}/fig/WVU_HPC_Clusters.png">
+<img src="{{ page.root }}/fig/WVU_HPC_Clusters.png" alt="WVU HPC Clusters" style="width:100%" />
+</a>
+
+### Thorny Flat
+
+Thorny Flat is a general-purpose HPC cluster with 178 compute nodes, most nodes have 40 CPU cores. The total CPU core count is 6516 cores. 
+There are 47 NVIDIA GPU cards ranging from P6000, RTX6000, and A100
+
+### Dolly Sods
+
+Dolly Sods is our newest cluster and it is specialized in GPU computing. It has 37 nodes and 155 NVIDIA GPU cards ranging from A30, A40 and A100.
+The total CPU core count is 1248.
+
 
 ## Command Line
 
@@ -406,7 +425,7 @@ low, since logging your keystrokes requires a malicious exploit or physical
 access. For systems like {{ site.remote.host }} running an SSH server, anybody
 on the network can log in, or try to. Since usernames are often public or easy
 to guess, your password is often the weakest link in the security chain. Many
-clusters therefore forbid password-based login, requiring instead that you
+clusters, therefore, forbid password-based login, requiring instead that you
 generate and configure a public-private key pair with a much stronger password.
 Even if your cluster does not require it, the next section will guide you
 through the use of SSH keys and an SSH agent to both strengthen your security
@@ -435,6 +454,23 @@ _and_ make it more convenient to log in to remote systems.
 >
 {: .challenge}
 
+## High Performace Computing and Geopolitics
+
+<a href="{{ page.root }}/fig/4Top500_HPC_Clusters.png">
+<img src="{{ page.root }}/fig/4Top500_HPC_Clusters.png" alt="4 Top500 HPC Clusters" />
+</a>
+
+Western democracies are losing the global technological competition, including the race for scientific and research breakthroughs, and the ability to retain global talent—crucial ingredients that underpin the development and control of the world’s most important technologies, including those that don’t yet exist.
+
+The Australian Strategic Policy Institute (ASPI) released in 2023 a <a href="https://www.aspi.org.au/report/critical-technology-tracker">report</a> studying the position of big powers in 44 critical areas of technology.
+
+The report says that China’s global lead extends to 37 out of the 44 technologies. Those 44 technologies range from fields spanning defense, space, robotics, energy, the environment, biotechnology, artificial intelligence (AI), advanced materials, and key quantum technology areas.
+
+<a href="{{ page.root }}/fig/ASPI’s Critical Technology Tracker.png">
+<img src="{{ page.root }}/fig/ASPI’s Critical Technology Tracker.png" alt="IASPI’s Critical Technology Tracker" />
+</a>
+
+From that report, the US still leads in High-Performance Computing. HPC is a critical enabler for innovation in some other critical technologies and scientific discoveries. New materials, drugs, energy sources, and aerospace technologies. All of them rely on simulations and modeling that are carried out with HPC clusters.
 
 
 {% include links.md %}
