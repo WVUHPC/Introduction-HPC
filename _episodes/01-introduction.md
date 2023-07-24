@@ -12,7 +12,7 @@ objectives:
 - "Learn the components of the HPC"
 - "Learn the basic terminology in HPC"
 keypoints:
-- "Learn about CPUs, cores, and cache, and compare your own machine with an HPC cluster"
+- "Learn about CPUs, cores, and cache, and compare your machine with an HPC cluster"
 - "Identify how an HPC cluster could benefit your research."
 ---
 
@@ -31,17 +31,17 @@ Those *normal computers* are called **nodes** and could work independently of ea
 In most cases the kind of operations that Supercomputers do involve large numerical calculations that take too much time to complete and therefore are simply unfeasible to perform on a normal desktop computer or even powerful workstations.
 
 
-## What are the specifications of my own computer?
+## What are the specifications of my computer?
 
 One way of understanding what Supercomputing is could be attained by comparing an HPC cluster with your own desktop computer.
-This is a good way of getting a sense of the scale and speed and power of supercomputers.
+This is a good way of getting a sense of supercomputers' scale, speed, and power.
 
 The first exercise consists on collect some important information about the computer you have in front of you, we will use that information to the features of our HPC cluster.
 From your computer, gather information about the CPU, number of Cores, Total RAM memory, and Hard Drive.
 
 You can see specs for our cluster [Thorny Flat](https://docs.hpc.wvu.edu/text/83.ThornyFlat.html)
 
-Try to gather an idea on the Hardware present on your machine and see the hardware we have on Thorny Flat
+Try to gather an idea of the Hardware present on your machine and see the hardware we have on Thorny Flat
 
 Here are some tricks to get that data from several Operating Systems
 
@@ -55,7 +55,7 @@ Here are some tricks to get that data from several Operating Systems
 
   <div class="tab-content">
     <article role="tabpanel" class="tab-pane active" id="shell-windows">
-      Open the File Explorer, search for the icon, "This PC" and click with the right mouse button and click properties.
+      Open the File Explorer, search for the icon, "This PC" click with the right mouse button and click properties.
 
       You should be able to see something like:
 
@@ -80,7 +80,7 @@ Here are some tricks to get that data from several Operating Systems
     </article>
     <article role="tabpanel" class="tab-pane active" id="shell-linux">
     <p>
-    In Linux gathering the data from a GUI depends a lot from more from the exact distribution you are using here some tools that you can try
+    In Linux gathering the data from a GUI depends a lot more from the exact distribution you are using here some tools that you can try
 
     <h4> KDE Info Center </h4>
 
@@ -391,7 +391,7 @@ icons, widgets, and perhaps some windows or applications: a _graphical user
 interface_, or GUI. Since computer clusters are remote resources that we
 connect to over slow or intermittent interfaces (WiFi and VPNs especially), it
 is more practical to use a _command-line interface_, or CLI, to send commands
-as plain-text. If a command returns output, it is printed as plain text as
+as plain text. If a command returns output, it is printed as plain text as
 well. The commands we run today will not open a window to show graphical
 results.
 
@@ -419,7 +419,7 @@ email address: the "@" symbol is used to separate the personal ID from the
 address of the remote machine.
 
 When logging in to a laptop, tablet, or other personal device, a username,
-password, or pattern are normally required to prevent unauthorized access. In
+password, or pattern is normally required to prevent unauthorized access. In
 these situations, the likelihood of somebody else intercepting your password is
 low, since logging your keystrokes requires a malicious exploit or physical
 access. For systems like {{ site.remote.host }} running an SSH server, anybody
@@ -454,7 +454,7 @@ _and_ make it more convenient to log in to remote systems.
 >
 {: .challenge}
 
-## High Performace Computing and Geopolitics
+## High-Performance Computing and Geopolitics
 
 <a href="{{ page.root }}/fig/4Top500_HPC_Clusters.png">
 <img src="{{ page.root }}/fig/4Top500_HPC_Clusters.png" alt="4 Top500 HPC Clusters" />
