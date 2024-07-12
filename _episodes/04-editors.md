@@ -1,6 +1,6 @@
 ---
 title: "Terminal-based Text Editors"
-start: 600
+start: 540
 teaching: 60
 exercises: 30
 questions:

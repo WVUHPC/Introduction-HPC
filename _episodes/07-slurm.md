@@ -1,5 +1,6 @@
 ---
 title: "Scheduling jobs"
+start: 540
 teaching: 60
 exercises: 30
 questions:

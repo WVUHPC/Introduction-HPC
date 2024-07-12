@@ -1,6 +1,6 @@
 ---
 title: "Introduction to Supercomputing"
-start: 600
+start: 540
 teaching: 60
 exercises: 30
 questions:
