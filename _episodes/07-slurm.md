@@ -1,7 +1,7 @@
 ---
 title: "Scheduling jobs"
-teaching: 35
-exercises: 5
+teaching: 60
+exercises: 30
 questions:
 - "What is a scheduler and why are they used?"
 - "How do we submit a job on an HPC cluster?"

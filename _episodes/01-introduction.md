@@ -1,8 +1,8 @@
 ---
-title: "Introduction"
+title: "Introduction to Supercomputing"
 start: 600
-teaching: 35
-exercises: 5
+teaching: 60
+exercises: 30
 questions:
 - "What is High-Performance Computing?"
 - "What is an HPC cluster or Supercomputer?"
@@ -337,7 +337,7 @@ West Virginia University has 2 main clusters: Thorny Flat and Dolly Sods, our ne
 
 ### Thorny Flat
 
-Thorny Flat is a general-purpose HPC cluster with 178 compute nodes, most nodes have 40 CPU cores. The total CPU core count is 6516 cores. 
+Thorny Flat is a general-purpose HPC cluster with 178 compute nodes, most nodes have 40 CPU cores. The total CPU core count is 6516 cores.
 There are 47 NVIDIA GPU cards ranging from P6000, RTX6000, and A100
 
 ### Dolly Sods

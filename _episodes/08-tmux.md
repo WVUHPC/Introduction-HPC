@@ -1,7 +1,7 @@
 ---
 title: "Terminal Multiplexing: tmux"
-teaching: 35
-exercises: 5
+teaching: 60
+exercises: 30
 start: 600
 questions:
 - "What is a Terminal Multiplexer?"

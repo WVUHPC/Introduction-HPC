@@ -1,8 +1,8 @@
 ---
 title: "Terminal-based Text Editors"
 start: 600
-teaching: 35
-exercises: 5
+teaching: 60
+exercises: 30
 questions:
 - "How do I edit files with the terminal?"
 objectives:
