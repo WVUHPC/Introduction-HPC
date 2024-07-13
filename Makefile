@@ -6,7 +6,7 @@ export SHELL = /bin/bash
 
 # Settings
 MAKEFILES=Makefile $(wildcard *.mk)
-JEKYLL=bundle install --path .vendor/bundle && bundle update && bundle exec jekyll
+JEKYLL=bundle install --path .vendor/bundle && echo bundle update && bundle exec jekyll
 PARSER=bin/markdown_ast.rb
 DST=_site
 

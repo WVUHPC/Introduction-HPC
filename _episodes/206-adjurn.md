@@ -1,7 +1,7 @@
 ---
 layout: break
 title: "Adjurn"
-break:
+break: 120
 ---
 
 Use the `break` layout for placeholder episodes representing coffee breaks and lunches.
