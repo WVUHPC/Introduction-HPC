@@ -6,13 +6,13 @@ exercises: 30
 questions:
 - "What is High-Performance Computing?"
 - "What is an HPC cluster or Supercomputer?"
-- "How my computer compares with an HPC cluster?"
-- "Which are the main concepts in High-Performance Computing"
+- "How does my computer compare with an HPC cluster?"
+- "Which are the main concepts in High-Performance Computing?"
 objectives:
 - "Learn the components of the HPC"
 - "Learn the basic terminology in HPC"
 keypoints:
-- "Learn about CPUs, cores, and cache, and compare your machine with an HPC cluster"
+- "Learn about CPUs, cores, and cache, and compare your machine with an HPC cluster."
 - "Identify how an HPC cluster could benefit your research."
 ---
 
@@ -20,28 +20,67 @@ keypoints:
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/R59I_wjBhqA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-Scientific computing consists of using computers to perform scientific calculations.
-In many cases, those computations are beyond the capabilities of normal desktop and laptop computers.
-When the calculations exceed what you can normally do with a single computer we are in the realm of **High-Performance Computing** (HPC).
-High-Performance Computing is all about **size** and **speed**.
-The machines used for HPC are called **Supercomputers**, large machines designed to perform large-scale calculations.
-One important class of Supercomputers is called **HPC clusters**..
-An HPC cluster is made of tens, hundreds, or even thousands of relatively normal computers especially connected to perform intensive computational operations.
-Those *normal computers* are called **nodes** and could work independently of each other, or together on a single job.
-In most cases the kind of operations that Supercomputers do involve large numerical calculations that take too much time to complete and therefore are simply unfeasible to perform on a normal desktop computer or even powerful workstations.
+In everyday life, we are doing calculations. Before paying for some items, we may be interested in the total price. For that, we can do the sum on our heads, on paper, or by using the calculator that is now integrated into today's smartphones. Those are simple operations. To compute interest on a loan or mortgage, we could better use a spreadsheet or web application to calculate loans and mortgages.
+There are more demanding calculations like those needed for computing statistics for a project, fitting some experimental values to a theoretical function, or analyzing the features of an image. Modern computers are more than capable of these tasks, and many friendly software applications are capable of solving those problems with an ordinary computer. 
 
+Scientific computing consists of using computers to answer questions that require computational resources.
+Several of the examples given fit the definition of scientific computations. 
+Experimental problems can be modeled in the framework of some theory. 
+We can use known scientific principles to simulate the behavior of atoms, molecules, fluids, bridges, or stars.
+We can train computers to recognize cancer on images or cardiac diseases from electrocardiograms. 
+Some of those problems could be beyond the capabilities of regular desktop and laptop computers. 
+In those cases, we need special machines capable of processing all the necessary computations in a reasonable time to get the answers we expect.
+
+When the known solution to a computational problem exceeds what you can typically do with a single computer, we are in the realm of Supercomputing, and one area in supercomputing is called **High-Performance Computing** (HPC).
+
+There are supercomputers of the most diverse kinds.
+Some of them do not resemble at all what you can think about a computer.
+Those are machines designed from scratch for very particular tasks, all the electronics are specifically designed to run very efficiently a narrow set of calculations, and those machines could be as big as entire rooms.
+
+However, there is a class of supercomputers made of machines relatively similar to regular computers.
+Regular desktop computers (towers) aggregated and connected with some network, such as Ethernet, were one of the first supercomputers built from commodity hardware. 
+These clusters were instrumental in developing the cheaper supercomputers devoted to scientific computing and are called **Beowulf clusters**.
+
+When more customized computers are used, those towers are replaced by slabs and positioned in racks. 
+To increase the number of machines on the rack, several motherboards are sometimes added to a single chassis, and to improve performance, very fast networks are used. Those are what we understand today as HPC clusters.
+
+
+In the world of HPC, machines are conceived based on the concepts of **size** and **speed**.
+The machines used for HPC are called **Supercomputers**, big machines designed to perform large-scale calculations.
+Supercomputers can be built for particular tasks or as aggregated or relatively common computers; in the latter case, we call those machines **HPC clusters**.
+An HPC cluster comprises tens, hundreds, or even thousands of relatively normal computers, especially connected to perform intensive computational operations and using software that makes these computers appear as a single entity rather than a network of independent machines.
+
+Those *computers* are called **nodes** and can work independently of each other or together on a single job.
+In most cases, the kind of operations that supercomputers try to solve involves extensive numerical calculations that take too much time to complete and, therefore, are unfeasible to perform on an ordinary desktop computer or even the most powerful workstations.
+
+## Anatomy of an HPC Cluster
+
+<a href="{{ page.root }}/fig/compute_cluster.png">
+        <img src="{{ page.root }}/fig/compute_cluster.png" alt="HPC Cluster" />
+      </a>
+
+The diagram above shows that an HPC cluster comprises several computers, here depicted as desktop towers. Still, in modern HPC clusters, those towers are replaced by computers that can be stacked into racks.
+All those computers are called nodes, the machines that execute your jobs are called "compute nodes," and all other computers in charge of orchestration, monitoring, storage, and allowing access to users are called "infrastructure nodes."
+Storage is usually separated into nodes specialized to read and write from large pools of drives, either mechanical drives (HDD), solid-state drives (SSD), or even a combination of both.
+Access to the HPC cluster is done via a special infrastructure node called the "login node."
+A single login node is enough in clusters serving a relatively small number of users. 
+Larger clusters with thousands of users can have several login nodes to balance the load.
+
+Despite an HPC cluster being composed of several computers, the cluster itself should be considered an entity, i.e., a system. 
+In most cases, you are not concerned about where your code is executed or whether one or two machines are online or offline. 
+All that matters is the capacity of the system to process jobs, execute your calculations in one of the many resources available, and deliver the results in a storage that you can easily access.
 
 ## What are the specifications of my computer?
 
-One way of understanding what Supercomputing is could be attained by comparing an HPC cluster with your own desktop computer.
-This is a good way of getting a sense of supercomputers' scale, speed, and power.
+One way of understanding what Supercomputing is all about is to start by comparing an HPC cluster with your desktop computer.
+This is a good way of understanding supercomputers' scale, speed, and power.
 
-The first exercise consists on collect some important information about the computer you have in front of you, we will use that information to the features of our HPC cluster.
-From your computer, gather information about the CPU, number of Cores, Total RAM memory, and Hard Drive.
+The first exercise consists of collecting critical information about the computer you have in front of you. We will use that information to identify the features of our HPC cluster.
+Gather information about the CPU, number of Cores, Total RAM, and Hard Drive from your computer.
 
 You can see specs for our cluster [Thorny Flat](https://docs.hpc.wvu.edu/text/83.ThornyFlat.html)
 
-Try to gather an idea of the Hardware present on your machine and see the hardware we have on Thorny Flat
+Try to gather an idea of the Hardware present on your machine and see the hardware we have on Thorny Flat.
 
 Here are some tricks to get that data from several Operating Systems
 
@@ -55,7 +94,7 @@ Here are some tricks to get that data from several Operating Systems
 
   <div class="tab-content">
     <article role="tabpanel" class="tab-pane active" id="shell-windows">
-      Open the File Explorer, search for the icon, "This PC" click with the right mouse button and click properties.
+      Open the File Explorer, search for the icon "This PC" click with the right mouse button and click properties.
 
       You should be able to see something like:
 
@@ -80,7 +119,9 @@ Here are some tricks to get that data from several Operating Systems
     </article>
     <article role="tabpanel" class="tab-pane active" id="shell-linux">
     <p>
-    In Linux gathering the data from a GUI depends a lot more from the exact distribution you are using here some tools that you can try
+
+    In Linux, gathering the data from a GUI depends much more on the exact distribution you use. 
+    Here are some tools that you can try:
 
     <h4> KDE Info Center </h4>
 
@@ -105,7 +146,8 @@ Here are some tricks to get that data from several Operating Systems
 </div>
 </div>
 {% comment %}
-    It is probably easier from the command line CLI but this is too early of a stage for that. In case you know how to get access to a terminal here are a few commands to try:
+    It is probably easier to get info from the command line interface (CLI), but this could be a daunting task if you are not familiar with terminals and commands. 
+    In case you know how to get access to a terminal, here are a few commands to try:
 
     <code>
     bash-4.2# cat /proc/cpuinfo
@@ -162,12 +204,12 @@ Using a cluster often has the following advantages for researchers:
 * **Speed.** An HPC cluster has many more CPU cores, often with higher performance specs,
   than a typical laptop or desktop, HPC systems can offer
   significant speed up.
-* **Volume.** Many HPC systems have both processing memory (RAM) and disk
-  storage to handle very large amounts of data. Terabytes of RAM and
-  petabytes of storage are available for research projects.
+* **Volume.** Many HPC systems have processing memory (RAM) and disk
+  storage to handle large amounts of data. Many GB of RAM and
+  TeraBytes (TB) storage is available for research projects.
   Desktop computers rarely achieve the same amount of memory and storage.
-* **Efficiency.** Many HPC systems operate a pool of resources that are drawn
-  on by many users.  In most cases when the pool is large and diverse enough
+* **Efficiency.** Many HPC systems operate a pool of resources drawn
+  on by many users.  In most cases when the pool is large and diverse enough,
   the resources on the system are used almost constantly.
   A healthy HPC system usually achieves utilization on top of 80%.
   A normal desktop computer is idle for most of the day.
@@ -176,36 +218,29 @@ Using a cluster often has the following advantages for researchers:
   would be otherwise.
   There are also economies done in terms of energy and human maintenance costs
   compared with desktop computers
-* **Convenience.** Maybe your calculations just take a long time to run or are
+* **Convenience.** Maybe your calculations take a long time to run or are
   otherwise inconvenient to run on your personal computer. There's no need to
-  tie up your own computer for hours when you can use someone else's instead.
-  Running on your own machine could make it impossible to use it for other
+  tie up your computer for hours when you can use someone else's instead.
+  Running on your machine could make it impossible to use it for other
   common tasks.
 
 ## Compute nodes
 
-There are supercomputers of the most diverse kinds.
-Some of them do not resemble at all what you can think about a computer.
-However, there is a class of supercomputers that are made of machines that are relatively similar to normal computers.
-Actual normal desktop computers (towers) aggregated and connected with some sort of network are called **Beowulf clusters**.
-These kinds of clusters were instrumental in the development of the first clusters devoted to scientific computing.
-When more customized computers are used, using racks, sometimes adding several motherboards on a single chassis, and using very fast networks, those are what we understand now as HPC clusters.
-
-On an HPC cluster, each machine is an independent computer.
+On an HPC cluster, we have many machines, and each of them is a perfectly functional computer.
 It runs its copy of the Operating System, its mainboard, memory, and CPUs.
-All the internal components are the same as you will find inside a desktop or laptop computer.
+All the internal components are the same as inside a desktop or laptop computer.
 The difference is subtle details like heat management systems, remote administration, subsystems to notify errors, special network storage devices, and parallel filesystems.
-All these subtle, important, and expensive differences are what make HPC clusters different from Beowulf clusters and normal PCs.
+All these subtle, important, and expensive differences make HPC clusters different from Beowulf clusters and normal PCs.
 
 There are several kinds of computers in an HPC cluster.
-Most of the machines are used for running the scientific calculations and are called **Compute Nodes**.
+Most machines are used for running scientific calculations and are called **Compute Nodes**.
 A few machines are dedicated to administrative tasks, controlling the software that distributes jobs in the cluster, monitoring the health of all compute nodes, and interacting with the distributed storage devices.
-Among those administrative nodes, one or more are dedicated to be the front door to the cluster, they are called **Head node**.
-On HPC clusters with small to medium size, just one head node is enough, on larger systems we can find several **Head nodes** and you can end up connecting to one of them randomly to balance the load between them.
+Among those administrative nodes, one or more are dedicated to be the front door to the cluster; they are called **Head nodes**.
+On HPC clusters with small to medium size, just one head node is enough; on larger systems, we can find several **Head nodes**, and you can end up connecting to one of them randomly to balance the load between them.
 
-You should never run intensive operations on the head node.
-Doing so will prevent the node from fulfilling its main purpose which is to serve other users, giving them access and allowing them to submit and manage the jobs that they are running on the cluster.
-Instead of running on the head node we use special software to submit jobs to the cluster, something called a **queue system**.
+It would be best if you never ran intensive operations on the head node.
+Doing so will prevent the node from fulfilling its primary purpose, which is to serve other users, giving them access and allowing them to submit and manage the jobs running on the cluster.
+Instead of running on the head node, we use special software to submit jobs to the cluster, a **queue system**.
 We will discuss them later on in this lesson.
 
 ## Central Processing Units
@@ -216,83 +251,83 @@ We will discuss them later on in this lesson.
 
 ### CPU Brands and Product lines
 
-There are only two manufacturers that hold most of the market for PC consumer computing: Intel and AMD.
-There are several other manufacturers of CPUs but those are mostly for Smart Phones, Photo Cameras, Musical Instruments, and other very specialized Supercomputers and related equipment.
+Only two manufacturers hold most of the market for PC consumer computing: Intel and AMD.
+Several other manufacturers of CPUs offer chips mainly for smartphones, Photo Cameras, Musical Instruments, and other very specialized Supercomputers and related equipment.
 
-More than a decade ago, the main feature used for marketing purposes on a CPU was speed.
-That has changed now as CPUs are not getting much faster due to faster clock speed.
+More than a decade ago, speed was the main feature used for marketing purposes on a CPU.
+That has changed as CPUs are not getting much faster due to faster clock speed.
 It is hard to market the performance of a new processor with a single number.
-That is why CPUs are now marketed with "Product Lines" and the "Model numbers" those numbers bear no direct relation with the actual characteristics of a given processor.
+That is why CPUs are now marketed with "Product Lines" and the "Model numbers." Those numbers bear no direct relation to the actual characteristics of a given processor.
 
-For example, Intel Core i3 processors are marketed for entry-level machines more tailored to basic computing tasks like word processing and web browsing. On the other hand, Intel’s Core i7 and i9 processors are for high-end products aimed at top-of-the-line gaming machines able to run the most recent titles at high FPS and resolutions. Machines for enterprise usage are usually under the Xeon Line.
+For example, Intel Core i3 processors are marketed for entry-level machines that are more tailored to basic computing tasks like word processing and web browsing. On the other hand, Intel’s Core i7 and i9 processors are for high-end products aimed at top-of-the-line gaming machines, which can run the most recent titles at high FPS and resolutions. Machines for enterprise usage are usually under the Xeon Line.
 
-On AMD’s side, you have the Athlon line aimed at entry-level users, From Ryzen(TM) 3 for basic applications, all the way to the Ryzen(TM) 9 designed mostly for enthusiasts and gamers.
+On AMD’s side, you have the Athlon line aimed at entry-level users, From Ryzen(TM) 3 for essential applications to the Ryzen(TM) 9, designed for enthusiasts and gamers.
 AMD also has product lines for enterprises like EPYC Server Processors.
 
 ### Cores
 
-Consumer-level CPUs up to the 2000s only had one core, but Intel and AMD both hit a brick wall with incremental clock speed improvements.
+Consumer-level CPUs up to the 2000s only had one core, but Intel and AMD hit a brick wall with incremental clock speed improvements.
 The heat and power consumption scales non-linearly with the CPU speed.
-That brings us to the current trend and instead of a single core, CPUs now have two, three, four, eight, or sixteen cores on a single CPU.
-That means that each CPU (in marketing terms) is several CPUs (in actual component terms).
+That brings us to the current trend: CPUs now have two, three, four, eight, or sixteen cores on a single CPU instead of a single core.
+That means each CPU (in marketing terms) is several CPUs (in actual component terms).
 
 There is a good metaphor, but I cannot claim it as mine, about CPUs, Cores, and Threads.
-The computer is like a Cooking Room, the cooking room could have one stove (CPUs), or several stoves (Dual Socket for example).
-Each stove has multiple burners (Cores) and on them, you have multiple cookware like pans, casseroles, pots, etc (Threads). And you (OS) have to manage to cook all that in time, so you move the pan out of the burner to cook something else if needed and put it back to keep it warm.
+The computer is like a Cooking Room; the cooking room could have one stove (CPUs) or several stoves (Dual Socket, for example).
+Each stove has multiple burners (Cores); you have multiple cookware like pans, casseroles, pots, etc (Threads). And you (OS) have to manage to cook all that in time, so you move the pan out of the burner to cook something else if needed and put it back to keep it warm.
 
 ### Hyperthreading
 
-Hyper-threading is intrinsically linked to cores and is best understood as a proprietary technology that allows the operating system, to recognize the CPU as having double the amount of cores.
+Hyper-threading is intrinsically linked to cores and is best understood as a proprietary technology that allows the operating system to recognize the CPU as having double the number of cores.
 
-In practical terms, a CPU with four physical cores would be recognized by the operating system as having eight virtual cores, or capable of dealing with eight threads of execution.
-The idea is that by doing that it is expected that the CPU can better manage the extra load, by reordering execution and pipelining the workflow to the actual number of physical cores.
+In practical terms, a CPU with four physical cores would be recognized by the operating system as having eight virtual cores or capable of dealing with eight threads of execution.
+The idea is that by doing that, the CPU is expected to better manage the extra load by reordering execution and pipelining the workflow to the actual number of physical cores.
 
-In the context of HPC as loads are high for the CPU, activating Hyper-threading is not necessarily beneficial for intensive numerical operations, and the question if that brings a benefit is very dependent on the scientific code and even the particular problem that is being solved.
+In the context of HPC, as loads are high for the CPU, activating hyper-threading is not necessarily beneficial for intensive numerical operations, and the question of whether that brings a benefit is very dependent on the scientific code and even the particular problem being solved.
 In our clusters, Hyper-threading is disabled on all compute nodes and enabled on service nodes.
 
 ### CPU Frequency
 
-Back in the 80s and 90s CPU frequency was the most important feature of a CPU or at least that was the way it was marketed.
+Back in the 80s and 90s, CPU frequency was the most important feature of a CPU or at least that was how it was marketed.
 
-Other names for CPU frequency are "clock rate", or "clock speed". CPUs work in steps instead of a continuous flow of information. The speed of the CPU is today measured in GHz, or how quickly the processor can process instructions in any given second (clock cycles per second). 1 Hz equals one cycle per second, so a 2 GHz frequency can handle 2 billion instructions for every second.
+Other names for CPU frequency are "clock rate", or "clock speed". CPUs work in steps instead of a continuous flow of information. Today, the speed of the CPU is measured in GHz, or how quickly the processor can process instructions in any given second (clock cycles per second). 1 Hz equals one cycle per second, so a 2 GHz frequency can handle 2 billion instructions for every second.
 
-The higher the frequency the more operations can be done. However, today that is not the whole story. Modern CPUs have complex CPU extensions (SSE, AVX, AVX2, and AVX512) that allow the CPU to execute several numerical operations on a single clock step.
+The higher the frequency, the more operations can be done. However, today that is not the whole story. Modern CPUs have complex CPU extensions (SSE, AVX, AVX2, and AVX512) that allow the CPU to execute several numerical operations on a single clock step.
 
-From another side, CPUs are now able to change the speed up to certain limits, raising and lowering the value if needed. Sometimes raising the CPU frequency of a multicore CPU means that some cores are disabled as a result.
+On the other hand, CPUs can now change the speed up to certain limits, raising and lowering the value if needed. Sometimes raising the CPU frequency of a multicore CPU means that some cores are disabled.
 
 One technique used to increase the performance of a CPU core is called *overclocking*.
 Overclocking is when the base frequency of a CPU is altered beyond the manufacturer's official clock rate by user-generated means.
-In HPC, overclocking is not used as doing so increases the chances of instability of the system.
-For a system that is intended for multiple users conducting scientific research, stability is a well-regarded priority.
+In HPC, overclocking is not used, as doing so increases the chances of instability of the system.
+Stability is a well-regarded priority for a system intended for multiple users conducting scientific research.
 
 ### Cache
 
-The cache is a high-speed momentary memory device being part of the CPU to facilitate future retrieval of data and instructions before processing.
-It’s very similar to RAM in the sense that it acts as a temporary holding pen for data.
+The cache is a high-speed momentary memory device part of the CPU to facilitate future retrieval of data and instructions before processing.
+It’s very similar to RAM in that it acts as a temporary holding pen for data.
 However, CPUs access this memory in chunks, and the mapping to RAM is different.
 
-Contrary to RAM which are independent pieces of hardware, cache sits on the CPU itself, so the access times are significantly faster.
-The cache is an important portion of the production cost of a CPU, to the point where one of the differences between Intel's main consumer lines, the Core i3s, i5s, and i7s is the size of the cache memory.
+Contrary to RAM, whose modules are independent hardware, cache sits on the CPU itself, so access times are significantly faster.
+The cache is an important portion of the production cost of a CPU, to the point where one of the differences between Intel's main consumer lines, the Core i3s, i5s, and i7s, is the size of the cache memory.
 
 There are several cache memories inside a CPU. They are called cache levels, or hierarchies, a bit like a pyramid: L1, L2, and L3. The lower the level the closer to the core.
 {% comment %}
 L1 is the fastest cache and the first port of call for a CPU to hunt down data. In modern processors, two split compartments make up the L1 cache, one for data and one for instructions, and every core is assigned an exclusive portion of the L1 cache.
 
-L2 is bigger than L1, and consequently slower because the processor has to trawl through more data. L3, on the other hand, is shared among all the cores and offers more space, but is slower.
+L2 is bigger than L1 and consequently slower because the processor has to trawl through more data. L3, on the other hand, is shared among all the cores and offers more space but is slower.
 {% endcomment %}
 
 From the HPC perspective, the cache size is an important feature for intensive numerical operations.
-Many CPU cycles are lost if you need to bring data all the time from the RAM or even worst from the Hard Drive.
-So having large amounts of cache improves the efficiency of HPC codes.
-You as an HPC user must understand a bit about how cache works and impacts performance, however, users and developers have no direct control of the different cache levels.
+Many CPU cycles are lost if you need to bring data all the time from the RAM or, even worse, from the Hard Drive.
+So, having large amounts of cache improves the efficiency of HPC codes.
+You, as an HPC user, must understand a bit about how cache works and impacts performance; however, users and developers have no direct control over the different cache levels.
 
 ## Learn to read computer specifications
 
-One of the central differences between one computer and another is the CPU, the chip or set of chips that control most of the numerical operations. When reading the specifications of a computer you need to pay attention to the amount of memory, if the drive is SSD or not, the presence of a dedicated GPU card, and several factors that could or could not be relevant for your computer. Have a look at the specifications of the CPU on your machine.
+One of the central differences between one computer and another is the CPU, the chip or set of chips that control most of the numerical operations. When reading the specifications of a computer, you need to pay attention to the amount of memory, whether the drive is SSD or not, the presence of a dedicated GPU card, and several factors that could or could not be relevant for your computer. Have a look at the CPU specifications on your machine.
 
 ### Intel
 
-If your machine uses Intel Processors, go to <https://ark.intel.com> and enter the model of CPU you have, Intel models are for example: "E5-2680 v3", "E5-2680 v3"
+If your machine uses Intel Processors, go to <https://ark.intel.com> and enter the model of CPU you have. Intel models are, for example: "E5-2680 v3", "E5-2680 v3"
 
 ### AMD
 
@@ -301,35 +336,35 @@ If your machine uses AMD processors, go to <https://www.amd.com/en/products/spec
 ## Storage
 
 Storage devices are another area where general supercomputers and HPC clusters differ from normal computers and consumer devices.
-On a normal computer you have in most cases just one hard drive, maybe a few in some configurations but that is all.
+On a normal computer, you have, in most cases, just one hard drive, maybe a few in some configurations, but that is all.
 Storage devices are measured by their capacity to store data and the speed at which the data can be written and retrieved from those devices.
 Today, hard drives are measured in GigaBytes (GB) and TeraBytes (TB).
 One Byte is a sequence of 8 bits, with a bit being a zero or one.
-One GB is roughly one billion (10^9) bytes and a TB is about 1000 GB.
+One GB is roughly one billion (10^9) bytes, and a TB is about 1000 GB.
 Today, it is common to find Hard Drives with 8 or 16 TB per drive.
 
 One HPC cluster's special storage is needed.
-There are mainly 3 reasons for that: you need to store a far larger amount of data.
-A few TB is not enough, we need 100s of TB, maybe Peta Bytes, ie, 1000s of TB.
+There are mainly three reasons for that: you need to store a far larger amount of data.
+A few TB is not enough; we need 100s of TB, maybe Peta Bytes, ie, 1000s of TB.
 The data is read and written concurrently by all the nodes on the machine.
 Speed and resilience is another important factor.
-For that reason, data is not stored, data is spread across multiple physical hard drives, allowing not only faster retrieval times but also preserving the data in case one or more physical drives fail.
+For that reason, data is not stored; data is spread across multiple physical hard drives, allowing faster retrieval times and preserving the data in case one or more physical drives fail.
 
 ## Network
 
 Computers today connect to the internet or other computers via WiFI or Ethernet.
-Those connections are limited to a few GB/s too slow for HPC clusters where compute nodes need to exchange data for large computational tasks performed by multiple compute nodes at the same time.
+Those connections are limited to a few GB/s too slow for HPC clusters where compute nodes need to exchange data for large computational tasks performed by multiple compute nodes simultaneously.
 
-On HPC clusters we find very specialized networks that are several times faster than Ethernet in several respects.
+On HPC clusters, we find very specialized networks that are several times faster than Ethernet in several respects.
 Two important concepts when dealing with data transfer are **Band Width** and **Latency**.
 Bandwidth is the ability to transfer data across a given medium.
 Latency relates to the obstruction that data faces before the first bit reaches the other end.
-Both elements are important in HPC data communication and are minimized with very expensive network devices.
+Both elements are important in HPC data communication and are minimized by expensive network devices.
 Examples of network technologies in HPC are Infiniband and OmniPath.
 
 ## WVU High-Performance Computer Clusters
 
-West Virginia University has 2 main clusters: Thorny Flat and Dolly Sods, our newest cluster that will be available later in August 2023.
+West Virginia University has two main clusters: Thorny Flat and Dolly Sods, our newest cluster that is specialized in GPU computing.
 
 <a href="{{ page.root }}/fig/WVU_HPC_Clusters.png">
 <img src="{{ page.root }}/fig/WVU_HPC_Clusters.png" alt="WVU HPC Clusters" style="width:100%" />
@@ -337,12 +372,12 @@ West Virginia University has 2 main clusters: Thorny Flat and Dolly Sods, our ne
 
 ### Thorny Flat
 
-Thorny Flat is a general-purpose HPC cluster with 178 compute nodes, most nodes have 40 CPU cores. The total CPU core count is 6516 cores.
-There are 47 NVIDIA GPU cards ranging from P6000, RTX6000, and A100
+Thorny Flat is a general-purpose HPC cluster with 178 compute nodes; most nodes have 40 CPU cores. The total CPU core count is 6516 cores.
+There are 47 NVIDIA GPU cards ranging from P6000, RTX6000, and A100.
 
 ### Dolly Sods
 
-Dolly Sods is our newest cluster and it is specialized in GPU computing. It has 37 nodes and 155 NVIDIA GPU cards ranging from A30, A40 and A100.
+Dolly Sods is our newest cluster, and it is specialized in GPU computing. It has 37 nodes and 155 NVIDIA GPU cards ranging from A30, A40 and A100.
 The total CPU core count is 1248.
 
 
@@ -384,9 +419,9 @@ you to reap the benefits described above.
 
 ## Secure Connections
 
-The first step in using a cluster is to establish a connection from our laptop
+The first step in using a cluster is establishing a connection from our laptop
 to the cluster. When we are sitting at a computer (or standing, or holding it
-in our hands or on our wrists), we have come to expect a visual display with
+in our hands or on our wrists), we expect a visual display with
 icons, widgets, and perhaps some windows or applications: a _graphical user
 interface_, or GUI. Since computer clusters are remote resources that we
 connect to over slow or intermittent interfaces (WiFi and VPNs especially), it
@@ -435,14 +470,14 @@ _and_ make it more convenient to log in to remote systems.
 > ## Exercise 1
 >
 > Follow the instructions for connecting to the cluster.
-> Once there execute
+> Once you are on Thorny, execute
 >
 > ~~~
 > $> lscpu
 > ~~~
 > {: .language-bash}
 >
-> On your browser, go to <https://ark.intel.com> and enter the CPU model found on the cluster's head node.
+> On your browser, go to <https://ark.intel.com> and enter the CPU model on the cluster's head node.
 >
 > Execute this command to know the amount of RAM on the machine.
 >
@@ -460,7 +495,7 @@ _and_ make it more convenient to log in to remote systems.
 <img src="{{ page.root }}/fig/4Top500_HPC_Clusters.png" alt="4 Top500 HPC Clusters" />
 </a>
 
-Western democracies are losing the global technological competition, including the race for scientific and research breakthroughs, and the ability to retain global talent—crucial ingredients that underpin the development and control of the world’s most important technologies, including those that don’t yet exist.
+Western democracies are losing the global technological competition, including the race for scientific and research breakthroughs and the ability to retain global talent—crucial ingredients that underpin the development and control of the world’s most important technologies, including those that don’t yet exist.
 
 The Australian Strategic Policy Institute (ASPI) released in 2023 a <a href="https://www.aspi.org.au/report/critical-technology-tracker">report</a> studying the position of big powers in 44 critical areas of technology.
 
@@ -470,7 +505,7 @@ The report says that China’s global lead extends to 37 out of the 44 technolog
 <img src="{{ page.root }}/fig/ASPI’s Critical Technology Tracker.png" alt="IASPI’s Critical Technology Tracker" />
 </a>
 
-From that report, the US still leads in High-Performance Computing. HPC is a critical enabler for innovation in some other critical technologies and scientific discoveries. New materials, drugs, energy sources, and aerospace technologies. All of them rely on simulations and modeling that are carried out with HPC clusters.
+From that report, the US still leads in High-Performance Computing. HPC is a critical enabler for innovation in other essential technologies and scientific discoveries. New materials, drugs, energy sources, and aerospace technologies. They all rely on simulations and modeling carried out with HPC clusters.
 
 
 {% include links.md %}
