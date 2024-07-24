@@ -59,13 +59,6 @@ ssh ds.hpc.wvu.edu
 
 If you are using a GUI client such as PuTTY enter ``ssh.wvu.edu`` as the server's name and your username in the corresponding field before connecting to the remote machine.
 
-[//]: # (If you received one of the training accounts, this is the machine where you will connect. For example, if your username is `training999`, connect to Spruce using:)
-
-~~~
-ssh training999@spruce.hpc.wvu.edu
-~~~
-{: .language-bash}
-
 
 After entering your credentials with DUO, you get a prompt on the SSH gateway, and from there, you go to Thorny Flat.
 
