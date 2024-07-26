@@ -1,7 +1,7 @@
 ---
 title: "Python Scripting for HPC"
-teaching: 90
-exercises: 30
+teaching: 45
+exercises: 15
 questions:
 - "Why learn Python programming language?"
 - "How can I use Python to write small scripts?"
@@ -10,7 +10,6 @@ objectives:
 keypoints:
 - "Python is an easy-to-learn programming language."
 ---
-
 
 ![Python Programming for Scientists in a hurry]({{ page.root }}/fig/Title_Python.png)
 
@@ -29,7 +28,7 @@ keypoints:
 ## List of Notebooks
 
 Python is a great general-purpose programming language on its own. 
-Python is a general-purpose programming language. It is interpreted and dynamically typed and is very suited for interactive work and quick prototyping while being powerful enough to write large applications in.
+Python is a general purpose programming language. It is interpreted and dynamically typed and is very suited for interactive work and quick prototyping while being powerful enough to write large applications in.
 The lesson is particularly oriented to Scientific Computing. 
 Other episodes in the series include:
 
@@ -57,7 +56,7 @@ After completing all the series in this lesson you will realize that python has 
 %watermark
 ```
 
-    Last updated: 2024-07-24T07:47:20.726899-04:00
+    Last updated: 2024-07-25T19:09:53.181545-04:00
     
     Python implementation: CPython
     Python version       : 3.11.7
@@ -133,16 +132,10 @@ In this notebook we explore:
 <a id="introduction"></a>
 # Introduction
 
- <div style="clear: both; display: table;">
- <div style="border: none; float: left; width: 60%; padding: 5px">
+<div style="clear: both; display: table;">
+<div style="border: none; float: left; width: 60%; padding: 5px">
 
-  </div>
-  <div style="border: none; float: left; width: 40%; padding: 5px">
-  <img alt="Guido van Rossum" src="{{ page.root }}/fig/GvanR.jpg" />
-  </div>
-</div>
-
-[Python](https://www.python.org/) is a multiparadigm, general-purpose, interpreted, high-level programming language. 
+<a href="https://www.python.org/">Python</a>  is a multiparadigm, general-purpose, interpreted, high-level programming language. 
 
 Python is **multiparadigm** because it supports multiple programming paradigms, including procedural, object-oriented, and functional programming. 
 
@@ -152,18 +145,23 @@ Python is an **interpreted** language, which precludes the need to compile code 
 
 Because Python is a **high-level programming language**, it abstracts many sophisticated details from the programming code. Python focuses so much on this abstraction that its code can be understood by most novice programmers.
 
-Python was conceived in the late 1980s by [Guido van Rossum](https://en.wikipedia.org/wiki/Guido_van_Rossum) at Centrum Wiskunde \& Informatica (CWI) in the Netherlands as a successor to the ABC language (itself inspired by SETL), capable of exception handling and interfacing with the Amoeba operating system. Its implementation began in December 1989. Van Rossum continued as Python's lead developer until July 12, 2018, when he announced his "permanent vacation" from his responsibilities as Python's **Benevolent Dictator For Life (BDFL)**, a title the Python community bestowed upon him to reflect his long-term commitment as the project's chief decision-maker. In January 2019, active Python core developers elected Brett Cannon, Nick Coghlan, Barry Warsaw, Carol Willing, and Van Rossum to a five-member " Steering Council" to lead the project.
+Python was conceived in the late 1980s by <a href="https://en.wikipedia.org/wiki/Guido_van_Rossum">Guido van Rossum</a> at Centrum Wiskunde \& Informatica (CWI) in the Netherlands as a successor to the ABC language (itself inspired by SETL), capable of exception handling and interfacing with the Amoeba operating system. Its implementation began in December 1989. Van Rossum continued as Python's lead developer until July 12, 2018, when he announced his "permanent vacation" from his responsibilities as Python's **Benevolent Dictator For Life (BDFL)**, a title the Python community bestowed upon him to reflect his long-term commitment as the project's chief decision-maker. In January 2019, active Python core developers elected Brett Cannon, Nick Coghlan, Barry Warsaw, Carol Willing, and Van Rossum to a five-member " Steering Council" to lead the project.
 
-Guido named his language Python as a tribute to the British comedy group [Monty Python](https://en.wikipedia.org/wiki/Monty_Python) and not a reference to reptiles. However, logos and other media use stylized versions of reptiles.
+Guido named his language Python as a tribute to the British comedy group <a href="https://en.wikipedia.org/wiki/Monty_Python">Monty Python</a> and not a reference to reptiles. However, logos and other media use stylized versions of reptiles.
 
 One consequence of the Monty Python original reference, tutorials and examples refer to spam and eggs (from a famous Monty Python sketch) instead of the standard foo and bar.
 
-The official language website is
-[https://www.python.org](https://www.python.org).
+The official language website is <a href="https://www.python.org/">https://www.python.org</a>.
 
+  </div>
+  <div style="border: none; float: left; width: 30%; padding: 5px">
+  <img alt="Guido van Rossum" src="{{ page.root }}/fig/GvanR.jpg" />
+  </div>
+</div>
 
-
-<img width="100%" alt="Python Webpage" src="{{ page.root }}/fig/python_web.png" />
+<center>
+<img width="70%" alt="Python Webpage" src="{{ page.root }}/fig/python_web.png" />
+    </center>
 
 <a id="zen_of_python"></a>
 ## Zen of Python
@@ -265,6 +263,66 @@ For programs, there are those who write programs, integrated pieces of code that
 As a scientist that uses computing to pursue your research, you could be doing scripts, doing programs, or doing libraries. There is nothing pejorative in doing scripts, and there is nothing derogatory in using scripting languages. The important is the science, get the job done, and move forward.
 
 In addition to Scripts and Programs, Python can be used in interactive computing. This document that you see right now was created as a Jupyter notebook. If you are reading it from an active Jupyter instance, you can execute these boxes.
+
+## Example 1: Program that converts from Fahrenheit to Celsius
+
+Lets start with a simple example converting a variable that holds a value in Fahrenheit and convert it to Celsius
+
+### First code
+
+
+```python
+f=80 # Temperature in F
+
+c = 5/9 * (f-32)
+
+print("The temperature of %.2f F is equal to %.2f C" % (f,c))
+```
+
+    The temperature of 80.00 F is equal to 26.67 C
+
+
+### Second code
+
+Now that we know how to convert from Fahrenheit to Celsius we can put the formula inside a function.
+Even better we want to write two functions, one to convert from F to C and the other to convert from C to F.
+
+
+```python
+def fahrenheit2celsius(f):
+    return 5/9 * (f-32)
+
+def celsius2fahrenheit(c):
+    return c*9/5 + 32
+```
+
+With this two functions we can use them to convert temperatures between these units.
+
+
+```python
+fahrenheit2celsius(80)
+```
+
+
+
+
+    26.666666666666668
+
+
+
+
+```python
+celsius2fahrenheit(27)
+```
+
+
+
+
+    80.6
+
+
+
+We have learned here the use of variables, the print function and how to write functions in Python. 
 
 <a id="environment"></a>
 ## Testing your Python Environment
@@ -435,6 +493,107 @@ We will use the standard library extensively but we will first focus our attenti
 
 
 Just in case you get in your hands' code written in the old Python 2.x at the end of this notebook you can see a quick summary of a few key differences between Python 2.x and 3.x
+
+## Example 2: The Barnsley fern
+
+The **Barnsley fern** is a fractal named after the British mathematician Michael Barnsley who first described it in his book "Fractals Everywhere". He made it to resemble the black spleenwort, Asplenium adiantum-nigrum. This fractal has served as inspiration to create natural structures using iterative mathematical functions.
+
+Barnsley's fern uses four affine transformation's, i.e. simple vector transformations that include a vector-matrix multiplication and a translation. The formula for one transformation is the following:
+
+$$f_w(x,y) = \begin{bmatrix}a & b \\ c & d \end{bmatrix} \begin{bmatrix} x \\ y \end{bmatrix} + \begin{bmatrix} e \\ f \end{bmatrix}$$
+
+Barnsley uses four transformations with weights for them to reproduce the fern leaf. The transformations are shown below.
+
+$$\begin{align}
+f_1(x,y) &= \begin{bmatrix} 0.00 & 0.00 \\ 0.00 & 0.16 \end{bmatrix} \begin{bmatrix} x \\ y \end{bmatrix}
+\\[6px]
+f_2(x,y) &= \begin{bmatrix} 0.85 & 0.04 \\ -0.04 & 0.85 \end{bmatrix} \begin{bmatrix} x \\ y \end{bmatrix} + \begin{bmatrix} 0.00 \\ 1.60 \end{bmatrix}
+\\[6px]
+f_3(x,y) &= \begin{bmatrix} 0.20 & -0.26 \\ 0.23 & 0.22 \end{bmatrix} \begin{bmatrix} x \\ y \end{bmatrix} + \begin{bmatrix} 0.00 \\ 1.60 \end{bmatrix}
+\\[6px]
+f_4(x,y) &= \begin{bmatrix} -0.15 & 0.28 \\ 0.26 & 0.24 \end{bmatrix} \begin{bmatrix} x \\ y \end{bmatrix} + \begin{bmatrix} 0.00 \\ 0.44 \end{bmatrix}
+\end{align}$$
+
+The probability factor $p$ for the four transformations can be seen in the table below:
+
+$$\begin{align}
+p[f_1] &\rightarrow 0.01
+\\[6px]
+p[f_2] &\rightarrow 0.85
+\\[6px]
+p[f_3] &\rightarrow 0.07
+\\[6px]
+p[f_4] &\rightarrow 0.07
+\end{align}$$
+
+The first point drawn is at the origin $(x,y)=(0,0)$ and then the new points are iteratively computed by randomly applying one of the four coordinate transformations $f_1 \cdots f_4$
+
+We will develop this program in two stages. First, we will try to use numpy. The de facto package for dealing with numerical arrays in Python. As we already know how to write functions, lets start writing four functions for the the four transformations. In this case we can define $r$ as being the vector (x,y). This will help us defining the functions in a very compact expression.
+
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+```
+
+
+```python
+def f1(r):
+    a=np.array([[0,0],[0,0.16]])
+    return np.dot(a,r)
+
+def f2(r):
+    a=np.array([[0.85,0.04],[-0.04, 0.85]])
+    return np.dot(a,r)+np.array([0.0,1.6])
+
+def f3(r):
+    a=np.array([[0.20,-0.26],[0.23,0.22]])
+    return np.dot(a,r)+np.array([0.0,1.6])
+
+def f4(r):
+    a=np.array([[-0.15, 0.28],[0.26,0.24]])
+    return np.dot(a,r)+np.array([0.0,0.44])
+```
+
+These four functions will transform points in $r$ into new positions $r'$. We can now assemble the code to assigned the transformations according to the probability factors described above.
+
+
+```python
+r0=np.array([0,0])
+```
+
+
+```python
+npoints=100000
+
+points=np.zeros((npoints,2))
+
+fig, ax = plt.subplots()
+                
+for i in range(npoints):
+    rnd=np.random.rand()
+    if rnd<=0.01:
+        r1=f1(r0)
+    elif rnd<=0.86:
+        r1=f2(r0)
+    elif rnd<=0.93:
+        r1=f3(r0)
+    else:
+        r1=f4(r0)
+    points[i]=r0
+    r0=r1
+
+ax.plot(points[:,0],points[:,1],',')                
+ax.set_axis_off()
+ax.set_aspect(0.5)
+plt.show()
+```
+
+
+    
+![png]({{ page.root }}/fig/output_52_0.png)
+    
+
 
 <a id="python_syntax_1"></a>
 # Python Syntax I: Variables
@@ -1538,8 +1697,8 @@ polyhedron.remove('cube')      # Remove an element from a set
 print(polyhedron)       
 ```
 
-    {'tetrahedron', 'hexahedron', 'icosahedron', 'cube'}
-    {'tetrahedron', 'hexahedron', 'icosahedron'}
+    {'hexahedron', 'cube', 'tetrahedron', 'icosahedron'}
+    {'hexahedron', 'tetrahedron', 'icosahedron'}
 
 
 
@@ -1561,14 +1720,14 @@ immutable_set = frozenset(["a", "b", "a"])
 print(immutable_set)
 ```
 
-    SetA =  {'first', 'second', 'third'}
-    SetB= {'second', 'fourth'}
+    SetA =  {'third', 'first', 'second'}
+    SetB= {'fourth', 'second'}
     {'second'}
     {'third', 'first', 'second', 'fourth'}
-    {'first', 'third'}
+    {'third', 'first'}
     {'fourth'}
-    {'first', 'third', 'fourth'}
-    frozenset({'b', 'a'})
+    {'fourth', 'third', 'first'}
+    frozenset({'a', 'b'})
 
 
 ### Loops over sets 
@@ -1583,9 +1742,9 @@ for idx, animal in enumerate(animals):
 # Prints "#1: fish", "#2: dog", "#3: cat"
 ```
 
-    #1: cat
-    #2: fish
-    #3: dog
+    #1: dog
+    #2: cat
+    #3: fish
 
 
 Set comprehensions: Like lists and dictionaries, we can easily construct sets using set comprehensions:
@@ -2002,9 +2161,139 @@ It can have an argument(s) or not, it can return values or not.
 
 The functions can be given by the language, imported from an external file (module), or created by you
 
+## Example 3: Julia Sets
+
+
+```python
+"""
+Solution from:
+https://codereview.stackexchange.com/questions/210271/generating-julia-set
+"""
+from functools import partial
+from numbers import Complex
+from typing import Callable
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+
+def douady_hubbard_polynomial(z: Complex,
+                              c: Complex) -> Complex:
+    """
+    Monic and centered quadratic complex polynomial
+    https://en.wikipedia.org/wiki/Complex_quadratic_polynomial#Map
+    """
+    return z ** 2 + c
+
+
+def julia_set(mapping: Callable[[Complex], Complex],
+              *,
+              min_coordinate: Complex,
+              max_coordinate: Complex,
+              width: int,
+              height: int,
+              iterations_count: int = 256,
+              threshold: float = 2.) -> np.ndarray:
+    """
+    As described in https://en.wikipedia.org/wiki/Julia_set
+    :param mapping: function defining Julia set
+    :param min_coordinate: bottom-left complex plane coordinate
+    :param max_coordinate: upper-right complex plane coordinate
+    :param height: pixels in vertical axis
+    :param width: pixels in horizontal axis
+    :param iterations_count: number of iterations
+    :param threshold: if the magnitude of z becomes greater
+    than the threshold we assume that it will diverge to infinity
+    :return: 2D pixels array of intensities
+    """
+    im, re = np.ogrid[min_coordinate.imag: max_coordinate.imag: height * 1j,
+                      min_coordinate.real: max_coordinate.real: width * 1j]
+    z = (re + 1j * im).flatten()
+
+    live, = np.indices(z.shape)  # indexes of pixels that have not escaped
+    iterations = np.empty_like(z, dtype=int)
+
+    for i in range(iterations_count):
+        z_live = z[live] = mapping(z[live])
+        escaped = abs(z_live) > threshold
+        iterations[live[escaped]] = i
+        live = live[~escaped]
+        if live.size == 0:
+            break
+    else:
+        iterations[live] = iterations_count
+
+    return iterations.reshape((height, width))
+```
+
+
+```python
+mapping = partial(douady_hubbard_polynomial,
+                  c=-0.7 + 0.27015j)  # type: Callable[[Complex], Complex]
+
+image = julia_set(mapping,
+                  min_coordinate=-1.5 - 1j,
+                  max_coordinate=1.5 + 1j,
+                  width=800,
+                  height=600)
+plt.axis('off')
+plt.imshow(image,
+           cmap='nipy_spectral_r',
+           origin='lower')
+plt.savefig("julia_python.png")
+plt.show()
+```
+
+
+    
+![png]({{ page.root }}/fig/output_211_0.png)
+    
+
+
+## Example 4: Mandelbrot Set
+
+
+```python
+import matplotlib.pyplot as plt
+from pylab import arange, zeros, xlabel, ylabel
+from numpy import NaN
+
+def m(a):
+    z = 0
+    for n in range(1, 100):
+        z = z**2 + a
+        if abs(z) > 2:
+            return n
+    return NaN
+
+X = arange(-2, .5, .002)
+Y = arange(-1,  1, .002)
+Z = zeros((len(Y), len(X)))
+
+for iy, y in enumerate(Y):
+    #print (iy, "of", len(Y))
+    for ix, x in enumerate(X):
+        Z[iy,ix] = m(x + 1j * y)
+
+plt.imshow(Z, cmap = plt.cm.prism_r, interpolation = 'none', extent = (X.min(), X.max(), Y.min(), Y.max()))
+xlabel("Re(c)")
+ylabel("Im(c)")
+plt.axis('off')
+plt.savefig("mandelbrot_python.png")
+plt.show()
+```
+
+
+    
+![png]({{ page.root }}/fig/output_213_0.png)
+    
+
+
+<!--
 ## Built-in Functions
 
 The Python interpreter has several functions and types built into it that are always available. They are listed here in alphabetical order.
+-->
 
 <!--
 <table>
@@ -2378,7 +2667,7 @@ print(operations(5,6,flag=True))
     (11, -1, 30, 0.8333333333333334)
 
 
-## Practical Example No. 1: Fibonacci Sequences and Golden Ratio
+## Example 5: Fibonacci Sequences and Golden Ratio
 
 At this point, you have seen enough material to start doing some initial scientific computing. Let's start applying all that you have learned up to now.
 
@@ -2563,7 +2852,7 @@ With IPython we can use the magic `%timeit` to benchmark the difference between 
 %timeit [fibonacci_fastrec(n) for n in range (20)]
 ```
 
-    31.4 µs ± 1.04 µs per loop (mean ± std. dev. of 7 runs, 10,000 loops each)
+    25.6 µs ± 625 ns per loop (mean ± std. dev. of 7 runs, 10,000 loops each)
 
 
 
@@ -2571,7 +2860,7 @@ With IPython we can use the magic `%timeit` to benchmark the difference between 
 %timeit [fibonacci_recursive(n) for n in range (20)]
 ```
 
-    2.99 ms ± 227 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
+    2.18 ms ± 40.8 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
 
 
 %timeit is not a Python command. It is a magic command of IPython, however, Python itself provides a more restrictive functionality. This can be provided with the time package:
@@ -2587,7 +2876,7 @@ print(end - start)
 ```
 
     hello
-    0.0002779960632324219
+    0.00046062469482421875
 
 
 Finally, there is also an analytical expression for the Fibonacci sequence, so the entire recursion could be avoided.
@@ -2620,7 +2909,7 @@ print([ analytic_fibonacci(n) for n in range (40) ])
 %timeit [analytic_fibonacci(n) for n in range (40)]
 ```
 
-    23.8 µs ± 840 ns per loop (mean ± std. dev. of 7 runs, 10,000 loops each)
+    20.8 µs ± 3.15 µs per loop (mean ± std. dev. of 7 runs, 100,000 loops each)
 
 
 There is an interesting property of the Fibonacci sequence, the ratio between consecutive elements converges to a finite value, the so-called golden number. Let us store this ratio number in a list as the Fibonacci series grow. Here we introduce the function zip() from Python. zip() is used to map the similar index of multiple containers so that they can be used just using as a single entity. As zip is not easy to understand and before we describe the Fibonacci method, let me give you a simple example of using zip
@@ -2656,10 +2945,10 @@ print (s3)
 
 ```
 
-    The zipped result is : {('am', 1, 233), ('I', 1, 144), ('the Fibonacci', 2, 377), ('Series', 3, 610)}
-    First string : ('am', 'I', 'the Fibonacci', 'Series')
-    Second string : (1, 1, 2, 3)
-    Third string : (233, 144, 377, 610)
+    The zipped result is : {('the Fibonacci', 2, 377), ('I', 1, 144), ('Series', 3, 610), ('am', 1, 233)}
+    First string : ('the Fibonacci', 'I', 'Series', 'am')
+    Second string : (2, 1, 3, 1)
+    Third string : (377, 144, 610, 233)
 
 
 Now let us go back to Fibonacci
@@ -2735,7 +3024,7 @@ plt.semilogy([math.fabs(x - golden) for x in X]);
 
 
     
-![png]({{ page.root }}/fig/output_247_0.png)
+![png]({{ page.root }}/fig/output_272_0.png)
     
 
 
@@ -2764,8 +3053,8 @@ print(lower)
 print(list(lower))
 ```
 
-    <map object at 0x115694460>
-    [0.24963728005711916, 0.5874262009168811, 0.7274421307977689, 0.3005144514086948, 0.5284981866968635, 0.40760336189235613, 0.09410991330144347, 0.07242709258224123, 0.3819317000321484, 0.2662025293862441, 0.3540882724171356, 0.8131626729203434, 0.16256590522922543, 0.7613916870876829, 0.2704723726094377, 0.26554514542767094, 0.008289494337643477, 0.1272110727707716, 0.551970488877718, 0.1784869432545113]
+    <map object at 0x1387e9450>
+    [0.3479198420638585, 0.5885103951618519, 0.09788507744404285, 0.3973200826407489, 0.07151476024779557, 0.19961585086696665, 0.018736801582169504, 0.47433177615457234, 0.09502722987767931, 0.7955147481783459, 0.2968562440518463, 0.25457189637169564, 0.2402732992180341, 0.19322876498279506, 0.15700028427906199, 0.2786921343509716, 0.2323972417087179, 0.8323196759092788, 0.14846718946296644, 0.7057084437708713]
 
 
 
@@ -2856,7 +3145,7 @@ print(x.f)
 ```
 
     12345
-    <function MyClass.f at 0x1359c1da0>
+    <function MyClass.f at 0x1388a5d00>
 
 
 
@@ -2916,7 +3205,7 @@ for rocket in my_rockets:
     Rocket altitude: 0
 
 
-## Practical Example No. 2: Quaternions
+## Example 6: Quaternions
 
 We are used to working with several numeric systems, for example:
 
@@ -3584,7 +3873,7 @@ Sphere(2).get_volume
 
 
 
-    <bound method Sphere.get_volume of <__main__.Sphere object at 0x135a19ed0>>
+    <bound method Sphere.get_volume of <__main__.Sphere object at 0x1387701d0>>
 
 
 
@@ -3628,7 +3917,7 @@ m.__self__
 
 
 
-    <__main__.Sphere at 0x135928d10>
+    <__main__.Sphere at 0x138831ad0>
 
 
 
@@ -3903,7 +4192,16 @@ class SurfaceRevolution(ABC):
 Using abc and its special class, as soon as you'll try to instantiate SurfaceRevolution or any class inheriting from it, you'll get a TypeError.
 
 
-
+```python
+##
+## SurfaceRevolution(4)
+## ---------------------------------------------------------------------------
+## TypeError                                 Traceback (most recent call last)
+## <ipython-input-269-02ffabd7c877> in <module>
+## ----> 1 SurfaceRevolution(4)
+## 
+## TypeError: Can't instantiate abstract class SurfaceRevolution with abstract methods get_radius
+```
 
 ### Mixing static, class and abstract methods
 
@@ -4056,7 +4354,35 @@ c.temperature
 c.to_fahrenheit()
 ```
 
-## Practical Example No. 3: Platonic Solids
+    Getting value
+
+
+
+
+
+    212.0
+
+
+
+
+```python
+## c.temperature=-300
+## ---------------------------------------------------------------------------
+## ValueError                                Traceback (most recent call last)
+## <ipython-input-318-dcba37e43336> in <module>
+## ----> 1 c.temperature=-300
+## 
+## <ipython-input-309-c16b585d1af3> in temperature(self, value)
+##     14     def temperature(self, value):
+##     15         if value < -273:
+## ---> 16             raise ValueError("Temperature below -273 is not possible")
+##     17         print("Setting value")
+##     18         self._temperature = value
+##
+## ValueError: Temperature below -273 is not possible
+```
+
+## Example 7: Platonic Solids
 
 We will use some classes to manipulate some of the properties of Platonic Solids
 
@@ -4341,6 +4667,99 @@ On Python 3.x the `xrange` was removed and range behaves as `xrange` returning a
 
 There are more differences beyond the 3 above, a good description of the key differences can be found on [Sebastian Raschka's blog](https://sebastianraschka.com/Articles/2014_python_2_3_key_diff.html)
 
+## Example 9: Life Game
+
+
+```python
+import numpy as np
+from pandas import DataFrame
+import matplotlib.pyplot as plt
+#import time
+
+def conway_life(len=100, wid=100, gen=5):
+     
+    curr_gen = DataFrame(np.random.randint(0, 2, (len+2, wid+2)),
+                         index = range(len+2), 
+                         columns = range(wid+2))
+    curr_gen[0] = 0
+    curr_gen[wid+1] = 0
+    curr_gen[0: 1] = 0
+    curr_gen[len+1: len+2] = 0    
+    
+    for i in range(gen):
+        
+        fig, ax = plt.subplots()
+        draw = curr_gen[1:len+1].drop([0, wid+1], axis=1)
+        
+        image = draw
+        ax.imshow(image, cmap=plt.cm.cool, interpolation='nearest')
+        ax.set_title("Conway's game of life.")
+        
+        # Move left and bottom spines outward by 10 points
+        ax.spines['left'].set_position(('outward', 10))
+        ax.spines['bottom'].set_position(('outward', 10))
+        # Hide the right and top spines
+        ax.spines['right'].set_visible(False)
+        ax.spines['top'].set_visible(False)
+        # Only show ticks on the left and bottom spines
+        ax.yaxis.set_ticks_position('left')
+        ax.xaxis.set_ticks_position('bottom')
+
+        plt.axis('off')
+        plt.show()
+        # time.sleep(1)         
+        
+        next_gen = DataFrame(np.random.randint(0, 1, (len+2, wid+2)),
+                             index = range(len+2), 
+                             columns = range(wid+2))
+        
+        for x in range(1, wid+1):
+            for y in range(1, len+1):
+                env = (curr_gen[x-1][y-1] + curr_gen[x][y-1] + 
+                       curr_gen[x+1][y-1]+ curr_gen[x-1][y] + 
+                       curr_gen[x+1][y] + curr_gen[x-1][y+1] + 
+                       curr_gen[x][y+1] + curr_gen[x+1][y+1])
+            
+                if (not curr_gen[x][y] and env == 3):
+                    next_gen[x][y] = 1
+                if (curr_gen[x][y] and env in (2, 3)):
+                    next_gen[x][y] = 1
+                
+        curr_gen = next_gen 
+
+conway_life()
+```
+
+
+    
+![png]({{ page.root }}/fig/output_425_0.png)
+    
+
+
+
+    
+![png]({{ page.root }}/fig/output_425_1.png)
+    
+
+
+
+    
+![png]({{ page.root }}/fig/output_425_2.png)
+    
+
+
+
+    
+![png]({{ page.root }}/fig/output_425_3.png)
+    
+
+
+
+    
+![png]({{ page.root }}/fig/output_425_4.png)
+    
+
+
 # Conclusions
 
 In this notebook we explore:
@@ -4370,8 +4789,16 @@ This Notebook has been adapted by **Guillermo Avendaño** (WVU), **Jose Rogan** 
 
 Changes to the original tutorial include strict Python 3 formats and a split of the material to fit a series of lessons on Python Programming for WVU's faculty and graduate students.
 
-The support of the National Science Foundation and the US Department of Energy under projects: DMREF-NSF 1434897, NSF OAC-1740111 and DOE DE-SC0016176 is recognized.
+The support of the National Science Foundation and the US Department of Energy under projects: DMREF-NSF 1434897, NSF OAC-1740111, and DOE DE-SC0016176 is recognized.
 
+<div style="clear: both; display: table;">
+    <div style="border: none; float: left; width: 40%; padding: 10px">
+        <img src="{{ page.root }}/fig/NSF.jpg" alt="National Science Foundation" style="width:50%" align="left">
+    </div>
+    <div style="border: none; float: right; width: 40%; padding: 10px">
+        <img src="{{ page.root }}/fig/DOE.jpg" alt="National Science Foundation" style="width:50%" align="right">
+    </div>
+</div>
 
 # Back of the Book
 
@@ -4390,7 +4817,7 @@ plt.axis('off');
 
 
     
-![png]({{ page.root }}/fig/output_402_0.png)
+![png]({{ page.root }}/fig/output_429_0.png)
     
 
 
@@ -4400,6 +4827,7 @@ end = time.time()
 print(f'Chapter {chapter_number} run in {int(end - start):d} seconds')
 ```
 
-    Chapter 1 run in 6 seconds
+    Chapter 1 run in 24 seconds
 
 
+{% include links.md %}
