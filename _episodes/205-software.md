@@ -3,16 +3,16 @@ title: "Software on HPC Clusters"
 teaching: 60
 exercises: 30
 questions:
-- "Which are the options to enable software packages on an HPC cluster?"
-- "Which are the differences between environment modules, conda and apptainer?"
-- "What are environment modules and how to use them"
-- "How to use and create conda environments?"
-- "How open a shell and execute commands on a Apptainer/Singularity container?"
+- "What are the options to enable software packages on an HPC cluster?"
+- "What are the differences between environment modules, conda, and apptainer?"
+- "What are environment modules and how to use them?"
+- "How do I use and create conda environments?"
+- "How do I open a shell and execute commands on an Apptainer/Singularity container?"
 objectives:
 - "Learn about the three main options to enable software on HPC clusters."
 - "Load and unload environment modules"
 - "Activate and change conda environments"
-- "Get a shell and execute commands inside singularity containers"
+- "Get a shell and execute commands inside singularity containers."
 keypoints:
 - Modules. Use `module avail` to know all the modules on the cluster.
 - Modules. Use `module load <module_name>` to load a module.
@@ -24,22 +24,22 @@ keypoints:
 
 # Introduction
 
-There are many software packages being executed on an HPC cluster.
+Many software packages are being executed on an HPC cluster daily.
 Each area of science uses its own set of software packages.
-Sometimes the same software package is use in multiple versions and those version must be available on the same HPC cluster.
-To solve all these challenges there are several options implemented on HPC clusters.
-The different options offer various levels of isolation from the host system and some of these options are better suited for particular kinds of software.
+Sometimes, the same software package is used in multiple versions, and those versions must be available on the same HPC cluster.
+To solve all these challenges, several options have been implemented on HPC clusters.
+The different options offer various levels of isolation from the host system, and some of these options are better suited for particular kinds of software.
 
 ## Environment Modules
 
-*Environment modules* is a mechanism to easily enable software by changing the locations where software is installed.
+*Environment modules* are a mechanism that easily enables software by allowing administrators to install non-regular locations and the user to adapt his/her environment to access those locations and use the software installed there.
 By changing specific variables on the shell, different versions of packages can be made visible to the shell or to a script.
 *Environment modules* is a software package that gives the user the ability to change the variables that the shell uses to find executables and libraries. 
-To better understand how *environment modules* do its job it is essential to understand the concept of variables in the shell and the particular role of special variables called *environment variables*
+To better understand how *environment modules* do their job it is essential to understand the concept of variables in the shell and the particular role of special variables called *environment variables*
 
 ### Shell variables and environment variables
 
-The shell is a programming language in itself. As any programming language it has the ability to define placeholders for storing values. Those placeholders are called variables and the shell commands and shell scripts can made use of them.
+The shell is a programming language in itself. As with any programming language, it has the ability to define placeholders for storing values. Those placeholders are called variables and the shell commands and shell scripts can be made use of them.
 Shell variables can be created on the shell using the operator `=`. For example:
 
 ~~~
@@ -48,11 +48,11 @@ $ B=20
 ~~~
 {: .language-bash}
 
-Environment variables are shell variables that are exported, i.e. converted into global variables.
-The shell, and many other command line programs uses a set of variables to control their behavior. Those variables are called **environment variables**
+Environment variables are shell variables that are exported, i.e., converted into global variables.
+The shell and many other command line programs use a set of variables to control their behavior. Those variables are called **environment variables**
 Think about them as placeholders for information stored within the system that passes data to programs launched in the shell.
 
-To create an environment variable you can first to create a variable and made it and environment variable using the command `export` followed by the name of the variable.
+To create an environment variable, you can first to create a variable and make it and environment variable using the command `export` followed by the name of the variable.
 
 ~~~
 $ A=10
@@ -108,19 +108,19 @@ Some common environment variables commonly use by the shell are:
 
 Those are just a few environment variables of common use. There are many more. Changing them will change where executables are found, which libraries are used and how the system behaves in general. That is why managing the environment variables properly is so important on a machine, and even more on a HPC cluster, a machine that runs many different codes with different versions.
 
-Here is where environment modules enters.
+Here is where environment modules enter.
 
 ### Environment Modules
 
 The modules software package allows you to dynamically modify your user environment by using **modulefiles**.
 
-Each modulefile contains the information needed to configure the shell for an application. After the modules software package is initialized, the environment can be modified on a per-module basis using the module command, which interprets modulefiles. Typically, modulefiles instruct the module command to alter or set shell environment variables such as `PATH`, `MANPATH`, and others. The modulefiles can be shared by many users on a system, and users can have their own collection to supplement or replace the shared modulefiles.
+Each module file contains the information needed to configure the shell for an application. After the module's software package is initialized, the environment can be modified on a per-module basis using the module command, which interprets module files. Typically, module files instruct the module command to alter or set shell environment variables such as `PATH`, `MANPATH`, and others. The module files can be shared by many users on a system, and users can have their own collection to supplement or replace the shared module files.
 
-As a user, you can add and remove modulefiles from the current environment. The environment changes contained in a modulefile can also be summarized through the module show command. You are welcome to change modules in your `.bashrc` or `.cshrc`, but be aware that some modules print information (to standard error) when loaded, this should be directed to a file or `/dev/null` when loaded in an initialization script.
+As a user, you can add and remove module files from the current environment. The environment changes contained in a module file can also be summarized through the module show command. You are welcome to change modules in your `.bashrc` or `.cshrc`, but be aware that some modules print information (to standard error) when loaded. This should be directed to a file or `/dev/null` when loaded in an initialization script.
 
 ### Basic arguments
 
-The following table lists the most common module command options
+The following table lists the most common module command options.
 
 | Command	| Description |
 |:--------|:------------|
@@ -137,9 +137,9 @@ The following table lists the most common module command options
 >
 > 1. Check the modules that you currently have and clean (purge) your environment from them. Check again and confirm that no module is loaded.
 >
-> 2. Check which versions of Python, R and GCC you have from the RHEL itself. Try to get and idea of how old those three components are. For python and R all that you have to do is enter the corresponding command (`R` or `python`). For GCC you need to use `gcc --version` and see the date of those programs.
+> 2. Check which versions of Python, R, and GCC you have from the RHEL itself. Try to get and idea of how old those three components are. For python and R, all that you have to do is enter the corresponding command (`R` or `python`). For GCC you need to use `gcc --version` and see the date of those programs.
 >
-> 3. Now lets get newer version of those 3 components by loading the corresponding modules. Search for the module for Python 3.10.11 and R 4.4.1 and GCC 9.3.0 and load the corresponding modules. To make things easier, you can use check the availability of modules just in the languages section. 
+> 3. Now let's get a newer version of those three components by loading the corresponding modules. Search for the module for Python 3.10.11, R 4.4.1, and GCC 9.3.0 and load the corresponding modules. To make things easier, you can use check the availability of modules just in the languages section. 
 >
 >    ~~~
 >    module avail lang
@@ -154,10 +154,10 @@ The following table lists the most common module command options
 >
 >
 >
-> 4. Check again which version of those 3 components you have now. Notice that in the case of Python 3, the command python still goes towards the old python 2.6.6, as the python 3.x interpreter is not backwards compatible with python 2.x the new command is called `python3`, check its version by entering the command.
+> 4. Check again which version of those three components you have now. Notice that in the case of Python 3, the command python still goes towards the old Python 2.6.6, as the Python 3.x interpreter is not backward compatible with Python 2.x the new command is called `python3`. Check its version by entering the command.
 >
 >    ~~~
->    python3 --version
+>    ~$ python3 --version
 >    ~~~
 >    {: .source}
 >
@@ -166,43 +166,43 @@ The following table lists the most common module command options
 > 5. Clean all of the environment
 >
 >    ~~~
->    module purge
+>    ~$ module purge
 >    ~~~
 >    {: .source}
 >
-> 6. Go back and purge all the modules from your environment. We will now explore why it is important to use a recent compiler. Try to compile the code at `workshops_hands-on/Introduction_HPC/5._Environment_Modules/lambda_c++14.cpp`. Go to the folder and execute:
+> 6. Go back and purge all the modules from your environment. We will now explore why it is essential to use a recent compiler. Try to compile the code at `workshops_hands-on/Introduction_HPC/5._Environment_Modules/lambda_c++14.cpp`. Go to the folder and execute:
 >
 >    ~~~
->    g++ lambda_c++14.cpp
->    ~~~
->    {: .source}
->
->
->    At this point you should have received a list of errors, that is because even if the code is C++ it uses elements of the language that were not present at that time on C++ Specification. The code actually uses C++14 and only recent versions of GCC allows for these declarations. Lets check how many GCC compilers we have available on Thorny Flat.
->
->    ~~~
->    module avail lang/gcc
+>    ~$ g++ lambda_c++14.cpp
 >    ~~~
 >    {: .source}
 >
 >
->    Now from that list, start loading and trying to compile the code as indicated above. Which versions of GCC allow you to compile the code? Also try the Intel compilers. In the case of intel the command to compile the code is
+>    At this point, you should have received a list of errors, that is because even if the code is C++ it uses elements of the language that were not present at that time on C++ Specification. The code actually uses C++14, and only recent versions of GCC allow for these declarations. Let's check how many GCC compilers we have available on Thorny Flat.
 >
 >    ~~~
->    icpc lambda_c++14.cpp
->    ~~~
->    {: .source}
->
->
->    Try with all the Intel compilers, it will fail with all of them. That is because the default standard for the Intel C++ compiler is not C++14, you need to declare it explicitly and only for Intel Compiler suite 17.0.1
->
->    ~~~
->    icpc lambda_c++14.cpp -std=c++14
+>    ~$ module avail lang/gcc
 >    ~~~
 >    {: .source}
 >
 >
->    Now it should be clearer why modules is an important feature of any HPC infrastructure as it allows you to use several compilers, libraries and packages in different versions. On a normal computer, you usually have just one.
+>    Now, from that list, start loading and trying to compile the code as indicated above. Which versions of GCC allow you to compile the code? Also try the Intel compilers. In the case of the Intel compiler, the command to compile the code is:
+>
+>    ~~~
+>    ~$ icpc lambda_c++14.cpp
+>    ~~~
+>    {: .source}
+>
+>
+>    Try with all the Intel compilers. It will fail with some of them. That is because the default standard for the Intel C++ compiler is not C++14. You do not need to declare it explicitly, and for Intel Compiler Suite 2021, but for older versions, the correct command line is:
+>
+>    ~~~
+>    ~$ icpc lambda_c++14.cpp -std=c++14
+>    ~~~
+>    {: .source}
+>
+>
+> It should be clearer why modules are an important feature of any HPC infrastructure, as it allows you to use several compilers, libraries, and packages in different versions. On a normal computer, you usually have just one.
 >
 >{: .source}
 {: .challenge}
@@ -210,56 +210,63 @@ The following table lists the most common module command options
 
 ## Conda
 
-Conda is an open source package management system and environment management system.
-Conda quickly installs, runs and updates packages and their dependencies.
-Conda easily creates, saves, loads and switches between environments.
+Conda is an open-source package management system and environment management system.
+Conda quickly installs, runs, and updates packages and their dependencies.
+Conda easily creates, saves, loads, and switches between environments.
 It was created for Python programs, but it can package and distribute software for any language.
 
-Conda as a package manager helps you find and install packages.
-If you need a package that requires a different version of Python, you do not need to switch to a different environment manager, because conda is also an environment manager.
-With just a few commands, you can set up a totally separate environment to run that different version of Python, while continuing to run your usual version of Python in your normal environment.
+Conda, as a package manager, helps you find and install packages.
+If you need a package that requires a different version of Python, you do not need to switch to a different environment manager because conda is also an environment manager.
+With just a few commands, you can set up a totally separate environment to run that different version of Python while continuing to run your usual version of Python in your normal environment.
 
 There are two installers for conda, Anaconda and Miniconda.
 
 ### Anaconda vs Miniconda
 
-Anaconda is a downloadable, free, open source, high-performance and optimized Python and R distribution.
-Anaconda includes conda, conda-build, Python, and 100+ automatically installed, open source scientific packages and their dependencies that have been tested to work well together, including SciPy, NumPy and many others.
-Ananconda is more suited to be installed on a desktop environment as you get after installation a fairly complete environment for scientific computing.
+Anaconda is a downloadable, free, open-source, high-performance, and optimized Python and R distribution.
+Anaconda includes conda, conda-build, Python, and 100+ automatically installed, open-source scientific packages and their dependencies that have been tested to work well together, including SciPy, NumPy, and many others.
+Ananconda is more suited to be installed on a desktop environment as you get, after installation, a fairly complete environment for scientific computing.
 
-From the other side Miniconda is free minimal installer for conda.
-Miniconda is a small, bootstrap version of Anaconda that includes only conda, Python, the packages they depend on and a small number of other useful packages, including pip, zlib and a few others.
-Miniconda is more suited for HPC environments where a minimal installation is all that is needed and users can create their own environments as needed.
+On the other hand, Miniconda is a minimalistic installer for conda.
+Miniconda is a small, bootstrap version of Anaconda that includes only conda, Python, the packages they depend on, and a small number of other useful packages, including pip, zlib, and a few others.
+Miniconda is more suited for HPC environments where a minimal installation is all that is needed, and users can create their own environments as needed.
 
 ### Activating Conda on Thorny Flat and Dolly Sods
 
-On Thorny Flat the command to activate conda is:
+On Thorny Flat, the command to activate conda is:
 
 ~~~
-source /shared/software/conda/conda_init.sh
+~$ source /shared/software/conda/conda_init.sh
 ~~~
 {: .language-bash}
 
-After activation your are positioned on the ``base`` environment.
+Or you can see the command line trying to load the module for conda
 
-When you have activated conda, you are always inside a conda environment.
-Initially, you start on the `base` environment and your prompt in the shell will include a prefix in parenthesis indicating the name of the conda environment you are currently using.
+~~~
+~$ module load conda
+~~~
+{: .language-bash}
+
+After activation, you are positioned in the ``base`` environment.
+
+When you have activated `conda`, you are always inside a conda environment.
+Initially, you start on the `base` environment, and your prompt in the shell will include a prefix in parentheses indicating the name of the conda environment you are currently using.
 
 ### Conda Environments
 
 Conda allows you to change your environment easily.
-It also give you tools to create new environments, installing packages and their dependencies.
-Conda environments will not interact with other environments so you can easily keep different versions of packages just by creating multiple conda environments and populating those with the various versions of software you want to use.
+It also gives you tools to create new environments, change from one environment to another, and install packages and their dependencies.
+Conda environments will not interact with other environments, so you can easily keep different versions of packages just by creating multiple `conda` environments and populating those with the various versions of software you want to use.
 
 When you begin using conda, you already have a default environment named ``base``.
 You cannot install packages on the ``base`` environment as that is a centrally managed environment.
-Yous can, however, create new environments for installing packages.
-Try to keep separate environments for different packages or group of packages.
-That reduces the chances of incompatibility between them
+You can, however, create new environments for installing packages.
+Try to keep separate environments for different packages or groups of packages.
+That reduces the chances of incompatibility between them.
 
 ### Knowing which environments are available
 
-By the time of writing this tutorial Thorny Flat offers three environments
+At the time of this tutorial (2024), Thorny Flat offers the following environments
 centrally installed::
 
 ~~~
@@ -300,8 +307,8 @@ tensorflow18-py36         /shared/software/conda/envs/tensorflow18-py36
 
 ### Activating an existing environment
 
-Suppose that you want to use the environment called "tpd0001", to
-achieve that execute::
+Suppose that you want to use the environment called "tpd0001".
+To activate this environment, execute::
 
 ~~~
 conda activate tpd0001
@@ -318,7 +325,7 @@ conda deactivate
 {: .language-bash}
 
 If you are in the ``base`` environment, the deactivation will not have any effect.
-You are always at least on the ``base`` environment.
+You are always at least in the ``base`` environment.
 
 ### Create a new environment
 
@@ -478,7 +485,7 @@ Type "y" and press Enter to proceed.
 ~~~
 {: .language-bash}
 
-After that, conda, download and installs the packages creating a new environment for you.
+After that, conda, download, and install the packages, creating a new environment for you.
 The final message shows how to activate and deactivate the environment::
 
 ~~~
@@ -496,16 +503,16 @@ Executing transaction: done
 ~~~
 {: .language-bash}
 
-Each environment is isolated from other conda environments and that allow you to keep several environments with different packages on them or different versions of the same packages.
-As the message shows you activate the environment with::
+Each environment is isolated from other conda environments, and that allows you to keep several environments with different packages on them or different versions of the same packages.
+As the message shows, you activate the environment with::
 
 ~~~
 conda activate snowflakes
 ~~~
 {: .language-bash}
 
-Notice that when you activate a new environment, the prompt changes adding a prefix in parenthesis to indicate on which conda environment are you using at that moment.
-To check the environments available execute::
+Notice that when you activate a new environment, the prompt changes, adding a prefix in parenthesis to indicate which conda environment you are using at that moment.
+To check the environments available, execute::
 
 ~~~
 conda env list
@@ -522,7 +529,7 @@ conda info --envs
 ### Conda and Python
 
 When you create a new environment, conda installs the same Python version used to install conda on Thorny Flat (3.9).
-If you want to use a different version of Python, for example Python 2.7, simply create a new environment and specify the version of Python that you want::
+If you want to use a different version of Python, for example, Python 2.7, create a new environment and specify the version of Python that you want::
 
 ~~~
 conda create --name python27 python=2.7
@@ -536,7 +543,7 @@ conda activate python27
 ~~~
 {: .language-bash}
 
-And verify the python version::
+And verify the Python version::
 
 ~~~
 $ python --version
@@ -778,15 +785,23 @@ conda deactivate
 {: .language-bash}
 
 
-### Deleting a environment
+### Deleting an environment
 
-To remove an environment you can just execute this command.
+You can execute this command to remove an environment you own.
 
 ~~~
 conda remove --all -p $SCRATCH/bowtie2
 ~~~
 {: .language-bash}
 
+or 
+
+~~~
+conda env remove -n bowtie2
+~~~
+{: .language-bash}
+
+If the environment is named.
 
 ### More documentation
 
@@ -803,6 +818,8 @@ documentation <https://bioconda.github.io/conda-recipe_index.html>`__
 
 ### Downloading Miniconda
 
+You do not need to install Miniconda on Thorny Flat or Dolly Sods.
+However, nothing prevents you from having your version of it if you want.
 Miniconda can be downloaded from::
 
 ~~~
@@ -821,13 +838,15 @@ module load genomics/qiime
 ~~~
 {: .language-bash}
 
-This module will load python 2.7.3 and qiime on top of that
+This module will load Python 2.7.3 and qiime on top of that.
+Conda is a particularly good option to install older packages that could still be available on channels like conda-forge and bioconda.
+
 
 ## Singularity Containers
 
-Containers are a software technology that allows us to keep control of the environment where a given code runs. Consider for example that you want to run a code in such a way the same code runs on several machines or clusters ensuring that the same libraries are loaded and the same general environment is present. Different clusters could come installed with different compilers, different Linux distributions and different libraries in general. Containers can be used to package entire scientific workflows, software and libraries, and even data and move them to several compute infrastructures with complete reproducibility.
+Containers are a software technology that allows us to keep control of the environment where a given code runs. Consider for example that you want to run a code in such a way the same code runs on several machines or clusters, ensuring that the same libraries are loaded and the same general environment is present. Different clusters could come installed with different compilers, different Linux distributions and different libraries in general. Containers can be used to package entire scientific workflows, software and libraries, and even data and move them to several compute infrastructures with complete reproducibility.
 
-Containers are similar to Virtual Machines, however, the differences are enough to consider them different technologies and those differences are very important for HPC. Virtual Machines takes up a lot of system resources. Each Virtual Machine (VM) runs not just a full copy of an operating system, but a virtual copy of all the hardware that the operating system needs to run. This quickly adds up to a lot of precious RAM and CPU cycles, valuable resources for HPC.
+Containers are similar to Virtual Machines, however, the differences are enough to consider them different technologies and those differences are very important for HPC. Virtual Machines take up a lot of system resources. Each Virtual Machine (VM) runs not just a full copy of an operating system, but a virtual copy of all the hardware that the operating system needs to run. This quickly adds up to a lot of precious RAM and CPU cycles, valuable resources for HPC.
 
 In contrast, all that a container requires is enough of an operating system, supporting programs and libraries, and system resources to run a specific program. From the user perspective, a container is in most cases a single file that contains the file system, ie a rather complete Unix filesystem tree with all libraries, executables, and data that are needed for a given workflow or scientific computation.
 
