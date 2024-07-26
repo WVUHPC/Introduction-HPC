@@ -3219,9 +3219,10 @@ The support of the National Science Foundation and the US Department of Energy u
 <div style="clear: both; display: table;">
 <div style="border: none; float: left; width: 40%; padding: 10px">
 <img src="fig/NSF.jpg" alt="National Science Foundation" style="width:50%" align="left">
-    </div>
-    <div style="border: none; float: right; width: 40%; padding: 10px">
+</div>
+<div style="border: none; float: right; width: 40%; padding: 10px">
 <img src="fig/DOE.jpg" alt="National Science Foundation" style="width:50%" align="right">
+</div>
 </div>
 
 # Back of the Book
