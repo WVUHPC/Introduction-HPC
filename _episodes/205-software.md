@@ -1,32 +1,46 @@
 ---
-title: "Environment Modules"
+title: "Software on HPC Clusters"
 teaching: 60
 exercises: 30
 questions:
-- "How to load modules to access software that I want to use for my research?"
+- "Which are the options to enable software packages on an HPC cluster?"
+- "Which are the differences between environment modules, conda and apptainer?"
+- "What are environment modules and how to use them"
+- "How to use and create conda environments?"
+- "How open a shell and execute commands on a Apptainer/Singularity container?"
 objectives:
-- "Learn about *modules*, how to search, load and unload modules"
+- "Learn about the three main options to enable software on HPC clusters."
+- "Load and unload environment modules"
+- "Activate and change conda environments"
+- "Get a shell and execute commands inside singularity containers"
 keypoints:
-- Use `module avail` to know all the modules on the cluster.
-- Use `module load <module_name>` to load the module that you need.
-- You can preload modules for each login by adding the load line on your `$HOME/.bashrc`
+- Modules. Use `module avail` to know all the modules on the cluster.
+- Modules. Use `module load <module_name>` to load a module.
+- Conda. Use `conda env list` to list the available environments.
+- Conda. Use `conda activate` to activate a conda environment.
+- Singularity. Use `singularity shell <container>` to get a shell inside the container.
+- Singularity. Use `singularity exec <container> <command>` to execute a command or script inside the container. 
 ---
 
-## Environment Variables
+# Introduction
 
-The shell, and many other command line programs uses a set of variables to control their behavior. Those variables are called **Environment Variables**.
-Think about them as placeholders for information stored within the system that passes data to programs launched in the shell.
+There are many software packages being executed on an HPC cluster.
+Each area of science uses its own set of software packages.
+Sometimes the same software package is use in multiple versions and those version must be available on the same HPC cluster.
+To solve all these challenges there are several options implemented on HPC clusters.
+The different options offer various levels of isolation from the host system and some of these options are better suited for particular kinds of software.
 
-**Environment Variables** control CLI functionality. They declare where to search for executable commands, where to search for libraries, which language display messages to you, how you prompt looks. Beyond the shell itself, Environment Variables are use by many codes to control their own operation.
+## Environment Modules
 
-You can see all the variables currently defined by executing:
+*Environment modules* is a mechanism to easily enable software by changing the locations where software is installed.
+By changing specific variables on the shell, different versions of packages can be made visible to the shell or to a script.
+*Environment modules* is a software package that gives the user the ability to change the variables that the shell uses to find executables and libraries. 
+To better understand how *environment modules* do its job it is essential to understand the concept of variables in the shell and the particular role of special variables called *environment variables*
 
-~~~
-$ env
-~~~
-{: .language-bash}
+### Shell variables and environment variables
 
-Shell variables can be created like
+The shell is a programming language in itself. As any programming language it has the ability to define placeholders for storing values. Those placeholders are called variables and the shell commands and shell scripts can made use of them.
+Shell variables can be created on the shell using the operator `=`. For example:
 
 ~~~
 $ A=10
@@ -34,7 +48,11 @@ $ B=20
 ~~~
 {: .language-bash}
 
-Environment variables are shell variables that are exported, ie converted into global variables, the command to do this could be like:
+Environment variables are shell variables that are exported, i.e. converted into global variables.
+The shell, and many other command line programs uses a set of variables to control their behavior. Those variables are called **environment variables**
+Think about them as placeholders for information stored within the system that passes data to programs launched in the shell.
+
+To create an environment variable you can first to create a variable and made it and environment variable using the command `export` followed by the name of the variable.
 
 ~~~
 $ A=10
@@ -44,7 +62,7 @@ $ export B
 ~~~
 {: .language-bash}
 
-Or simply:
+This procedure can be simplified with a single line that defines and export the variable. Example:
 
 ~~~
 $ export A=10
@@ -52,6 +70,14 @@ $ export B=20
 ~~~
 {: .language-bash}
 
+**Environment Variables** control CLI functionality. They declare where to search for executable commands, where to search for libraries, which language display messages to you, how you prompt looks. Beyond the shell itself, *environment variables* are use by many codes to control their own operation.
+
+You can see all the variables currently defined by executing:
+
+~~~
+$ env
+~~~
+{: .language-bash}
 
 Environment variables are similar to the shell variables that you can create of the shell. Shell variables can be used to store data and manipulated during the life of the shell session. However, only environment variables are visible by child processes created from that shell.
 To clarify this consider this script:
@@ -68,7 +94,7 @@ echo C= $C
 
 Now create two shell variables and execute the script, do the same with environment variables and notice that now the script is able to see the variables.
 
-Some common environment variables are:
+Some common environment variables commonly use by the shell are:
 
 | Environment Variable	| Description |
 |:----------------------|:------------|
@@ -84,7 +110,7 @@ Those are just a few environment variables of common use. There are many more. C
 
 Here is where environment modules enters.
 
-## Environment Modules
+### Environment Modules
 
 The modules software package allows you to dynamically modify your user environment by using **modulefiles**.
 
@@ -92,7 +118,7 @@ Each modulefile contains the information needed to configure the shell for an ap
 
 As a user, you can add and remove modulefiles from the current environment. The environment changes contained in a modulefile can also be summarized through the module show command. You are welcome to change modules in your `.bashrc` or `.cshrc`, but be aware that some modules print information (to standard error) when loaded, this should be directed to a file or `/dev/null` when loaded in an initialization script.
 
-## Basic arguments
+### Basic arguments
 
 The following table lists the most common module command options
 
@@ -107,25 +133,13 @@ The following table lists the most common module command options
 | module swap	  | Swaps a currently loaded module for an unloaded module. |
 
 
-## Creating a private repository
-
-The basic procedure is to locate modules on a folder accessible by relevant users and add the variable `MODULEPATH` to your `.bashrc`
-
-`MODULEPATH` controls the path that the module command searches when looking for
-modulefiles.
-Typically, it is set  to a  default  value by the bootstrap procedure.
-`MODULEPATH` can be set using ’module use’ or by the module initialization
-script to search group or personal modulefile directories before  or  after
-the master modulefile directory.
-
-
-> ## Exercise: Using modulefiles
+> ### Exercise: Using modulefiles
 >
 > 1. Check the modules that you currently have and clean (purge) your environment from them. Check again and confirm that no module is loaded.
 >
 > 2. Check which versions of Python, R and GCC you have from the RHEL itself. Try to get and idea of how old those three components are. For python and R all that you have to do is enter the corresponding command (`R` or `python`). For GCC you need to use `gcc --version` and see the date of those programs.
 >
-> 3. Now lets get newer version of those 3 components by loading the corresponding modules. Search for the module for Python 3.7.2 and R 3.4.1 and GCC 8.2.0 and load the corresponding modules. To make things easier, you can use check the availability of modules just in the languages section.
+> 3. Now lets get newer version of those 3 components by loading the corresponding modules. Search for the module for Python 3.10.11 and R 4.4.1 and GCC 9.3.0 and load the corresponding modules. To make things easier, you can use check the availability of modules just in the languages section. 
 >
 >    ~~~
 >    module avail lang
@@ -133,7 +147,21 @@ the master modulefile directory.
 >    {: .source}
 >
 >
+>    ~~~
+>    module load lang/python/cpython_3.11.3_gcc122 lang/r/4.4.1_gcc122 lang/gcc/12.2.0 
+>    ~~~
+>    {: .source}
+>
+>
+>
 > 4. Check again which version of those 3 components you have now. Notice that in the case of Python 3, the command python still goes towards the old python 2.6.6, as the python 3.x interpreter is not backwards compatible with python 2.x the new command is called `python3`, check its version by entering the command.
+>
+>    ~~~
+>    python3 --version
+>    ~~~
+>    {: .source}
+>
+>
 >
 > 5. Clean all of the environment
 >
@@ -179,16 +207,8 @@ the master modulefile directory.
 >{: .source}
 {: .challenge}
 
-## Reference: Modules on the clusters
 
-This is the list of all modules on Thorny Flat on July 2020.
-
-| TIER 0 | TIER 1 | TIER 2 |
-|-|-|-|
-| benchmarks/hpl/2.3_gcc48<br>benchmarks/hpl/2.3_gcc82<br>dev/cmake/3.15.2<br>dev/cmake/3.15.4<br>dev/doxygen/1.8.15<br>lang/gcc/7.5.0<br>lang/gcc/8.2.0<br>lang/gcc/8.4.0<br>lang/gcc/9.3.0<br>lang/go/1.12.7<br>lang/intel/2018<br>lang/intel/2018_u4<br>lang/intel/2019<br>lang/intel/2019_u5<br>lang/java/jdk1.8.0_201<br>lang/julia/1.1.1<br>lang/julia/1.2.0<br>lang/pgi/19.10<br>lang/pgi/19.4<br>lang/python/cpython_3.6.9_gcc82<br>lang/python/cpython_3.7.2_gcc82<br>lang/python/cpython_3.7.4_gcc82<br>lang/python/intelpython_2.7.14<br>lang/python/intelpython_2.7.16<br>lang/python/intelpython_3.6.3<br>lang/python/intelpython_3.6.9<br>lang/python/pypy2.7-7.1.1-portable<br>lang/python/pypy3.6-7.1.1-portable<br>lang/python/pypy3.6-v7.1.1-thorny<br>lang/r/3.5.2<br>lang/r/3.6.2<br>libs/atompaw/4.1.0.5_gcc48<br>libs/atompaw/4.1.0.5_intel18<br>libs/boost/1.70_gcc48_ompi216<br>libs/boost/1.70_gcc82_ompi216<br>libs/boost/1.70_intel18<br>libs/boost/1.73<br>libs/cfitsio/3.47_gcc82<br>libs/eigen/3.3.7<br>libs/fftw/3.3.8_gcc48<br>libs/fftw/3.3.8_gcc75<br>libs/fftw/3.3.8_gcc75_ompi3.1.6<br>libs/fftw/3.3.8_gcc82<br>libs/fftw/3.3.8_gcc82b<br>libs/fftw/3.3.8_gcc82_ompi4<br>libs/fftw/3.3.8_gcc84<br>libs/fftw/3.3.8_gcc84_ompi3.1.6<br>libs/fftw/3.3.8_gcc93<br>libs/fftw/3.3.8_gcc93_ompi3.1.6<br>libs/fftw/3.3.8_intel18<br>libs/gmp/6.2.0<br>libs/hdf5/1.10.5_gcc48<br>libs/hdf5/1.10.5_gcc48_ompi31<br>libs/hdf5/1.10.5_gcc82<br>libs/hdf5/1.10.5_gcc82_ompi31<br>libs/hdf5/1.10.5_intel18<br>libs/hdf5/1.10.5_intel18_impi18<br>libs/hdf5/1.10.5_intel19<br>libs/hdf5/1.10.5_intel19_impi19<br>libs/hdf5/1.10.6_gcc82_ompi31<br>libs/hdf5/1.12.0_gcc75<br>libs/hdf5/1.12.0_gcc75_ompi31<br>libs/hdf5/1.12.0_gcc84<br>libs/hdf5/1.12.0_gcc84_ompi31<br>libs/hdf5/1.12.0_gcc93<br>libs/hdf5/1.12.0_gcc93_ompi31<br>libs/libpsml/1.1.7_gcc82<br>libs/libxc/3.0.1_gcc48<br>libs/libxc/3.0.1_gcc82<br>libs/libxc/3.0.1_intel18<br>libs/libxc/4.2.3_intel18<br>libs/libxc/4.3.4_gcc82<br>libs/libxc/4.3.4_intel18<br>libs/magma/2.5.1_gcc48<br>libs/netcdf/4.1.1_gcc48<br>libs/netcdf/4.7.1_gcc82<br>libs/netcdf/4.7.1_intel18<br>libs/netcdf/4.7.1_intel19<br>libs/netcdf/4.x_gcc48<br>libs/netcdf/4.x_gcc48_ompi2<br>libs/netcdf/4.x_gcc82<br>libs/netcdf/4.x_gcc82_ompi4<br>libs/netcdf/4.x_intel18<br>libs/netcdf/4.x_intel18_impi18<br>libs/netcdf/fortran-4.5.2_intel18<br>libs/netlib/3.8.0_gcc82<br>libs/netlib/3.8.0_intel18<br>libs/openblas/0.3.5_gcc48<br>libs/openblas/0.3.5_gcc82<br>libs/openblas/0.3.7_gcc82<br>libs/openblas/0.3.9_gcc75<br>libs/openblas/0.3.9_gcc84<br>libs/openblas/0.3.9_gcc93<br>libs/refblas/3.8_gcc82<br>libs/suitesparse/5.4.0_gcc82<br>libs/swig/4.0.1_gcc82<br>libs/xmlf90/1.5.4_gcc48<br>libs/xmlf90/1.5.4_gcc82<br>libs/yaml/0.2.2_gcc82<br>libs/zeromq/4.3.1_gcc82<br>parallel/cuda/10.0.130<br>parallel/hwloc/1.10.1_gcc48<br>parallel/hwloc/1.10.1_gcc82<br>parallel/hwloc/1.10.1_intel18<br>parallel/hwloc/1.11.13_gcc82<br>parallel/hwloc/2.0.3_gcc82<br>parallel/hwloc/2.0.3_intel18<br>parallel/impi/2017<br>parallel/mpich/3.3_gcc82<br>parallel/mvapich2/2.3.1_gcc82<br>parallel/openmpi/2.1.2_gcc48<br>parallel/openmpi/2.1.6_gcc48<br>parallel/openmpi/2.1.6_gcc82<br>parallel/openmpi/2.1.6_intel18<br>parallel/openmpi/3.1.4_gcc48<br>parallel/openmpi/3.1.4_gcc82<br>parallel/openmpi/3.1.4_intel18<br>parallel/openmpi/3.1.6_gcc75<br>parallel/openmpi/3.1.6_gcc84<br>parallel/openmpi/3.1.6_gcc93<br>parallel/ucx/1.5.0_gcc82<br>utils/tmux/3.0a | conda<br>matlab/2018b<br>singularity/2.5.2 | ansys/fluids_19.2<br>astronomy/casa/5.3.0<br>astronomy/casa/5.4.1<br>astronomy/casa/5.6.0<br>atomistic/abinit/8.10.2_intel18<br>atomistic/abinit/8.10.3_gcc82<br>atomistic/abinit/8.10.3_gcc82_mpiio<br>atomistic/abinit/8.10.3_intel18<br>atomistic/abinit/9.0.4_gcc82<br>atomistic/amber/18_cuda<br>atomistic/amber/18_mpi<br>atomistic/amber/18_openmp<br>atomistic/elk/5.2.14_intel18<br>atomistic/espresso/6.4_intel18_seq<br>atomistic/espresso/6.4_intel18_thd<br>atomistic/gaussian/g16<br>atomistic/gaussian/g16_rev1<br>atomistic/gromacs/2016.6<br>atomistic/gromacs/2016.6_cuda<br>atomistic/gromacs/2016.6_gcc48_cuda<br>atomistic/gromacs/2016.6_gcc82<br>atomistic/gromacs/2016.6_plumed_gcc82<br>atomistic/gromacs/2018.8_gcc82<br>atomistic/gromacs/2018.8_plumed_gcc82<br>atomistic/gromacs/2019.3<br>atomistic/gromacs/2019.3_gcc48_cuda<br>atomistic/gromacs/2019.4<br>atomistic/gromacs/2019.4_double<br>atomistic/gromacs/2019.4_gcc82<br>atomistic/gromacs/2019.4_plumed_gcc82<br>atomistic/gromacs/5.1.5_cuda<br>atomistic/lammps/2018-12-12_gcc82<br>atomistic/lammps/2018-12-12_gcc82_ompi2<br>atomistic/lammps/2019.06.05<br>atomistic/lammps/2019.08.07_gcc82_ompi31<br>atomistic/lammps/2019.08.07_intel19_impi19<br>atomistic/namd/2.13_CPU<br>atomistic/namd/2.13_CUDA<br>atomistic/namd/NAMD_Git-2020-01-02-mpi<br>atomistic/namd/NAMD_Git-2020-01-02-mpi-smp<br>atomistic/namd/NAMD_Git-2020-01-02-ofi<br>atomistic/namd/NAMD_Git-2020-01-02-ofi-smp<br>atomistic/octopus/9.1_gcc82<br>atomistic/octopus/9.1_gcc82_ompi31<br>atomistic/orca/4.2.1_ompi216<br>atomistic/orca/4.2.1_ompi314<br>atomistic/plumed/2.5.3_gcc82<br>atomistic/siesta/4.0.2_intel18<br>atomistic/siesta/4.0.2_intel19<br>atomistic/vasp/5.4.4_intel18_seq<br>atomistic/vasp/5.4.4_intel18_thd<br>atomistic/vasp/5.4.4_intel19_seq<br>atomistic/vasp/5.4.4_intel19_thd<br>bioinformatics/emboss/6.6.0<br>bioinformatics/gatk/4.1.0<br>data/hdfview/3.1.0<br>math/dakota/6.10<br>math/dakota/6.10-UI<br>math/dakota/6.8<br>math/dakota/6.8-UI<br>math/gams/26.1<br>visual/graphviz/2.40.1_gcc82<br>visual/paraview/5.6.0<br>/shared/modulefiles/tier3:<br>general_gcc82<br>general_intel18<br>jupyter_kernels<br>r/3.5.2<br>r/3.6.2 |
-|  |  |  |
-
-# Conda
+## Conda
 
 Conda is an open source package management system and environment management system.
 Conda quickly installs, runs and updates packages and their dependencies.
@@ -201,7 +221,7 @@ With just a few commands, you can set up a totally separate environment to run t
 
 There are two installers for conda, Anaconda and Miniconda.
 
-## Anaconda vs Miniconda
+### Anaconda vs Miniconda
 
 Anaconda is a downloadable, free, open source, high-performance and optimized Python and R distribution.
 Anaconda includes conda, conda-build, Python, and 100+ automatically installed, open source scientific packages and their dependencies that have been tested to work well together, including SciPy, NumPy and many others.
@@ -211,7 +231,7 @@ From the other side Miniconda is free minimal installer for conda.
 Miniconda is a small, bootstrap version of Anaconda that includes only conda, Python, the packages they depend on and a small number of other useful packages, including pip, zlib and a few others.
 Miniconda is more suited for HPC environments where a minimal installation is all that is needed and users can create their own environments as needed.
 
-## Activating Conda on Thorny Flat
+### Activating Conda on Thorny Flat and Dolly Sods
 
 On Thorny Flat the command to activate conda is:
 
@@ -222,14 +242,18 @@ source /shared/software/conda/conda_init.sh
 
 After activation your are positioned on the ``base`` environment.
 
+When you have activated conda, you are always inside a conda environment.
+Initially, you start on the `base` environment and your prompt in the shell will include a prefix in parenthesis indicating the name of the conda environment you are currently using.
 
-## Conda Environments
+### Conda Environments
 
-Conda allows you to create separate environments containing files, packages and their dependencies that will not interact with other environments.
+Conda allows you to change your environment easily.
+It also give you tools to create new environments, installing packages and their dependencies.
+Conda environments will not interact with other environments so you can easily keep different versions of packages just by creating multiple conda environments and populating those with the various versions of software you want to use.
 
 When you begin using conda, you already have a default environment named ``base``.
-You cannot install packages on the ``base`` environment.
-Yous should create new environments for installing packages.
+You cannot install packages on the ``base`` environment as that is a centrally managed environment.
+Yous can, however, create new environments for installing packages.
 Try to keep separate environments for different packages or group of packages.
 That reduces the chances of incompatibility between them
 
@@ -239,39 +263,38 @@ By the time of writing this tutorial Thorny Flat offers three environments
 centrally installed::
 
 ~~~
-$> conda info --envs
+$> conda env list
 
+(base) trcis001:~$ conda env list
 # conda environments:
 #
-base                  *  /shared/software/conda
-MD_2022                  /shared/software/conda/envs/MD_2022
-abienv_py36              /shared/software/conda/envs/abienv_py36
-abienv_py37              /shared/software/conda/envs/abienv_py37
-genomics-core-2020b      /shared/software/conda/envs/genomics-core-2020b
-genomics-core-2021a      /shared/software/conda/envs/genomics-core-2021a
-m3gnet                   /shared/software/conda/envs/m3gnet
-materials_discovery      /shared/software/conda/envs/materials_discovery
-moose                    /shared/software/conda/envs/moose
-neural_gpu               /shared/software/conda/envs/neural_gpu
-picrust                  /shared/software/conda/envs/picrust
-picrust2                 /shared/software/conda/envs/picrust2
-pymatgen                 /shared/software/conda/envs/pymatgen
-python27                 /shared/software/conda/envs/python27
-python35                 /shared/software/conda/envs/python35
-python36                 /shared/software/conda/envs/python36
-python37                 /shared/software/conda/envs/python37
-qiime2-2020.2            /shared/software/conda/envs/qiime2-2020.2
-qiime2-2021.2            /shared/software/conda/envs/qiime2-2021.2
-qiime2-2021.4            /shared/software/conda/envs/qiime2-2021.4
-qiime2-2022.2            /shared/software/conda/envs/qiime2-2022.2
-qiime2-2022.8            /shared/software/conda/envs/qiime2-2022.8
-qiime2-2023.2            /shared/software/conda/envs/qiime2-2023.2
-r_4.1                    /shared/software/conda/envs/r_4.1
-scipoptsuite             /shared/software/conda/envs/scipoptsuite
-sourcetracker2           /shared/software/conda/envs/sourcetracker2
-st2_py36                 /shared/software/conda/envs/st2_py36
-st2_py37                 /shared/software/conda/envs/st2_py37
-tensorflow18-py36        /shared/software/conda/envs/tensorflow18-py36
+base                    * /shared/software/conda
+abienv_py36               /shared/software/conda/envs/abienv_py36
+abienv_py37               /shared/software/conda/envs/abienv_py37
+cutadaptenv               /shared/software/conda/envs/cutadaptenv
+genomics_2024             /shared/software/conda/envs/genomics_2024
+materials_2024            /shared/software/conda/envs/materials_2024
+materials_2024_gcc93      /shared/software/conda/envs/materials_2024_gcc93
+materials_discovery       /shared/software/conda/envs/materials_discovery
+moose                     /shared/software/conda/envs/moose
+neural_gpu                /shared/software/conda/envs/neural_gpu
+picrust                   /shared/software/conda/envs/picrust
+picrust2                  /shared/software/conda/envs/picrust2
+python27                  /shared/software/conda/envs/python27
+python35                  /shared/software/conda/envs/python35
+python36                  /shared/software/conda/envs/python36
+python37                  /shared/software/conda/envs/python37
+qiime2-2022.8             /shared/software/conda/envs/qiime2-2022.8
+qiime2-2023.2             /shared/software/conda/envs/qiime2-2023.2
+qiime2-amplicon-2023.9    /shared/software/conda/envs/qiime2-amplicon-2023.9
+qiime2-shotgun-2023.9     /shared/software/conda/envs/qiime2-shotgun-2023.9
+qiime2-tiny-2023.9        /shared/software/conda/envs/qiime2-tiny-2023.9
+r_4.2                     /shared/software/conda/envs/r_4.2
+scipoptsuite              /shared/software/conda/envs/scipoptsuite
+sourcetracker2            /shared/software/conda/envs/sourcetracker2
+st2_py36                  /shared/software/conda/envs/st2_py36
+st2_py37                  /shared/software/conda/envs/st2_py37
+tensorflow18-py36         /shared/software/conda/envs/tensorflow18-py36
 ~~~
 {: .language-bash}
 
@@ -303,7 +326,43 @@ We will name the environment snowflakes and install the package BioPython.
 At the Anaconda Prompt or in your terminal window, type the following::
 
 ~~~
-conda create --name snowflakes
+(base) trcis001:~$ conda create --name snowflakes
+Retrieving notices: ...working... done
+Channels:
+ - https://conda.software.inl.gov/public
+ - conda-forge
+Platform: linux-64
+Collecting package metadata (repodata.json): done
+Solving environment: done
+
+## Package Plan ##
+
+  environment location: /users/gufranco/.conda/envs/snowflakes
+
+
+
+Proceed ([y]/n)? y
+
+Preparing transaction: done
+Verifying transaction: done
+Executing transaction: done
+#
+# To activate this environment, use
+#
+#     $ conda activate snowflakes
+#
+# To deactivate an active environment, use
+#
+#     $ conda deactivate
+
+~~~
+{: .language-bash}
+
+From here you can activate your environment and install the packages of your willing.
+
+~~~
+(base) trcis001:~$ conda activate snowflakes
+(snowflakes) trcis001:~$
 ~~~
 {: .language-bash}
 
@@ -311,56 +370,103 @@ conda create --name snowflakes
 or if you want also to install a package you can execute::
 
 ~~~
-conda create --name snowflakes biopython
+conda create --name snowflakes -c bioconda biopython
 ~~~
 {: .language-bash}
 
 Conda collects metadata about the package and its dependencies and produces an installation plan::
 
 ~~~
+Channels:
+ - bioconda
+ - https://conda.software.inl.gov/public
+ - conda-forge
+Platform: linux-64
+Collecting package metadata (repodata.json): done
+Solving environment: done
+
 ## Package Plan ##
 
-environment location: /shared/software/conda/envs/snowflakes
+  environment location: /users/gufranco/.conda/envs/snowflakes
 
-added / updated specs:
-- biopython
+  added / updated specs:
+    - biopython
 
 
 The following packages will be downloaded:
 
-package                    |            build
----------------------------|-----------------
-_libgcc_mutex-0.1          |             main           3 KB
-biopython-1.74             |   py37h7b6447c_0         2.0 MB
-blas-1.0                   |              mkl           6 KB
-ca-certificates-2019.8.28  |                0         132 KB
-certifi-2019.9.11          |           py37_0         154 KB
-intel-openmp-2019.4        |              243         729 KB
-libedit-3.1.20181209       |       hc058e9b_0         163 KB
-libffi-3.2.1               |       hd88cf55_4          40 KB
-libgcc-ng-9.1.0            |       hdf63c60_0         5.1 MB
-libgfortran-ng-7.3.0       |       hdf63c60_0        1006 KB
-libstdcxx-ng-9.1.0         |       hdf63c60_0         3.1 MB
-mkl-2019.4                 |              243       131.2 MB
-mkl-service-2.3.0          |   py37he904b0f_0         218 KB
-mkl_fft-1.0.14             |   py37ha843d7b_0         155 KB
-mkl_random-1.1.0           |   py37hd6b4f25_0         321 KB
-ncurses-6.1                |       he6710b0_1         777 KB
-numpy-1.17.2               |   py37haad9e8e_0           4 KB
-numpy-base-1.17.2          |   py37hde5b4d6_0         4.2 MB
-openssl-1.1.1d             |       h7b6447c_1         3.7 MB
-pip-19.2.3                 |           py37_0         1.9 MB
-python-3.7.4               |       h265db76_1        32.1 MB
-readline-7.0               |       h7b6447c_5         324 KB
-setuptools-41.2.0          |           py37_0         630 KB
-six-1.12.0                 |           py37_0          23 KB
-sqlite-3.29.0              |       h7b6447c_0         1.1 MB
-tk-8.6.8                   |       hbc83047_0         2.8 MB
-wheel-0.33.6               |           py37_0          40 KB
-xz-5.2.4                   |       h14c3975_4         283 KB
-zlib-1.2.11                |       h7b6447c_3         103 KB
-------------------------------------------------------------
-                                       Total:       192.2 MB
+    package                    |            build
+    ---------------------------|-----------------
+    biopython-1.70             |      np112py36_1         2.6 MB  bioconda
+    ca-certificates-2024.7.4   |       hbcca054_0         151 KB  conda-forge
+    ld_impl_linux-64-2.40      |       hf3520f5_7         691 KB  conda-forge
+    libgcc-ng-14.1.0           |       h77fa898_0         822 KB  conda-forge
+    libgomp-14.1.0             |       h77fa898_0         446 KB  conda-forge
+    libpng-1.6.43              |       h2797004_0         281 KB  conda-forge
+    libsqlite-3.46.0           |       hde9e2c9_0         845 KB  conda-forge
+    libstdcxx-ng-14.1.0        |       hc0a3c3a_0         3.7 MB  conda-forge
+    libwebp-base-1.4.0         |       hd590300_0         429 KB  conda-forge
+    libzlib-1.2.13             |       h4ab18f5_6          60 KB  conda-forge
+    mmtf-python-1.1.3          |     pyhd8ed1ab_0          25 KB  conda-forge
+    ncurses-6.5                |       h59595ed_0         867 KB  conda-forge
+    numpy-1.12.1               |py36_blas_openblash1522bff_1001         3.8 MB  conda-forge
+    reportlab-3.5.68           |   py36h3e18861_0         2.4 MB  conda-forge
+    sqlite-3.46.0              |       h6d4b2fc_0         840 KB  conda-forge
+    zlib-1.2.13                |       h4ab18f5_6          91 KB  conda-forge
+    zstd-1.5.6                 |       ha6fb4c9_0         542 KB  conda-forge
+    ------------------------------------------------------------
+                                           Total:        18.5 MB
+
+The following NEW packages will be INSTALLED:
+
+  _libgcc_mutex      conda-forge/linux-64::_libgcc_mutex-0.1-conda_forge 
+  _openmp_mutex      conda-forge/linux-64::_openmp_mutex-4.5-2_gnu 
+  biopython          bioconda/linux-64::biopython-1.70-np112py36_1 
+  blas               conda-forge/linux-64::blas-1.1-openblas 
+  ca-certificates    conda-forge/linux-64::ca-certificates-2024.7.4-hbcca054_0 
+  freetype           conda-forge/linux-64::freetype-2.12.1-h267a509_2 
+  jpeg               conda-forge/linux-64::jpeg-9e-h0b41bf4_3 
+  lcms2              conda-forge/linux-64::lcms2-2.12-hddcbb42_0 
+  ld_impl_linux-64   conda-forge/linux-64::ld_impl_linux-64-2.40-hf3520f5_7 
+  lerc               conda-forge/linux-64::lerc-3.0-h9c3ff4c_0 
+  libdeflate         conda-forge/linux-64::libdeflate-1.10-h7f98852_0 
+  libffi             conda-forge/linux-64::libffi-3.4.2-h7f98852_5 
+  libgcc-ng          conda-forge/linux-64::libgcc-ng-14.1.0-h77fa898_0 
+  libgfortran-ng     conda-forge/linux-64::libgfortran-ng-7.5.0-h14aa051_20 
+  libgfortran4       conda-forge/linux-64::libgfortran4-7.5.0-h14aa051_20 
+  libgomp            conda-forge/linux-64::libgomp-14.1.0-h77fa898_0 
+  libnsl             conda-forge/linux-64::libnsl-2.0.1-hd590300_0 
+  libpng             conda-forge/linux-64::libpng-1.6.43-h2797004_0 
+  libsqlite          conda-forge/linux-64::libsqlite-3.46.0-hde9e2c9_0 
+  libstdcxx-ng       conda-forge/linux-64::libstdcxx-ng-14.1.0-hc0a3c3a_0 
+  libtiff            conda-forge/linux-64::libtiff-4.3.0-h0fcbabc_4 
+  libwebp-base       conda-forge/linux-64::libwebp-base-1.4.0-hd590300_0 
+  libzlib            conda-forge/linux-64::libzlib-1.2.13-h4ab18f5_6 
+  mmtf-python        conda-forge/noarch::mmtf-python-1.1.3-pyhd8ed1ab_0 
+  msgpack-python     conda-forge/linux-64::msgpack-python-1.0.2-py36h605e78d_1 
+  ncurses            conda-forge/linux-64::ncurses-6.5-h59595ed_0 
+  numpy              conda-forge/linux-64::numpy-1.12.1-py36_blas_openblash1522bff_1001 
+  olefile            conda-forge/noarch::olefile-0.46-pyh9f0ad1d_1 
+  openblas           conda-forge/linux-64::openblas-0.3.3-h9ac9557_1001 
+  openjpeg           conda-forge/linux-64::openjpeg-2.5.0-h7d73246_0 
+  openssl            conda-forge/linux-64::openssl-1.1.1w-hd590300_0 
+  pillow             conda-forge/linux-64::pillow-8.3.2-py36h676a545_0 
+  pip                conda-forge/noarch::pip-21.3.1-pyhd8ed1ab_0 
+  python             conda-forge/linux-64::python-3.6.15-hb7a2778_0_cpython 
+  python_abi         conda-forge/linux-64::python_abi-3.6-2_cp36m 
+  readline           conda-forge/linux-64::readline-8.2-h8228510_1 
+  reportlab          conda-forge/linux-64::reportlab-3.5.68-py36h3e18861_0 
+  setuptools         conda-forge/linux-64::setuptools-58.0.4-py36h5fab9bb_2 
+  sqlite             conda-forge/linux-64::sqlite-3.46.0-h6d4b2fc_0 
+  tk                 conda-forge/linux-64::tk-8.6.13-noxft_h4845f30_101 
+  wheel              conda-forge/noarch::wheel-0.37.1-pyhd8ed1ab_0 
+  xz                 conda-forge/linux-64::xz-5.2.6-h166bdaf_0 
+  zlib               conda-forge/linux-64::zlib-1.2.13-h4ab18f5_6 
+  zstd               conda-forge/linux-64::zstd-1.5.6-ha6fb4c9_0 
+
+
+Proceed ([y]/n)? 
+
 ~~~
 {: .}
 
@@ -415,7 +521,7 @@ conda info --envs
 
 ### Conda and Python
 
-When you create a new environment, conda installs the same Python version used to install conda on Thorny Flat (3.7).
+When you create a new environment, conda installs the same Python version used to install conda on Thorny Flat (3.9).
 If you want to use a different version of Python, for example Python 2.7, simply create a new environment and specify the version of Python that you want::
 
 ~~~
@@ -609,8 +715,8 @@ conda env create -p $SCRATCH/biocore -f biocore.yml
 ~~~
 {: .language-bash}
 
-By default, new environments are created inside your $HOME folder on
-$HOME/.conda
+By default, new environments are created inside your `$HOME` folder on
+`$HOME/.conda`
 
 ### Listing the packages inside one environment
 
@@ -656,12 +762,13 @@ a simple example showing that for bowtie2
 ~~~
 #!/bin/bash
 
-#PBS -N MY_JOB
-#PBS -q standby
-#PBS -j oe
-#PBS -l nodes=1:ppn=2
+#SBATCH -J CONDA_JOB
+#SBATCH -N 1
+#SBATCH -c 4
+#SBATCH -p standby
+#SBATCH -t 4:00:00
 
-source /shared/software/miniconda3/etc/profile.d/conda.sh
+source /shared/software/conda/conda_init.sh
 conda activate $SCRATCH/bowtie2
 
 bowtie2 .....
@@ -716,7 +823,7 @@ module load genomics/qiime
 
 This module will load python 2.7.3 and qiime on top of that
 
-# Singularity Containers
+## Singularity Containers
 
 Containers are a software technology that allows us to keep control of the environment where a given code runs. Consider for example that you want to run a code in such a way the same code runs on several machines or clusters ensuring that the same libraries are loaded and the same general environment is present. Different clusters could come installed with different compilers, different Linux distributions and different libraries in general. Containers can be used to package entire scientific workflows, software and libraries, and even data and move them to several compute infrastructures with complete reproducibility.
 
@@ -730,11 +837,11 @@ Singularity offers an alternative solution to Docker, users can run the prepared
 
 For more information about Singularity and complete documentation see: https://singularity.lbl.gov/quickstart
 
-## How to use a singularity Image
+### How to use a singularity Image
 
 There are basically two scenarios, interactive execution and job submission.
 
-### Interactive Job
+#### Interactive Job
 
 If you are using Visit or RStudio, programs that uses the X11 forwarding, ensure to connect first to the cluster with X11 forwarding, before asking for an interactive job.
 In order to connect into Thorny with X11 forwarding use:
@@ -752,7 +859,7 @@ ssh -X <username>@tf.hpc.wvu.edu
 Once you have login into the cluster, create an interactive job with the following command line, in this case we are using standby as queue but any other queue is valid.
 
 ~~~
-qsub -X -I -q standby
+salloc -c 4 -p standby
 ~~~
 {: .source}
 
@@ -760,7 +867,7 @@ qsub -X -I -q standby
 Once you get inside a compute node, load the module:
 
 ~~~
-module load singularity/2.5.2
+module load singularity
 ~~~
 {: .source}
 
@@ -768,12 +875,12 @@ module load singularity/2.5.2
 After loading the module the command singularity is available for usage, and you can get a shell inside the image with:
 
 ~~~
-singularity shell /shared/software/containers/<Image Name>
+singularity shell /shared/containers/<Image Name>
 ~~~
 {: .source}
 
 
-### Job Submission
+#### Job Submission
 
 In this case you do not need to export X11, just login into Thorny Flat
 
@@ -790,15 +897,15 @@ Once you have login into the cluster, create a submission script ("runjob.pbs" f
 ~~~
 #!/bin/sh
 
-#PBS -N JOB
-#PBS -l nodes=1:ppn=1
-#PBS -l walltime=04:00:00
-#PBS -m ae
-#PBS -q standby
+#SBATCH -J SINGULARITY_JOB
+#SBATCH -N 1
+#SBATCH -c 4
+#SBATCH -p standby
+#SBATCH -t 4:00:00
 
-module load singularity/2.5.1
+module load singularity
 
-singularity exec /shared/software/containers/<Image Name> <command_or_script_to_run>
+singularity exec /shared/containers/<Image Name> <command_or_script_to_run>
 ~~~
 {: .source}
 
@@ -806,20 +913,20 @@ singularity exec /shared/software/containers/<Image Name> <command_or_script_to_
 Submit your job with
 
 ~~~
-qsub runjob.pbs
+sbatch runjob.pbs
 ~~~
 {: .source}
 
-> ## Exercise 1: Using singularity on the cluster (Interactive)
+> ### Exercise 1: Using singularity on the cluster (Interactive)
 >
-> This exercise propose the use of singularity to access RStudio 1.1 and R 3.4.4
+> This exercise propose the use of singularity to access RStudio-server version 2023.12.1-402 and R 4.4.1
 >
 > Follow the instructions for accessing an interactive session
 >
 > The image is located at:
 >
 > ~~~
-> /shared/software/containers/RStudio-desktop-1.1.442_R-3.4.4.simg
+> /shared/containers/RStudio-server-2023.12.1-402_R-4.4.1_jammy.sif 
 > ~~~
 > {: .source}
 > Be sure that you can execute basic R commands. You can get an error message like:
@@ -830,7 +937,7 @@ qsub runjob.pbs
 >
 {: .challenge}
 
-> ## Exercise 2: Using singularity on the cluster (Non-interactive)
+> ### Exercise 2: Using singularity on the cluster (Non-interactive)
 >
 > Create a script that reads a CSV with official statistics of population for US. The file can be downloaded from:
 >~~~
@@ -849,7 +956,20 @@ qsub runjob.pbs
 >
 {: .challenge}
 
-## Creating your own images
+## Advanced topics
+
+### **Modules:** Creating a private repository
+
+The basic procedure is to locate modules on a folder accessible by relevant users and add the variable `MODULEPATH` to your `.bashrc`
+
+`MODULEPATH` controls the path that the module command searches when looking for
+modulefiles.
+Typically, it is set  to a  default  value by the bootstrap procedure.
+`MODULEPATH` can be set using ’module use’ or by the module initialization
+script to search group or personal modulefile directories before  or  after
+the master modulefile directory.
+
+### **Singularity:** Creating your own images
 
 You can create your own Singularity images and use them on our clusters.
 The only constrain is that images can only be created on your own machine as you need root access to create them.
@@ -1087,6 +1207,7 @@ sudo singularity build centos-final.simg centos-final.bst
 This is the final image. It is not too big, it contains the packages that we installed from yum, the sources and binaries for libgraph and the sources for the couple of example sources that uses libgraph. The image can be move to any machine with singularity and should be able to run the codes.
 
 Remember that to see the windows you should have and Xserver running on your machine and X11 forwarding on your ssh client.
+
 
 
 
