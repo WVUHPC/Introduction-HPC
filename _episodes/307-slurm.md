@@ -19,22 +19,22 @@ keypoints:
 - "It is a good idea to keep aliases to common torque commands for easy execution."
 ---
 
-When you are using your own computer and you execute calculations, you are responsible of not overloading the machine with more workload that the machine can actually process efficiently.
-If you have just one computer, you monitor the load of the machine and decide if the computer can execute more jobs.
-In the case of several machines, you need to log in individually on each machine, submit the jobs and monitor those machines from time to time.
+When you are using your computer and you execute calculations, you are responsible for not overloading the machine with more workload than the machine can actually process efficiently.
+If you have just one computer, you monitor the machine's load and decide if the computer can execute more jobs.
+In the case of several machines, you need to log in individually to each machine, submit the jobs, and monitor those machines from time to time.
 
-You can easily realize that working this way is pretty inefficient.
+You can easily realize that working this way could be more efficient.
 What if the job finishes during the night?
-What if you have multiple cores but your jobs can only use one?
-How to control several machines efficiently?.
-These and several other conditions are addressed by using a Resource Manager also known as Batch System or Queue System.
+What if you have multiple cores, but your jobs can only use one?
+How to control several machines efficiently?
+These and several other conditions are addressed by using a Resource Manager, also known as a Batch System or Queue System.
 
 
 An HPC system such as Thorny Flat or Dolly Sods has tenths nodes and more than 100 users.
 How do we decide who gets what and when?
 How do we ensure that a task is run with the resources it needs?
 This job is handled by a special piece of software called the scheduler.
-On an HPC system, the scheduler manages which jobs run where and when.
+The scheduler manages which jobs run where and when on an HPC system.
 
 
 
@@ -42,17 +42,16 @@ On an HPC system, the scheduler manages which jobs run where and when.
 
 The scheduler used on our clusters is SLURM.
 SLURM is not the only resource manager or scheduler for HPC systems.
-There are other software packages that offer similar functionality.
+Other software packages offer similar functionality.
 The exact syntax might change, but the concepts remain the same.
 
-A Resource Manager takes care of receiving job submissions and executes those jobs when resources are available providing the most efficient conditions for the jobs.
-On the other side, a Job Scheduler is in charge of associating jobs with the appropriated resources and trying to maximize and objective function such as total utilization constrained by priorities and the best balance between the resources requested and resources available.
-As SLURM is taking the dual role of Resource Manager and Scheduler we say that SLURM is a Workload Manager a term that better embraces the multiple roles taken by this software package.
+A Resource Manager takes care of receiving job submissions and executes those jobs when resources are available, providing the most efficient conditions for the jobs.
+On the other hand, a job scheduler is in charge of associating jobs with the appropriate resources and trying to maximize an objective function, such as total utilization constrained by priorities and the best balance between the resources requested and resources available.
+As SLURM is taking the dual role of Resource Manager and Scheduler, SLURM calls itself a Workload Manager, a term that better embraces the multiple roles taken by this software package.
 
->## Changes to the Batch System
+>## Workload Manager on WVU Clusters 
 >
->In the past our scheduler and resource manager was Torque and Moab.
->All of our clusters use SLURM today. On Thorny Flat we have a compatibility layer such that most Torque/Moab batch scripts will still work. If you are new to WVU's HPC clusters, it makes the most sense to learn the SLURM
+>All of our clusters use SLURM today. On Thorny Flat, we have a compatibility layer so that most Torque/Moab batch scripts will still work. If you are new to WVU's HPC clusters, it makes the most sense to learn the SLURM
 >batch commands.  See [Slurm Quick Start Guide](https://slurm.schedmd.com/quickstart.html) for more SLURM information.
 {: .callout}
 
@@ -60,14 +59,14 @@ As SLURM is taking the dual role of Resource Manager and Scheduler we say that S
 
 The most basic use of the scheduler is to run a command non-interactively.
 This is also referred to as batch job submission.
-In this case, we need to make a script that incorporates some arguments for SLURM such as resources needed and modules to load.
+In this case, we need to make a script that incorporates some arguments for SLURM, such as the resources needed and the modules that need to be loaded.
 
 We will use the ``sleep.sh`` job script as an example.
 
 
 ### Parameters
 
-Let's discuss the example SLURM script, ``sleep.sh``. Go to File Explorer and edit sleep.sh
+Let's discuss the example SLURM script, ``sleep.sh``. Go to File Explorer and edit `sleep.sh`
 
     $> cd $HOME
     $> mkdir SLEEP
@@ -93,7 +92,7 @@ sleep 120
 
 Comments in UNIX (denoted by `#`) are typically ignored.
 But there are exceptions.
-For instance the special `#!` comment at the beginning of scripts
+For instance, the special `#!` comment at the beginning of scripts
 specifies what program should be used to run it (typically `/bin/bash`). This is required in SLURM so don't leave it out!
 Schedulers like SLURM also have a special comment used to denote special
 scheduler-specific options.
@@ -112,17 +111,17 @@ In our example, we have set the following parameters:
 | ``--ntasks-per-node`` | cores per node | multiple settings| See next segment|
 
 ### Resource list
-Resource list will contain a number of settings that informs the scheduler what resources to allocate for your job and for how long (walltime).
+A resource list will contain a number of settings that inform the scheduler what resources to allocate for your job and for how long (wall time).
 
 #### Walltime
-Walltime is represented by `--time=00:03:00` in the format HH:MM:SS. This will be how long the job will run before timing out.  If your job exceeds this time the scheduler will terminate the job. It is recommended to find a usual runtime for the job and add some more (say 20%) to it. For example, if a job took approximately 10 hours, the walltime limit could be set to 12 hours, e.g. "--time=12:00:00". By setting the walltime the scheduler can perform job scheduling more efficiently and also reduces occasions where errors can leave the job stalled but still taking up resource for the default much longer walltime limit (for queue walltime defaults run "squeue " command)
+Walltime is represented by `--time=00:03:00` in the format HH:MM:SS. This will be how long the job will run before timing out.  If your job exceeds this time, the scheduler will terminate the job. You should find a usual runtime for the job and add some more (say 20%) to it. For example, if a job took approximately 10 hours, the wall time limit could be set to 12 hours, e.g. "--time=12:00:00". By setting the wall time, the scheduler can perform job scheduling more efficiently and also reduces occasions where errors can leave the job stalled but still taking up resources for the default much longer wall time limit (for queue wall time defaults, run `squeue` command)
 
 >## Walltime test exercise
 >
 >Resource requests are typically binding.
 >If you exceed them, your job will be killed.
->Let's use walltime as an example.
->We will request 30 seconds of walltime,
+>Let's use wall time as an example.
+>We will request 30 seconds of wall time,
 >and attempt to run a job for two minutes.
 >
 >```
@@ -142,7 +141,7 @@ Walltime is represented by `--time=00:03:00` in the format HH:MM:SS. This will b
 >```
 >
 >Submit the job and wait for it to finish.
->Once it is has finished, check the error log file. In the error file, there will be
+>Once it has finished, check the error log file. In the error file, there will be
 >```
 >This script is running on:
 >This script is running on:
@@ -156,7 +155,7 @@ Walltime is represented by `--time=00:03:00` in the format HH:MM:SS. This will b
 > > ## What happened?
 > >
 > >Our job was killed for exceeding the amount of resources it requested.
-> > Although this appears harsh, this is actually a feature.
+> > Although this appears harsh, this is a feature.
 > >Strict adherence to resource requests allows the scheduler to find the best possible place
 > >for your jobs.
 > >Even more importantly,
@@ -184,9 +183,9 @@ Compute parameters  The argument `--nodes` specifies the number of nodes (or chu
 
 
 
-Each of these parameters have a default setting they will revert to if not set however this means your script may act differently to what you expect.
+Each of these parameters has a default setting they will revert to if not set; however, this means your script may act differently to what you expect.
 
-You can find out more information about these parameters by viewing the manual page of the `sbatch` function. This will also show you what the default settings are.
+You can find more information about these parameters by viewing the manual page for the `sbatch` function. This will also show you what the default settings are.
 
 ```
 $> man sbatch
@@ -225,12 +224,12 @@ Fill it in as shown. Path is `~/SLEEP` and then select Save.
 
 To run the job, select green 'play' button.
 
-If job successfully submitted, a green bar will appear on the top of the page.
+If the job is successfully submitted, a green bar will appear on the top of the page.
 
 Also, OnDemand allows you to view the queue for all systems (not just the one you are on in the shell) under Jobs, select
 Active Jobs. You can filter by your jobs, your group's jobs, and all jobs.
 
-## Submitting Jobs via command line
+## Submitting Jobs via the command line
 
 To submit this job to the scheduler, we use the `sbatch` command.
 
@@ -262,8 +261,8 @@ The best way to check our job's status is with `squeue`. It is easiest to view j
 
 There are usually a number of available partitions (Other resource managers call them queues) to use on the HPC clusters.
 Each cluster has separate partitions.
-The same compute node can be associated to multiple partitions
-Your job will be routed to the appropriate compute node based on the list of nodes associated with the partition, the walltime, and the computational resources requested.
+The same compute node can be associated with multiple partitions
+Your job will be routed to the appropriate compute node based on the list of nodes associated with the partition, the wall time, and the computational resources requested.
 To get the list of partitions on the cluster, execute:
 
 	$> sinfo -s
@@ -350,7 +349,7 @@ $> squeue -u $USER
 
 ## Detailed information about jobs
 
-The information provided by the command squeue sometimes is not enough and you would like to gather a more complete picture of the state of a particular job. The command scontrol provides a wealth of information about jobs but also partitions and nodes. Information about a job:
+The information provided by the command `squeue` is sometimes not enough, and you would like to gather a complete picture of the state of a particular job. The command `scontrol` provides a wealth of information about jobs but also partitions and nodes. Information about a job:
 
 	$ sbatch sleep.sh
 	Submitted batch job 453604
@@ -386,12 +385,11 @@ The information provided by the command squeue sometimes is not enough and you w
 ## Interactive jobs
 
 Sometimes, you will need a lot of resources for interactive use.
-Perhaps it's the first time running an analysis
-or we are attempting to debug something that went wrong with a previous job.
+Perhaps it's the first time running an analysis, or we are attempting to debug something that went wrong with a previous job.
 
-You can also request interactive jobs on OnDemand using the Interactive Apps menu
+You can also request interactive jobs on OnDemand using the Interactive Apps menu.
 
-To submit an interactive job requesting 4 cores on the partition standby and with a walltime of 40 minutes, execute:
+To submit an interactive job requesting 4 cores on the partition standby and with a wall time of 40 minutes, execute:
 
 	$> srun -p standby -t 40:00 -c 4 --pty bash
 
@@ -431,7 +429,7 @@ Write the content of the submission script as follows:
 	# Fibonacci Series
 	b=`expr $SLURM_ARRAY_TASK_ID + 1`
 
-	echo "10 first elements in the Fibonacci Sequence"
+	echo "10 first elements in the Fibonacci Sequence."
 	echo ""
 	echo "Starting with $a and $b"
 	echo ""
@@ -447,10 +445,10 @@ Write the content of the submission script as follows:
 	echo ""
 	sleep 60
 
-On job arrays the array index values are specified using the ``--array`` or ``-a`` option of the sbatch command.
-All the jobs in the job array will have the same variables except for the environment variable SLURM_ARRAY_TASK_ID
-that is set to its array index value.
-This variable can be used to redirect the workflow to a different folder or execute the simulation with different parameters.
+The array index values on job arrays are specified using the ``--array`` or ``-a`` option of the `sbatch` command.
+All the jobs in the job array will have the same variables except for the environment variable `SLURM_ARRAY_TASK_ID`
+, which is set to its array index value.
+This variable can redirect the workflow to a different folder or execute the simulation with different parameters.
 
 Submit the job array:
 
@@ -469,8 +467,8 @@ Submit the job array:
           453632_9   standby test_job gufranco  R       0:03      1 taicm007
          453632_10   standby test_job gufranco  R       0:03      1 taicm007
 
-The job submission will create 10 jobs
-When the jobs finishes their output will be in files `slurm-XXX`. For example:
+The job submission will create ten jobs
+When the jobs finish, their output will be in files `slurm-XXX`. For example:
 
 	$> cat slurm-453632_7.out
 	10 first elements in the Fibonacci Sequence
@@ -478,8 +476,6 @@ When the jobs finishes their output will be in files `slurm-XXX`. For example:
 	Starting with 7 and 8
 
 	7 8 15 23 38 61 99 160 259 419
-
-
 
 
 {% include links.md %}
