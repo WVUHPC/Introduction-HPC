@@ -4,7 +4,7 @@ start: 540
 teaching: 60
 exercises: 30
 questions:
-- "What is a scheduler, and why are they used?"
+- "What is a resource manager, a scheduler, and a workload manager?"
 - "How do we submit a job on an HPC cluster?"
 objectives:
 - "Submit a job and have it completed successfully."
@@ -14,8 +14,8 @@ objectives:
 keypoints:
 - "The scheduler handles how compute resources are shared between users."
 - "Everything you do should be run through the scheduler."
-- "A job is just a shell script."
-- "If in doubt, request more resources than you will need."
+- "A non-interactive job is expressed as a shell script that is submitted to the cluster."
+- "Try to adjust the wall time to around 10-20% more than the expected time the job should need."
 - "It is a good idea to keep aliases to common torque commands for easy execution."
 ---
 
