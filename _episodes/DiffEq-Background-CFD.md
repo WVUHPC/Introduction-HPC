@@ -1,16 +1,3 @@
----
-title: "Partial Differential Equations on HPC"
-teaching: 90
-exercises: 30
-questions:
-- "What is are differential equations and why are computers used to solve them?"
-- "How can I use the HPC cluster to solve PDEs for several scientific use cases?"
-objectives:
-- "Learn about PDEs in the context of Computational Fluid Dynamics and Relativity"
-keypoints:
-- "Examples of codes solving PDEs are Fluent and the Einstein Toolkit"
----
-
 # Computational Partial Differential Equations
 
 # Irene S. Nelson, PhD
@@ -40,7 +27,7 @@ plt.show()
 
 
     
-![png]({{ page.root }}/fig/output_1_0.png)
+![png](output_1_0.png)
     
 
 
@@ -91,7 +78,7 @@ Image(Path + "0_Interactive_Job.png")
 
 
     
-![png]({{ page.root }}/fig/output_5_0.png)
+![png](output_5_0.png)
     
 
 
@@ -105,7 +92,7 @@ Image(Path + "1_Blank_Project.png")
 
 
     
-![png]({{ page.root }}/fig/output_6_0.png)
+![png](output_6_0.png)
     
 
 
@@ -122,7 +109,7 @@ Image(Path + "1a_New_Project.png")
 
 
     
-![png]({{ page.root }}/fig/output_8_0.png)
+![png](output_8_0.png)
     
 
 
@@ -136,7 +123,7 @@ Image(Path + "2_Design_Modeler.png")
 
 
     
-![png]({{ page.root }}/fig/output_9_0.png)
+![png](output_9_0.png)
     
 
 
@@ -154,7 +141,7 @@ Image(Path + "2b_Circle.png")
 
 
     
-![png]({{ page.root }}/fig/output_11_0.png)
+![png](output_11_0.png)
     
 
 
@@ -170,7 +157,7 @@ Image(Path + "2b_Extrude_Cylinder.png")
 
 
     
-![png]({{ page.root }}/fig/output_13_0.png)
+![png](output_13_0.png)
     
 
 
@@ -188,7 +175,7 @@ Image(Path + "3_Meshing_Method.png")
 
 
     
-![png]({{ page.root }}/fig/output_15_0.png)
+![png](output_15_0.png)
     
 
 
@@ -204,7 +191,7 @@ Image(Path + "3b_Meshing_Done.png")
 
 
     
-![png]({{ page.root }}/fig/output_17_0.png)
+![png](output_17_0.png)
     
 
 
@@ -220,7 +207,7 @@ Image(Path + "3c_Name_Selections.png")
 
 
     
-![png]({{ page.root }}/fig/output_19_0.png)
+![png](output_19_0.png)
     
 
 
@@ -240,7 +227,7 @@ Image(Path + "4_Model.png")
 
 
     
-![png]({{ page.root }}/fig/output_21_0.png)
+![png](output_21_0.png)
     
 
 
@@ -258,7 +245,7 @@ Image(Path + "4a_Boundary_Conditions.png")
 
 
     
-![png]({{ page.root }}/fig/output_23_0.png)
+![png](output_23_0.png)
     
 
 
@@ -274,7 +261,7 @@ Image(Path + "4b_Initialize.png")
 
 
     
-![png]({{ page.root }}/fig/output_25_0.png)
+![png](output_25_0.png)
     
 
 
@@ -290,7 +277,7 @@ Image(Path + "4c_Calculate.png")
 
 
     
-![png]({{ page.root }}/fig/output_27_0.png)
+![png](output_27_0.png)
     
 
 
@@ -306,7 +293,7 @@ Image(Path + "6_Plane.png")
 
 
     
-![png]({{ page.root }}/fig/output_29_0.png)
+![png](output_29_0.png)
     
 
 
@@ -322,7 +309,7 @@ Image(Path + "6a_Contour.png")
 
 
     
-![png]({{ page.root }}/fig/output_31_0.png)
+![png](output_31_0.png)
     
 
 
@@ -354,7 +341,7 @@ plt.show()
 
 
     
-![png]({{ page.root }}/fig/output_33_0.png)
+![png](output_33_0.png)
     
 
 
@@ -370,7 +357,7 @@ plt.show()
 
 
     
-![png]({{ page.root }}/fig/output_34_0.png)
+![png](output_34_0.png)
     
 
 
@@ -387,7 +374,7 @@ Image(Path + "7_Project_Properties.png")
 
 
     
-![png]({{ page.root }}/fig/output_37_0.png)
+![png](output_37_0.png)
     
 
 
@@ -403,7 +390,7 @@ Image(Path + "8_Grid_On.png")
 
 
     
-![png]({{ page.root }}/fig/output_39_0.png)
+![png](output_39_0.png)
     
 
 
@@ -417,7 +404,7 @@ Image(Path + "8a_Rectangle.png")
 
 
     
-![png]({{ page.root }}/fig/output_40_0.png)
+![png](output_40_0.png)
     
 
 
@@ -431,7 +418,7 @@ Image(Path + "8b_Rectangle.png")
 
 
     
-![png]({{ page.root }}/fig/output_41_0.png)
+![png](output_41_0.png)
     
 
 
@@ -449,7 +436,7 @@ Image(Path + "9_Thickness.png")
 
 
     
-![png]({{ page.root }}/fig/output_44_0.png)
+![png](output_44_0.png)
     
 
 
@@ -465,7 +452,7 @@ Image(Path + "9b_Method.png")
 
 
     
-![png]({{ page.root }}/fig/output_46_0.png)
+![png](output_46_0.png)
     
 
 
@@ -481,7 +468,7 @@ Image(Path + "9c_Edge_Sizing.png")
 
 
     
-![png]({{ page.root }}/fig/output_48_0.png)
+![png](output_48_0.png)
     
 
 
@@ -517,8 +504,7 @@ Image(Path + "9d_Contour.png")
 
 
     
-![png]({{ page.root }}/fig/output_53_0.png)
+![png](output_53_0.png)
     
-
 
 
