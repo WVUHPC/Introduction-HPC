@@ -19,15 +19,15 @@ keypoints:
 - "It is a good idea to keep aliases to common torque commands for easy execution."
 ---
 
-When you are using your computer and you execute calculations, you are responsible for not overloading the machine with more workload than the machine can actually process efficiently.
-If you have just one computer, you monitor the machine's load and decide if the computer can execute more jobs.
-In the case of several machines, you need to log in individually to each machine, submit the jobs, and monitor those machines from time to time.
+Imagine for a moment that you need to execute a large simulation and all that you have is the computer that is in front of you. You will initiate the simulation by launching the program that will compute it. You ajust the parameters to avoid overloading the machine with more concurrent operations than the machine can process efficiently. It is possible that you cannot do anything else with the computer until the simulation is finished.
 
-You can easily realize that working this way could be more efficient.
-What if the job finishes during the night?
-What if you have multiple cores, but your jobs can only use one?
-How to control several machines efficiently?
-These and several other conditions are addressed by using a Resource Manager, also known as a Batch System or Queue System.
+Changing the situation a bit, now you have several computers at your disposal and you have many simulations to do, maybe the same simulation but under different physical conditions.
+You will have to connect to each computer to start the simulation and periodically monitor the computers to check if some of them have finished and its ready to run a new simulation.
+
+Moving to an even more complex scenario. Consider the case of several users, each wanting to run many simulations like yours and having a number of computers capable of runing all those simulations.
+Coordinating all the work and all the executions could be a daunting task that can be solved if a program could take care or mapping all the jobs from all the users to the available resources and monitoring when one computer can take another job. 
+
+All what we have described is the work of two programs, a resource manager in charge of monitoring the state of a pool of computers and a scheduler that will assign jobs to the different machines as fairly as possible for all the users in the cluster. In the case of our cluster those two roles are managed by a single software called Slurm and the integration of the resource manager, scheduler with the addition and accounting and other roles makes Slurm to be called a Workload Manager.
 
 
 An HPC system such as Thorny Flat or Dolly Sods has tenths nodes and more than 100 users.
