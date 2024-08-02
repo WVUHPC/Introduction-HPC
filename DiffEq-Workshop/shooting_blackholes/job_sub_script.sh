@@ -50,4 +50,4 @@ cd $SLURM_SUBMIT_HOST
 
 ####OMP_NUM_THREADS=16 mpirun -envall -n $NPROCS -machinefile $HOME/hostfile.$PBS_JOBID ./cactus_etilgrmhdold -reo ml-lr.par
 ##-machinefile $HOME/hostfile.$SLURM_JOBID 
-OMP_NUM_THREADS=16 mpirun -x PATH -x LIBRARY_PATH -x LD_LIBRARY_PATH -n $NPROCS cactus_sim /users/penelson/DiffEq-Workshop/shooting_blackholes/Shooting_BlackHoles_using_TwoPunctures_theta_5.5000e-02__vel_9.8000e-01__sepRadius_5.0000e+01.par-mr
+OMP_NUM_THREADS=16 mpirun -x PATH -x LIBRARY_PATH -x LD_LIBRARY_PATH -n $NPROCS cactus_sim /users/penelson/Introduction-HPC/DiffEq-Workshop/shooting_blackholes/Shooting_BlackHoles_using_TwoPunctures_theta_5.5000e-02__vel_9.8000e-01__sepRadius_5.0000e+01.par-mr

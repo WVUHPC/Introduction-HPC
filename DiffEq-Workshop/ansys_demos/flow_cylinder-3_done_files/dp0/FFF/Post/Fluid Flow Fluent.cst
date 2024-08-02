@@ -1,4 +1,4 @@
-# State file created:  2024/07/31 00:28:59
+# State file created:  2024/07/31 15:48:28
 # Build 22.2 2022-05-16T18:50:29.151482
 
 COMMENT:User Data
@@ -66,12 +66,12 @@ DATA READER:
   Clear All Objects = False
   Construct Variables From Fourier Coefficients = True
   Current Case List = Case FFF
-  Current Case Name = /users/penelson/DiffEq-Workshop/ansys_demos/\
-flow_cylinder-2_meshed_files/dp0/FFF/Fluent/FFF.flprj
-  Current Results File = /users/penelson/DiffEq-Workshop/ansys_demos/\
-flow_cylinder-2_meshed_files/dp0/FFF/Fluent/FFF.flprj
+  Current Case Name = /users/penelson/Introduction-HPC/DiffEq-Workshop/\
+ansys_demos/flow_cylinder-3_done_files/dp0/FFF/Fluent/FFF.flprj
+  Current Results File = /users/penelson/Introduction-HPC/DiffEq-Workshop/\
+ansys_demos/flow_cylinder-3_done_files/dp0/FFF/Fluent/FFF.flprj
   Current Timestep = -1
-  Current Timevalue = 0.25
+  Current Timevalue = 0.4
   Edit Case Names = false
   File Angle Units = rad
   File Chemical Amount Units = kmol
@@ -85,8 +85,8 @@ flow_cylinder-2_meshed_files/dp0/FFF/Fluent/FFF.flprj
   Force File Reload = False
   Keep Camera Position = True
   Load Particle Tracks = true
-  Master Results File = /users/penelson/DiffEq-Workshop/ansys_demos/\
-flow_cylinder-2_meshed_files/dp0/FFF/Fluent/FFF.flprj
+  Master Results File = /users/penelson/Introduction-HPC/DiffEq-Workshop/\
+ansys_demos/flow_cylinder-3_done_files/dp0/FFF/Fluent/FFF.flprj
   Multi Configuration File Load Option = Single Case
   Open in New View = true
   Open to Compare = false
@@ -98,12 +98,12 @@ flow_cylinder-2_meshed_files/dp0/FFF/Fluent/FFF.flprj
   Timevalue Match Criterion = Same Value
   CASE:Case FFF
     Construct Variables From Fourier Coefficients = True
-    Current Case Name = /users/penelson/DiffEq-Workshop/ansys_demos/\
-flow_cylinder-2_meshed_files/dp0/FFF/Fluent/FFF.flprj
-    Current Results File = /users/penelson/DiffEq-Workshop/ansys_demos/\
-flow_cylinder-2_meshed_files/dp0/FFF/Fluent/FFF.flprj
-    Current Timestep = 25
-    Current Timevalue = 0.25
+    Current Case Name = /users/penelson/Introduction-HPC/DiffEq-Workshop/\
+ansys_demos/flow_cylinder-3_done_files/dp0/FFF/Fluent/FFF.flprj
+    Current Results File = /users/penelson/Introduction-HPC/DiffEq-Workshop/\
+ansys_demos/flow_cylinder-3_done_files/dp0/FFF/Fluent/FFF.flprj
+    Current Timestep = 40
+    Current Timevalue = 0.4
     File Angle Units = rad
     File Chemical Amount Units = kmol
     File Current Units = A
@@ -492,12 +492,12 @@ END
 LIBRARY:
   CEL:
     EXPRESSIONS:
-      Accumulated Time Step = 25
+      Accumulated Time Step = 40
       Current Phase Position = 0
-      Current Time Step = 25
+      Current Time Step = 40
       Phase = Current Phase Position
-      Sequence Step = 25
-      Time = 0.25 [s]
+      Sequence Step = 40
+      Time = 0.4 [s]
       atstep = Accumulated Time Step
       ctstep = Current Time Step
       sstep = Sequence Step

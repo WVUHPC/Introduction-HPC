@@ -141,7 +141,7 @@ Solver Settings
       -------------------------------
       Number of Time Steps       50     
       Time Step Size [s]         0.01   
-      Max Iterations/Time Step   50     
+      Max Iterations/Time Step   20     
 
    Under-Relaxation Factors
 
