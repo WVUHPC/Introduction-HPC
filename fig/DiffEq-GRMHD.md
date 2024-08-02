@@ -1,15 +1,3 @@
----
-title: "Computational Partial Differential Equations"
-teaching: 90
-exercises: 30
-questions:
-- "Day 2: General Relativity and GRMHD"
-objectives:
-- "Day 2: General Relativity and GRMHD"
-keypoints:
-- "Day 2: General Relativity and GRMHD"
----
-
 # Computational Partial Differential Equations
 
 ## Irene S. Nelson, PhD
@@ -66,7 +54,7 @@ Image(Path + "3-1-decomposition-with-unit-timelike-normal-n-a-lapse-function-a-a
 
 
     
-![png]({{ page.root }}/fig/output_3_0.png)
+![png](output_3_0.png)
     
 
 
@@ -97,7 +85,7 @@ Image(Path + "Tide_overview.svg.png")
 
 
     
-![png]({{ page.root }}/fig/output_6_0 2.png)
+![png](output_6_0.png)
     
 
 
@@ -117,7 +105,7 @@ Image(Path + "InitialDataSchematic.jpg")
 
 
     
-![jpeg]({{ page.root }}/fig/output_8_0.jpg)
+![jpeg](output_8_0.jpg)
     
 
 
@@ -159,7 +147,7 @@ Image(Path + "Adaptive-mesh-refinement-in-the-simulation-of-merging-black-holes.
 
 
     
-![png]({{ page.root }}/fig/output_12_0.png)
+![png](output_12_0.png)
     
 
 
@@ -179,7 +167,7 @@ We will start by analysing the trajectory of our black holes.
 import matplotlib.pyplot as plt
 import numpy as np
 
-Path = "shooting_blackholes/ABE{{ page.root }}/fig/output_directory-Shooting_BlackHoles_using_TwoPunctures_theta_5.5000e-02__vel_9.8000e-01__sepRadius_5.0000e+01.par-mr/"
+Path = "shooting_blackholes/ABEoutput_directory-Shooting_BlackHoles_using_TwoPunctures_theta_5.5000e-02__vel_9.8000e-01__sepRadius_5.0000e+01.par-mr/"
 diagnostics1 = np.loadtxt(Path + "BH_diagnostics.ah1.gp")
 diagnostics2 = np.loadtxt(Path + "BH_diagnostics.ah2.gp")
 plt.figure()
@@ -196,7 +184,7 @@ plt.show()
 
 
     
-![png]({{ page.root }}/fig/output_14_0.png)
+![png](output_14_0.png)
     
 
 
@@ -214,7 +202,7 @@ plt.show()
 
 
     
-![png]({{ page.root }}/fig/output_16_0.png)
+![png](output_16_0.png)
     
 
 
@@ -250,7 +238,7 @@ plt.show()
 
 
     
-![png]({{ page.root }}/fig/output_18_0.png)
+![png](output_18_0.png)
     
 
 
@@ -322,7 +310,7 @@ plt.show()
 
 
     
-![png]({{ page.root }}/fig/output_23_0 2.png)
+![png](output_23_0.png)
     
 
 
